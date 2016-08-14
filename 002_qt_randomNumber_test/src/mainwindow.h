@@ -19,6 +19,8 @@ public:
 private slots:
     void on_btn_create_clicked();
 
+    void on_btn_reset_clicked();
+
 private:
     Ui::MainWindow *ui;
     int i_from;
