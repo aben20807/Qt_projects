@@ -1,5 +1,6 @@
 ## 運用技巧
 亂數  
+QString、int轉換
 QLineEdit  
 QRadioButtom  
 QMessageBox  

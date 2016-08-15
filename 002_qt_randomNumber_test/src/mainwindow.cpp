@@ -20,6 +20,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_btn_create_clicked()
 {
+    ui->result_print->clear();
     bool ok_from, ok_to, ok_num;//QString can be converted into int
     //get number form lineEdit
     i_from = ui->lEdit_from->text().toInt(&ok_from);
