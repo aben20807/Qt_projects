@@ -13,14 +13,13 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QStatusBar>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -29,91 +28,110 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QPushButton *pushButton;
-    QLineEdit *lineEdit_2;
-    QLabel *label;
-    QLineEdit *lineEdit;
-    QLabel *label_2;
-    QPushButton *pushButton_2;
+    QPushButton *btn_signIn;
+    QLineEdit *lE_password;
+    QLabel *label_logo;
+    QLineEdit *lE_userName;
+    QGraphicsView *graphicsView;
+    QPushButton *btn_signUp;
+    QPushButton *btn_forget;
     QMenuBar *menuBar;
-    QToolBar *mainToolBar;
-    QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(346, 272);
+        MainWindow->resize(431, 290);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        pushButton = new QPushButton(centralWidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setEnabled(true);
-        pushButton->setGeometry(QRect(110, 175, 75, 31));
+        btn_signIn = new QPushButton(centralWidget);
+        btn_signIn->setObjectName(QStringLiteral("btn_signIn"));
+        btn_signIn->setEnabled(true);
+        btn_signIn->setGeometry(QRect(100, 190, 75, 31));
         QFont font;
         font.setFamily(QStringLiteral("Noto Sans T Chinese Medium"));
         font.setPointSize(12);
-        pushButton->setFont(font);
-        pushButton->setCursor(QCursor(Qt::PointingHandCursor));
-        pushButton->setAutoDefault(false);
-        pushButton->setFlat(false);
-        lineEdit_2 = new QLineEdit(centralWidget);
-        lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
-        lineEdit_2->setGeometry(QRect(111, 130, 170, 27));
+        btn_signIn->setFont(font);
+        btn_signIn->setCursor(QCursor(Qt::PointingHandCursor));
+        btn_signIn->setStyleSheet(QLatin1String("#btn_signIn {\n"
+"background-color: transparent;\n"
+"border-image: url(:img/btn_signIn);\n"
+"background: none;\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"}\n"
+""));
+        btn_signIn->setAutoDefault(false);
+        btn_signIn->setFlat(false);
+        lE_password = new QLineEdit(centralWidget);
+        lE_password->setObjectName(QStringLiteral("lE_password"));
+        lE_password->setGeometry(QRect(100, 138, 231, 27));
         QFont font1;
         font1.setFamily(QStringLiteral("Noto Sans T Chinese Medium"));
         font1.setPointSize(11);
-        lineEdit_2->setFont(font1);
-        label = new QLabel(centralWidget);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(20, 10, 131, 61));
+        lE_password->setFont(font1);
+        label_logo = new QLabel(centralWidget);
+        label_logo->setObjectName(QStringLiteral("label_logo"));
+        label_logo->setGeometry(QRect(20, 10, 131, 61));
         QFont font2;
         font2.setFamily(QStringLiteral("Noto Sans T Chinese Thin"));
         font2.setPointSize(32);
         font2.setBold(false);
         font2.setWeight(50);
-        label->setFont(font2);
-        lineEdit = new QLineEdit(centralWidget);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
-        lineEdit->setGeometry(QRect(111, 89, 170, 27));
-        lineEdit->setFont(font1);
-        label_2 = new QLabel(centralWidget);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(204, 183, 16, 18));
+        label_logo->setFont(font2);
+        lE_userName = new QLineEdit(centralWidget);
+        lE_userName->setObjectName(QStringLiteral("lE_userName"));
+        lE_userName->setGeometry(QRect(100, 90, 231, 27));
+        lE_userName->setFont(font1);
+        graphicsView = new QGraphicsView(centralWidget);
+        graphicsView->setObjectName(QStringLiteral("graphicsView"));
+        graphicsView->setGeometry(QRect(0, 0, 431, 291));
+        graphicsView->viewport()->setProperty("cursor", QVariant(QCursor(Qt::ArrowCursor)));
+        btn_signUp = new QPushButton(centralWidget);
+        btn_signUp->setObjectName(QStringLiteral("btn_signUp"));
+        btn_signUp->setEnabled(true);
+        btn_signUp->setGeometry(QRect(330, 30, 75, 31));
+        btn_signUp->setFont(font);
+        btn_signUp->setCursor(QCursor(Qt::PointingHandCursor));
+        btn_signUp->setStyleSheet(QLatin1String("#btn_signUp {\n"
+"background-color: transparent;\n"
+"border-image: url(:img/btn_signUp);\n"
+"background: none;\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"}\n"
+""));
+        btn_signUp->setAutoDefault(false);
+        btn_signUp->setFlat(false);
+        btn_forget = new QPushButton(centralWidget);
+        btn_forget->setObjectName(QStringLiteral("btn_forget"));
+        btn_forget->setGeometry(QRect(190, 200, 141, 20));
         QFont font3;
-        font3.setFamily(QStringLiteral("Noto Sans T Chinese Regular"));
+        font3.setFamily(QStringLiteral("Noto Sans T Chinese Medium"));
         font3.setPointSize(10);
-        label_2->setFont(font3);
-        pushButton_2 = new QPushButton(centralWidget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setEnabled(true);
-        pushButton_2->setGeometry(QRect(221, 176, 61, 27));
-        QFont font4;
-        font4.setFamily(QStringLiteral("Noto Sans T Chinese Bold"));
-        font4.setPointSize(10);
-        font4.setKerning(false);
-        pushButton_2->setFont(font4);
-        pushButton_2->setCursor(QCursor(Qt::PointingHandCursor));
-        pushButton_2->setStyleSheet(QStringLiteral("color: rgb(0, 85, 255);"));
-        pushButton_2->setCheckable(false);
-        pushButton_2->setAutoDefault(false);
-        pushButton_2->setFlat(true);
+        btn_forget->setFont(font3);
+        btn_forget->setCursor(QCursor(Qt::PointingHandCursor));
+        btn_forget->setStyleSheet(QLatin1String("#btn_forget {\n"
+"	color: rgb(0, 117, 169);\n"
+"background-color: transparent;\n"
+"background: none;\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"}"));
         MainWindow->setCentralWidget(centralWidget);
+        graphicsView->raise();
+        btn_signIn->raise();
+        lE_password->raise();
+        label_logo->raise();
+        lE_userName->raise();
+        btn_signUp->raise();
+        btn_forget->raise();
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 346, 25));
+        menuBar->setGeometry(QRect(0, 0, 431, 25));
         MainWindow->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(MainWindow);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
-        statusBar = new QStatusBar(MainWindow);
-        statusBar->setObjectName(QStringLiteral("statusBar"));
-        MainWindow->setStatusBar(statusBar);
 
         retranslateUi(MainWindow);
-
-        pushButton_2->setDefault(false);
-
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
@@ -121,12 +139,12 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
-        pushButton->setText(QApplication::translate("MainWindow", "sign in", 0));
-        lineEdit_2->setPlaceholderText(QApplication::translate("MainWindow", "password", 0));
-        label->setText(QApplication::translate("MainWindow", "Sign in", 0));
-        lineEdit->setPlaceholderText(QApplication::translate("MainWindow", "user name", 0));
-        label_2->setText(QApplication::translate("MainWindow", "or", 0));
-        pushButton_2->setText(QApplication::translate("MainWindow", "sign up", 0));
+        btn_signIn->setText(QString());
+        lE_password->setPlaceholderText(QApplication::translate("MainWindow", "password", 0));
+        label_logo->setText(QApplication::translate("MainWindow", "Sign in", 0));
+        lE_userName->setPlaceholderText(QApplication::translate("MainWindow", "user name", 0));
+        btn_signUp->setText(QString());
+        btn_forget->setText(QApplication::translate("MainWindow", "Forget your password?", 0));
     } // retranslateUi
 
 };
