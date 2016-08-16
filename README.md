@@ -1,6 +1,9 @@
 Qt\_projects
 ===
-just for practicing.  
+Just for practicing.  
   
 ## Projects:  
 001\_qt\_progressBar\_test  
+002\_qt\_randomNumber\_test  
+003\_qt\_loginInterface\_test  
+
