@@ -35,13 +35,14 @@ public:
     QGraphicsView *graphicsView;
     QPushButton *btn_signUp;
     QPushButton *btn_forget;
+    QLabel *label_status;
     QMenuBar *menuBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(431, 290);
+        MainWindow->resize(430, 290);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         btn_signIn = new QPushButton(centralWidget);
@@ -70,6 +71,7 @@ public:
         font1.setFamily(QStringLiteral("Noto Sans T Chinese Medium"));
         font1.setPointSize(11);
         lE_password->setFont(font1);
+        lE_password->setEchoMode(QLineEdit::Password);
         label_logo = new QLabel(centralWidget);
         label_logo->setObjectName(QStringLiteral("label_logo"));
         label_logo->setGeometry(QRect(20, 10, 131, 61));
@@ -90,7 +92,7 @@ public:
         btn_signUp = new QPushButton(centralWidget);
         btn_signUp->setObjectName(QStringLiteral("btn_signUp"));
         btn_signUp->setEnabled(true);
-        btn_signUp->setGeometry(QRect(330, 30, 75, 31));
+        btn_signUp->setGeometry(QRect(330, 23, 75, 31));
         btn_signUp->setFont(font);
         btn_signUp->setCursor(QCursor(Qt::PointingHandCursor));
         btn_signUp->setStyleSheet(QLatin1String("#btn_signUp {\n"
@@ -118,6 +120,14 @@ public:
 "border: none;\n"
 "background-repeat: none;\n"
 "}"));
+        label_status = new QLabel(centralWidget);
+        label_status->setObjectName(QStringLiteral("label_status"));
+        label_status->setGeometry(QRect(310, 250, 111, 41));
+        QFont font4;
+        font4.setFamily(QStringLiteral("Noto Sans T Chinese Medium"));
+        font4.setPointSize(8);
+        label_status->setFont(font4);
+        label_status->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         MainWindow->setCentralWidget(centralWidget);
         graphicsView->raise();
         btn_signIn->raise();
@@ -126,9 +136,10 @@ public:
         lE_userName->raise();
         btn_signUp->raise();
         btn_forget->raise();
+        label_status->raise();
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 431, 25));
+        menuBar->setGeometry(QRect(0, 0, 430, 25));
         MainWindow->setMenuBar(menuBar);
 
         retranslateUi(MainWindow);
@@ -145,6 +156,7 @@ public:
         lE_userName->setPlaceholderText(QApplication::translate("MainWindow", "user name", 0));
         btn_signUp->setText(QString());
         btn_forget->setText(QApplication::translate("MainWindow", "Forget your password?", 0));
+        label_status->setText(QApplication::translate("MainWindow", "[+] Status", 0));
     } // retranslateUi
 
 };

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>431</width>
+    <width>430</width>
     <height>290</height>
    </rect>
   </property>
@@ -69,6 +69,9 @@ background-repeat: none;
       <family>Noto Sans T Chinese Medium</family>
       <pointsize>11</pointsize>
      </font>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
     </property>
     <property name="placeholderText">
      <string>password</string>
@@ -134,7 +137,7 @@ background-repeat: none;
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>30</y>
+      <y>23</y>
       <width>75</width>
       <height>31</height>
      </rect>
@@ -199,6 +202,28 @@ background-repeat: none;
      <string>Forget your password?</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_status">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>250</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Noto Sans T Chinese Medium</family>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>[+] Status</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
    <zorder>graphicsView</zorder>
    <zorder>btn_signIn</zorder>
    <zorder>lE_password</zorder>
@@ -206,13 +231,14 @@ background-repeat: none;
    <zorder>lE_userName</zorder>
    <zorder>btn_signUp</zorder>
    <zorder>btn_forget</zorder>
+   <zorder>label_status</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>431</width>
+     <width>430</width>
      <height>25</height>
     </rect>
    </property>
