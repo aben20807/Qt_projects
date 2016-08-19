@@ -7,6 +7,8 @@
 #include <QtSql>
 #include <QFileInfo>
 #include <QMessageBox>
+#include <QString>
+#include <QCryptographicHash>
 #include "signup.h"
 
 namespace Ui {
@@ -46,10 +48,14 @@ private slots:
 
     void on_btn_signUp_clicked();
 
+    void close_child();
+
+    void on_btn_cancel_clicked();
+
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
-
+    bool m_show_child;
 };
 
 #endif // MAINWINDOW_H

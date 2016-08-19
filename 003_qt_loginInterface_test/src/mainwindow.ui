@@ -171,37 +171,6 @@ background-repeat: none;
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_forget">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>200</y>
-      <width>141</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Noto Sans T Chinese Medium</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">#btn_forget {
-	color: rgb(0, 117, 169);
-background-color: transparent;
-background: none;
-border: none;
-background-repeat: none;
-}</string>
-    </property>
-    <property name="text">
-     <string>Forget your password?</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_status">
     <property name="geometry">
      <rect>
@@ -224,14 +193,45 @@ background-repeat: none;
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
+   <widget class="QPushButton" name="btn_cancel">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>200</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Noto Sans T Chinese Medium</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#btn_cancel {
+	color: rgb(0, 117, 169);
+background-color: transparent;
+background: none;
+border: none;
+background-repeat: none;
+}</string>
+    </property>
+    <property name="text">
+     <string>Cancel</string>
+    </property>
+   </widget>
    <zorder>graphicsView</zorder>
    <zorder>btn_signIn</zorder>
    <zorder>lE_password</zorder>
    <zorder>label_logo</zorder>
    <zorder>lE_userName</zorder>
    <zorder>btn_signUp</zorder>
-   <zorder>btn_forget</zorder>
    <zorder>label_status</zorder>
+   <zorder>btn_cancel</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

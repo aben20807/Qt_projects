@@ -173,7 +173,7 @@ background-repeat: none;
   <widget class="QPushButton" name="btn_cancel">
    <property name="geometry">
     <rect>
-     <x>270</x>
+     <x>280</x>
      <y>300</y>
      <width>61</width>
      <height>20</height>

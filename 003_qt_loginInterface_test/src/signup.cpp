@@ -7,6 +7,12 @@ SignUp::SignUp(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    Qt::WindowFlags flags = 0;
+    flags |= Qt::WindowMinimizeButtonHint;
+    flags |= Qt::WindowCloseButtonHint;
+    setWindowFlags(flags); //Maximize ban
+    setFixedSize(QWidget::geometry().width(),QWidget::geometry().height()); //Prohibition on changing the window size
+
     MainWindow conn;
     if(!conn.connectOpen()){
         ui->label_status->setText("Failed to connect db!");
@@ -59,7 +65,9 @@ void SignUp::on_btn_signUp_conf_clicked()
                 QMessageBox::warning(this, "Error", "Duplicate user!");
             }
             else{
-                qry.prepare("insert into data (username, password, signUpTime, fullname) values ('"+username+"' , '"+password+"' , '"+str_time+"' , '"+fullname+"' )");
+                QString password_md5 = QString("%1").arg(QString(QCryptographicHash::hash(password.toUtf8(),QCryptographicHash::Md5).toHex()));//Hash MD5
+
+                qry.prepare("insert into data (username, password, signUpTime, fullname) values ('"+username+"' , '"+password_md5+"' , '"+str_time+"' , '"+fullname+"' )");
                 if(qry.exec()){
                     QMessageBox::information(this, "OuO", "Succeed to sign up !");
                     conn.connectClose();
@@ -69,8 +77,24 @@ void SignUp::on_btn_signUp_conf_clicked()
                 }
 
                 this->close();
-//                MainWindow->show();
             }
         }
     }
 }
+
+void SignUp::on_btn_cancel_clicked()
+{
+    this->close();
+}
+
+void SignUp::close_child()
+{
+    m_show_child = false;
+}
+
+void SignUp::closeEvent(QCloseEvent *)
+{
+    emit close_me();
+}
+
+

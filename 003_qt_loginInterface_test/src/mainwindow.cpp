@@ -7,7 +7,13 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-//    connectOpen();//connect database
+    Qt::WindowFlags flags = 0;
+    flags |= Qt::WindowMinimizeButtonHint;
+    flags |= Qt::WindowCloseButtonHint;
+    setWindowFlags(flags);//Maximize ban
+    setFixedSize(QWidget::geometry().width(), QWidget::geometry().height());//Prohibition on changing the window size
+
+    /*database connect*/
     if(!connectOpen()){
         ui->label_status->setText("Failed to connect db!");
     }
@@ -40,10 +46,11 @@ void MainWindow::on_btn_signIn_clicked()
     QString username, password;
     username = ui->lE_userName->text();
     password = ui->lE_password->text();
+    QString password_md5 = QString("%1").arg(QString(QCryptographicHash::hash(password.toUtf8(),QCryptographicHash::Md5).toHex()));//Hash MD5
 
     connectOpen();
     QSqlQuery qry;
-    qry.prepare("select * from data where username = '"+username+"' and password = '"+password+"'");
+    qry.prepare("select * from data where username = '"+username+"' and password = '"+password_md5+"'");
     if(qry.exec()){
         int count = 0;
         while(qry.next()){
@@ -66,8 +73,30 @@ void MainWindow::on_btn_signIn_clicked()
 void MainWindow::on_btn_signUp_clicked()
 {
     connectClose();
-    this->hide();
+//    this->hide();
+//    SignUp signUp;
+//    signUp.setModal(true);
+//    signUp.exec();
+
     SignUp signUp;
-    signUp.setModal(true);
-    signUp.exec();
+    this->hide();
+    QObject::connect(&signUp,SIGNAL(close_me()),this,SLOT(close_child()));
+    m_show_child = true;
+    while (m_show_child)
+    {
+        signUp.exec();
+    }
+    this->show();
 }
+
+void MainWindow::on_btn_cancel_clicked()
+{
+    this->close();
+}
+
+void MainWindow::close_child()
+{
+    m_show_child = false;
+}
+
+

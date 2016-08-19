@@ -34,8 +34,8 @@ public:
     QLineEdit *lE_userName;
     QGraphicsView *graphicsView;
     QPushButton *btn_signUp;
-    QPushButton *btn_forget;
     QLabel *label_status;
+    QPushButton *btn_cancel;
     QMenuBar *menuBar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -105,29 +105,29 @@ public:
 ""));
         btn_signUp->setAutoDefault(false);
         btn_signUp->setFlat(false);
-        btn_forget = new QPushButton(centralWidget);
-        btn_forget->setObjectName(QStringLiteral("btn_forget"));
-        btn_forget->setGeometry(QRect(190, 200, 141, 20));
+        label_status = new QLabel(centralWidget);
+        label_status->setObjectName(QStringLiteral("label_status"));
+        label_status->setGeometry(QRect(307, 249, 111, 41));
         QFont font3;
         font3.setFamily(QStringLiteral("Noto Sans T Chinese Medium"));
-        font3.setPointSize(10);
-        btn_forget->setFont(font3);
-        btn_forget->setCursor(QCursor(Qt::PointingHandCursor));
-        btn_forget->setStyleSheet(QLatin1String("#btn_forget {\n"
+        font3.setPointSize(8);
+        label_status->setFont(font3);
+        label_status->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        btn_cancel = new QPushButton(centralWidget);
+        btn_cancel->setObjectName(QStringLiteral("btn_cancel"));
+        btn_cancel->setGeometry(QRect(280, 200, 61, 20));
+        QFont font4;
+        font4.setFamily(QStringLiteral("Noto Sans T Chinese Medium"));
+        font4.setPointSize(10);
+        btn_cancel->setFont(font4);
+        btn_cancel->setCursor(QCursor(Qt::PointingHandCursor));
+        btn_cancel->setStyleSheet(QLatin1String("#btn_cancel {\n"
 "	color: rgb(0, 117, 169);\n"
 "background-color: transparent;\n"
 "background: none;\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "}"));
-        label_status = new QLabel(centralWidget);
-        label_status->setObjectName(QStringLiteral("label_status"));
-        label_status->setGeometry(QRect(307, 249, 111, 41));
-        QFont font4;
-        font4.setFamily(QStringLiteral("Noto Sans T Chinese Medium"));
-        font4.setPointSize(8);
-        label_status->setFont(font4);
-        label_status->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         MainWindow->setCentralWidget(centralWidget);
         graphicsView->raise();
         btn_signIn->raise();
@@ -135,8 +135,8 @@ public:
         label_logo->raise();
         lE_userName->raise();
         btn_signUp->raise();
-        btn_forget->raise();
         label_status->raise();
+        btn_cancel->raise();
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 430, 25));
@@ -155,8 +155,8 @@ public:
         label_logo->setText(QApplication::translate("MainWindow", "Sign in", 0));
         lE_userName->setPlaceholderText(QApplication::translate("MainWindow", "User name", 0));
         btn_signUp->setText(QString());
-        btn_forget->setText(QApplication::translate("MainWindow", "Forget your password?", 0));
         label_status->setText(QApplication::translate("MainWindow", "[+] Status", 0));
+        btn_cancel->setText(QApplication::translate("MainWindow", "Cancel", 0));
     } // retranslateUi
 
 };

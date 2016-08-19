@@ -95,7 +95,7 @@ public:
         lE_fullName->setFont(font2);
         btn_cancel = new QPushButton(SignUp);
         btn_cancel->setObjectName(QStringLiteral("btn_cancel"));
-        btn_cancel->setGeometry(QRect(270, 300, 61, 20));
+        btn_cancel->setGeometry(QRect(280, 300, 61, 20));
         QFont font3;
         font3.setFamily(QStringLiteral("Noto Sans T Chinese Medium"));
         font3.setPointSize(10);
