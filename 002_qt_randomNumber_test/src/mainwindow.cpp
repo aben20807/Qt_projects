@@ -1,10 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QtCore>
-#include <QtGui>
-#include <QMessageBox>
-#include <QDebug>
-#include <time.h>//for qsrand
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),

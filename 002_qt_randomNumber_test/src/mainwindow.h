@@ -3,6 +3,11 @@
 
 #include <iostream>
 #include <QMainWindow>
+#include <QtCore>
+#include <QtGui>
+#include <QMessageBox>
+#include <QDebug>
+#include <time.h>//for qsrand
 
 namespace Ui {
 class MainWindow;
