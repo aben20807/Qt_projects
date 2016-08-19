@@ -10,6 +10,7 @@
 #include <QString>
 #include <QCryptographicHash>
 #include "signup.h"
+#include "operate.h"
 
 namespace Ui {
 class MainWindow;

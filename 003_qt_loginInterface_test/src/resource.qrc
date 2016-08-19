@@ -2,5 +2,6 @@
     <qresource prefix="/img">
         <file alias="btn_signIn">res/img/btn_signIn.png</file>
         <file alias="btn_signUp">res/img/btn_signUp.png</file>
+        <file alias="btn_delete">res/img/btn_delete.png</file>
     </qresource>
 </RCC>

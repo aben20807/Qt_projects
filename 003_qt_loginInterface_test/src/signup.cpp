@@ -29,7 +29,6 @@ SignUp::~SignUp()
 
 void SignUp::on_btn_signUp_conf_clicked()
 {
-    /*TODO INSERT INTO data (number, username, password, signUpTime) VALUES (2, "ab", "12", "12")*/
     MainWindow conn;
     if(!conn.connectOpen()){
         qDebug() << "Fail to open db" << endl;
@@ -69,13 +68,12 @@ void SignUp::on_btn_signUp_conf_clicked()
 
                 qry.prepare("insert into data (username, password, signUpTime, fullname) values ('"+username+"' , '"+password_md5+"' , '"+str_time+"' , '"+fullname+"' )");
                 if(qry.exec()){
-                    QMessageBox::information(this, "OuO", "Succeed to sign up !");
+                    QMessageBox::information(this, "OuO", "Succeed to sign up!");
                     conn.connectClose();
                 }
                 else{
                     QMessageBox::critical(this, tr("Error::"), qry.lastError().text());
                 }
-
                 this->close();
             }
         }

@@ -56,16 +56,22 @@ void MainWindow::on_btn_signIn_clicked()
         while(qry.next()){
             count++;
         }
-        switch (count) {
-        case 0:
+        if(count != 1){
             QMessageBox::warning(this, "Error", "Wrong user name or password!");
-            break;
-        case 1:
+        }
+        else{
             QMessageBox::information(this, "OuO", "Succeed to sign in!");
-            break;
-        default:
-            QMessageBox::warning(this, "Error", "Duplicate user!");
-            break;
+
+            connectClose();
+            Operate operate(0, username, password);
+            this->hide();
+            QObject::connect(&operate,SIGNAL(close_me()),this,SLOT(close_child()));
+            m_show_child = true;
+            while (m_show_child)
+            {
+                operate.exec();
+            }
+            this->show();
         }
     }
 }
@@ -73,10 +79,6 @@ void MainWindow::on_btn_signIn_clicked()
 void MainWindow::on_btn_signUp_clicked()
 {
     connectClose();
-//    this->hide();
-//    SignUp signUp;
-//    signUp.setModal(true);
-//    signUp.exec();
 
     SignUp signUp;
     this->hide();

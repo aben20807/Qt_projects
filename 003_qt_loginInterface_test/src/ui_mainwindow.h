@@ -149,7 +149,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Sign in", 0));
         btn_signIn->setText(QString());
         lE_password->setPlaceholderText(QApplication::translate("MainWindow", "Password", 0));
         label_logo->setText(QApplication::translate("MainWindow", "Sign in", 0));

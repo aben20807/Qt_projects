@@ -14,13 +14,16 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    signup.cpp
+    signup.cpp \
+    operate.cpp
 
 HEADERS  += mainwindow.h \
-    signup.h
+    signup.h \
+    operate.h
 
 FORMS    += mainwindow.ui \
-    signup.ui
+    signup.ui \
+    operate.ui
 
 RESOURCES += \
     resource.qrc

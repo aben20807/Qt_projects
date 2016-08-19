@@ -2,9 +2,6 @@
 #define SIGNUP_H
 
 #include <QDialog>
-//#include <QGraphicsScene>
-//#include <QDebug>
-//#include <QMessageBox>
 #include "mainwindow.h"
 
 namespace Ui {
