@@ -7,8 +7,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    connectOpen();//connect database
-    if(!signIndb.open()){
+//    connectOpen();//connect database
+    if(!connectOpen()){
         ui->label_status->setText("Failed to connect db!");
     }
     else{
@@ -32,14 +32,16 @@ void MainWindow::showEvent(QShowEvent *)
 
 void MainWindow::on_btn_signIn_clicked()
 {
+    if(!connectOpen()){
+        qDebug() << "Fail to open db" << endl;
+        return;
+    }
+
     QString username, password;
     username = ui->lE_userName->text();
     password = ui->lE_password->text();
 
-    if(!signIndb.isOpen()){
-        qDebug() << "Fail to open db" << endl;
-    }
-
+    connectOpen();
     QSqlQuery qry;
     qry.prepare("select * from data where username = '"+username+"' and password = '"+password+"'");
     if(qry.exec()){
@@ -49,7 +51,7 @@ void MainWindow::on_btn_signIn_clicked()
         }
         switch (count) {
         case 0:
-            QMessageBox::warning(this, "Error", "User name or password wrong!");
+            QMessageBox::warning(this, "Error", "Wrong user name or password!");
             break;
         case 1:
             QMessageBox::information(this, "OuO", "Succeed to sign in!");

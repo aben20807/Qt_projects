@@ -74,7 +74,7 @@ background-repeat: none;
      <enum>QLineEdit::Password</enum>
     </property>
     <property name="placeholderText">
-     <string>password</string>
+     <string>Password</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_logo">
@@ -82,7 +82,7 @@ background-repeat: none;
      <rect>
       <x>20</x>
       <y>10</y>
-      <width>131</width>
+      <width>141</width>
       <height>61</height>
      </rect>
     </property>
@@ -114,16 +114,16 @@ background-repeat: none;
      </font>
     </property>
     <property name="placeholderText">
-     <string>user name</string>
+     <string>User name</string>
     </property>
    </widget>
    <widget class="QGraphicsView" name="graphicsView">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>431</width>
-      <height>291</height>
+      <x>10</x>
+      <y>10</y>
+      <width>411</width>
+      <height>271</height>
      </rect>
     </property>
     <property name="cursor" stdset="0">
@@ -205,8 +205,8 @@ background-repeat: none;
    <widget class="QLabel" name="label_status">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>250</y>
+      <x>307</x>
+      <y>249</y>
       <width>111</width>
       <height>41</height>
      </rect>

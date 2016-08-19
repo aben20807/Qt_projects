@@ -7,7 +7,6 @@
 #include <QtSql>
 #include <QFileInfo>
 #include <QMessageBox>
-#include <QTime>
 #include "signup.h"
 
 namespace Ui {

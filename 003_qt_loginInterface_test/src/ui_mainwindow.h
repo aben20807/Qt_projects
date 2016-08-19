@@ -74,7 +74,7 @@ public:
         lE_password->setEchoMode(QLineEdit::Password);
         label_logo = new QLabel(centralWidget);
         label_logo->setObjectName(QStringLiteral("label_logo"));
-        label_logo->setGeometry(QRect(20, 10, 131, 61));
+        label_logo->setGeometry(QRect(20, 10, 141, 61));
         QFont font2;
         font2.setFamily(QStringLiteral("Noto Sans T Chinese Thin"));
         font2.setPointSize(32);
@@ -87,7 +87,7 @@ public:
         lE_userName->setFont(font1);
         graphicsView = new QGraphicsView(centralWidget);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
-        graphicsView->setGeometry(QRect(0, 0, 431, 291));
+        graphicsView->setGeometry(QRect(10, 10, 411, 271));
         graphicsView->viewport()->setProperty("cursor", QVariant(QCursor(Qt::ArrowCursor)));
         btn_signUp = new QPushButton(centralWidget);
         btn_signUp->setObjectName(QStringLiteral("btn_signUp"));
@@ -122,7 +122,7 @@ public:
 "}"));
         label_status = new QLabel(centralWidget);
         label_status->setObjectName(QStringLiteral("label_status"));
-        label_status->setGeometry(QRect(310, 250, 111, 41));
+        label_status->setGeometry(QRect(307, 249, 111, 41));
         QFont font4;
         font4.setFamily(QStringLiteral("Noto Sans T Chinese Medium"));
         font4.setPointSize(8);
@@ -151,9 +151,9 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
         btn_signIn->setText(QString());
-        lE_password->setPlaceholderText(QApplication::translate("MainWindow", "password", 0));
+        lE_password->setPlaceholderText(QApplication::translate("MainWindow", "Password", 0));
         label_logo->setText(QApplication::translate("MainWindow", "Sign in", 0));
-        lE_userName->setPlaceholderText(QApplication::translate("MainWindow", "user name", 0));
+        lE_userName->setPlaceholderText(QApplication::translate("MainWindow", "User name", 0));
         btn_signUp->setText(QString());
         btn_forget->setText(QApplication::translate("MainWindow", "Forget your password?", 0));
         label_status->setText(QApplication::translate("MainWindow", "[+] Status", 0));
