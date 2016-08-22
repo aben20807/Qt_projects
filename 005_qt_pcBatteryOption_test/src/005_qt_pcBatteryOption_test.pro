@@ -13,8 +13,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    schedule.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    schedule.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    schedule.ui
