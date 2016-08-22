@@ -145,6 +145,16 @@ border: 1px solid black;
      </item>
     </layout>
    </widget>
+   <widget class="QTableView" name="tableView">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>60</y>
+      <width>256</width>
+      <height>192</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -231,6 +241,13 @@ border: 1px solid black;
     <addaction name="actionManage"/>
     <addaction name="actionCheck_log"/>
    </widget>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionQuit"/>
+   </widget>
+   <addaction name="menuFile"/>
    <addaction name="menuSchedule"/>
    <addaction name="menuWindow"/>
    <addaction name="menuSetting"/>
@@ -248,14 +265,11 @@ border: 1px solid black;
    </property>
   </action>
   <action name="action_enUS">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="text">
-    <string>English</string>
+    <string>English_US</string>
    </property>
    <property name="font">
     <font>
@@ -268,9 +282,6 @@ border: 1px solid black;
    </property>
   </action>
   <action name="action_zhTW">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
    <property name="text">
     <string>繁體中文</string>
    </property>
@@ -324,6 +335,11 @@ border: 1px solid black;
    </property>
    <property name="shortcut">
     <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
    </property>
   </action>
  </widget>

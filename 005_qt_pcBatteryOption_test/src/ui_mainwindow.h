@@ -20,6 +20,7 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QProgressBar>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -34,6 +35,7 @@ public:
     QAction *actionAdd_new;
     QAction *actionManage;
     QAction *actionCheck_log;
+    QAction *actionQuit;
     QWidget *centralWidget;
     QGraphicsView *graphicsView;
     QWidget *layoutWidget;
@@ -41,12 +43,14 @@ public:
     QLabel *label_batteryStatus;
     QProgressBar *progressBar;
     QLabel *label_persent_status;
+    QTableView *tableView;
     QMenuBar *menuBar;
     QMenu *menuWindow;
     QMenu *menuSetting;
     QMenu *submenuLanguage;
     QMenu *menuHelp;
     QMenu *menuSchedule;
+    QMenu *menuFile;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -61,13 +65,11 @@ public:
         actionMinimize->setFont(font);
         action_enUS = new QAction(MainWindow);
         action_enUS->setObjectName(QStringLiteral("action_enUS"));
-        action_enUS->setCheckable(true);
-        action_enUS->setChecked(true);
+        action_enUS->setChecked(false);
         action_enUS->setFont(font);
         action_enUS->setAutoRepeat(true);
         action_zhTW = new QAction(MainWindow);
         action_zhTW->setObjectName(QStringLiteral("action_zhTW"));
-        action_zhTW->setCheckable(true);
         action_zhTW->setFont(font);
         action_zhTW->setAutoRepeat(true);
         actionAdd_new = new QAction(MainWindow);
@@ -79,6 +81,8 @@ public:
         actionCheck_log = new QAction(MainWindow);
         actionCheck_log->setObjectName(QStringLiteral("actionCheck_log"));
         actionCheck_log->setFont(font);
+        actionQuit = new QAction(MainWindow);
+        actionQuit->setObjectName(QStringLiteral("actionQuit"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         graphicsView = new QGraphicsView(centralWidget);
@@ -154,6 +158,9 @@ public:
 
         verticalLayout->addWidget(label_persent_status);
 
+        tableView = new QTableView(centralWidget);
+        tableView->setObjectName(QStringLiteral("tableView"));
+        tableView->setGeometry(QRect(150, 60, 256, 192));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -179,8 +186,11 @@ public:
         QFont font3;
         font3.setPointSize(10);
         menuSchedule->setFont(font3);
+        menuFile = new QMenu(menuBar);
+        menuFile->setObjectName(QStringLiteral("menuFile"));
         MainWindow->setMenuBar(menuBar);
 
+        menuBar->addAction(menuFile->menuAction());
         menuBar->addAction(menuSchedule->menuAction());
         menuBar->addAction(menuWindow->menuAction());
         menuBar->addAction(menuSetting->menuAction());
@@ -192,6 +202,7 @@ public:
         menuSchedule->addAction(actionAdd_new);
         menuSchedule->addAction(actionManage);
         menuSchedule->addAction(actionCheck_log);
+        menuFile->addAction(actionQuit);
 
         retranslateUi(MainWindow);
 
@@ -202,7 +213,7 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
         actionMinimize->setText(QApplication::translate("MainWindow", "Minimize", 0));
-        action_enUS->setText(QApplication::translate("MainWindow", "English", 0));
+        action_enUS->setText(QApplication::translate("MainWindow", "English_US", 0));
         action_zhTW->setText(QApplication::translate("MainWindow", "\347\271\201\351\253\224\344\270\255\346\226\207", 0));
         actionAdd_new->setText(QApplication::translate("MainWindow", "Add new", 0));
         actionAdd_new->setShortcut(QApplication::translate("MainWindow", "Ctrl+A", 0));
@@ -210,6 +221,7 @@ public:
         actionManage->setShortcut(QApplication::translate("MainWindow", "Ctrl+M", 0));
         actionCheck_log->setText(QApplication::translate("MainWindow", "Check log", 0));
         actionCheck_log->setShortcut(QApplication::translate("MainWindow", "Ctrl+C", 0));
+        actionQuit->setText(QApplication::translate("MainWindow", "Quit", 0));
         label_batteryStatus->setText(QApplication::translate("MainWindow", "Status", 0));
         label_persent_status->setText(QApplication::translate("MainWindow", "24%", 0));
         menuWindow->setTitle(QApplication::translate("MainWindow", "Window", 0));
@@ -217,6 +229,7 @@ public:
         submenuLanguage->setTitle(QApplication::translate("MainWindow", "Language", 0));
         menuHelp->setTitle(QApplication::translate("MainWindow", "Help", 0));
         menuSchedule->setTitle(QApplication::translate("MainWindow", "Schedule", 0));
+        menuFile->setTitle(QApplication::translate("MainWindow", "File", 0));
     } // retranslateUi
 
 };
