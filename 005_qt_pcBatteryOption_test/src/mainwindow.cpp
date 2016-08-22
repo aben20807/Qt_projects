@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     initMenu();
+    initSystemTrayIcon();
 }
 MainWindow::~MainWindow()
 {
@@ -17,7 +18,6 @@ void MainWindow::initMenu()
 {
     ui->action_zhTW->setIcon(QIcon(":/img/flag_taiwan"));
     ui->action_enUS->setIcon(QIcon(":/img/flag_usa"));
-
     ui->action_enUS->setCheckable(true);
     ui->action_enUS->setCheckable(true);
     languageMode = "enUS";
@@ -52,10 +52,28 @@ void MainWindow::applyLanguage()
 //        translator->load(QString("./language/en_US"));
         ui->action_enUS->setChecked(true);
         ui->action_zhTW->setChecked(false);
-
     }
 //    qApp->installTranslator(translator);
     //initGui
+}
+
+void MainWindow::initSystemTrayIcon()
+{
+    tray = new QSystemTrayIcon(this);
+    tray->setIcon(QIcon(":/img/flag_taiwan"));
+    connect(tray,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
+            this, SLOT(iconActivated(QSystemTrayIcon::ActivationReason)));
+
+    QAction *restoreAction;
+    restoreAction = new QAction(QIcon(":/img/flag_taiwan"), "Restore", this);
+    connect(restoreAction, SIGNAL(triggered()), this, SLOT(show()));
+    connect(restoreAction, SIGNAL(triggered()), tray, SLOT(hide()));
+
+    QMenu *trayIconMenu;//the menu of QSystemTrayIcon
+    trayIconMenu = new QMenu(this);
+    trayIconMenu->addAction(restoreAction);
+    trayIconMenu->addAction(ui->actionQuit);//quit action from ui
+    tray->setContextMenu(trayIconMenu);
 }
 
 void MainWindow::displaySchedule()
@@ -70,22 +88,21 @@ void MainWindow::on_actionQuit_triggered()
 
 void MainWindow::on_actionMinimize_triggered()
 {
-    tray = new QSystemTrayIcon(this);
-    tray->setIcon(QIcon(":/img/flag_taiwan"));
     tray->setVisible(true);
     this->hide();
-    tray->showMessage(tr("Info"),tr("Minimize to system tray!"));
+    tray->showMessage(tr("Info"),tr("Minimize to system tray!")); 
+}
 
-    QAction *restoreAction;
-    restoreAction = new QAction(QIcon(":/img/flag_taiwan"), "Restore", this);
-    connect(restoreAction, SIGNAL(triggered()), this, SLOT(show()));
-
-    QMenu *trayIconMenu;
-    trayIconMenu = new QMenu(this);
-    trayIconMenu->addAction(restoreAction);
-    tray->setContextMenu(trayIconMenu);
-//    if(tray->ActivationReason == QSystemTrayIcon::DoubleClick){
-//        this->show();
-//    }
-
+void MainWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
+{
+    switch (reason) {
+    case (QSystemTrayIcon::DoubleClick):
+        this->show();
+        tray->setVisible(false);
+        break;
+//    case (QSystemTrayIcon::Trigger):
+//        tray->showMessage(tr("Info"),tr("Minimize to system tray!"));
+    default:
+        break;
+    }
 }

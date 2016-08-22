@@ -23,11 +23,10 @@ public:
     ~MainWindow();
     void initMenu();
     void applyLanguage();
+    void initSystemTrayIcon();
     void displaySchedule();
 
 private slots:
-//    void on_comboBox_language_currentTextChanged(const QString &language);
-
     void on_action_zhTW_triggered();
 
     void on_action_enUS_triggered();
@@ -36,9 +35,10 @@ private slots:
 
     void on_actionMinimize_triggered();
 
+    void iconActivated(QSystemTrayIcon::ActivationReason reason);
+
 private:
     Ui::MainWindow *ui;
-
     QTranslator *translator;
     QString languageMode;
     QSystemTrayIcon *tray;
