@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     initMenu();
     initSystemTrayIcon();
-    displayBatteryThings(getBatteryLevel(),getBatteryStatus());
+    initDisplay();
 }
 MainWindow::~MainWindow()
 {
@@ -61,7 +61,7 @@ void MainWindow::applyLanguage()
 void MainWindow::initSystemTrayIcon()
 {
     tray = new QSystemTrayIcon(this);
-    tray->setIcon(QIcon(":/img/flag_taiwan"));
+    tray->setIcon(QIcon(":/img/flag_taiwan"));/*TODO find icon*/
     connect(tray,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(iconActivated(QSystemTrayIcon::ActivationReason)));
 
@@ -75,6 +75,14 @@ void MainWindow::initSystemTrayIcon()
     trayIconMenu->addAction(restoreAction);
     trayIconMenu->addAction(ui->actionQuit);//quit action from ui
     tray->setContextMenu(trayIconMenu);
+}
+
+void MainWindow::initDisplay()
+{
+    updateTime = new QTimer;
+    updateTime->start(1000);
+    connect(updateTime, SIGNAL(timeout()),
+            this, SLOT(updateDisplay()));
 }
 
 int MainWindow::getBatteryLevel()
@@ -163,4 +171,9 @@ void MainWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
     default:
         break;
     }
+}
+
+void MainWindow::updateDisplay()
+{
+    displayBatteryThings(getBatteryLevel(),getBatteryStatus());
 }
