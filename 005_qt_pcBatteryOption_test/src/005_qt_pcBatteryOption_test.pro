@@ -14,10 +14,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    schedule.cpp
+    schedule.cpp \
+    battery.cpp
 
 HEADERS  += mainwindow.h \
-    schedule.h
+    schedule.h \
+    battery.h
 
 FORMS    += mainwindow.ui \
     schedule.ui

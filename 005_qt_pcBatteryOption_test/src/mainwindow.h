@@ -10,6 +10,7 @@
 #include <QAction>
 #include <QSystemTrayIcon>
 #include <QProcess>
+#include "battery.h"
 
 namespace Ui {
 class MainWindow;
@@ -26,8 +27,6 @@ public:
     void applyLanguage();
     void initSystemTrayIcon();
     void initDisplay();
-    int getBatteryLevel();
-    QString getBatteryStatus();
     void displayBatteryThings(int batteryLevel, QString batteryStatus);
     void displaySchedule();
 
@@ -50,6 +49,7 @@ private:
     QString languageMode;
     QSystemTrayIcon *tray;
     QTimer *updateTime;
+    Battery *battery;
 };
 
 #endif // MAINWINDOW_H

@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    battery = new Battery;
     initMenu();
     initSystemTrayIcon();
     initDisplay();
@@ -79,55 +80,18 @@ void MainWindow::initSystemTrayIcon()
 
 void MainWindow::initDisplay()
 {
+    updateDisplay();//init when begin
     updateTime = new QTimer;
     updateTime->start(1000);
     connect(updateTime, SIGNAL(timeout()),
             this, SLOT(updateDisplay()));
 }
 
-int MainWindow::getBatteryLevel()
+void MainWindow::updateDisplay()
 {
-    QProcess * cmdProcess = new QProcess;
-    cmdProcess->start("WMIC PATH Win32_Battery Get EstimatedChargeRemaining");
-    cmdProcess->waitForFinished(-1); // will wait forever until finished
-
-    QString out = cmdProcess->readAllStandardOutput();
-    QString err = cmdProcess->readAllStandardError();
-//    for(int i = 0; i < out.length(); i++){//test the string of output
-//        qDebug() << i << out[i] << endl;
-//    }
-//    qDebug() << out[29] << out[30] << endl;
-    if(err != ""){
-        qDebug() << "err:" << err << endl;
-    }
-    int batteryLevel = (out[29].unicode()-48)*10 + (out[30].unicode()-48);
-//    qDebug() << batteryLevel << endl;
-    return batteryLevel;
-}
-
-QString MainWindow::getBatteryStatus()
-{
-    QProcess * cmdProcess = new QProcess;
-    cmdProcess->start("WMIC Path Win32_Battery Get BatteryStatus");
-    cmdProcess->waitForFinished(-1); // will wait forever until finished
-
-    QString out = cmdProcess->readAllStandardOutput();
-    QString err = cmdProcess->readAllStandardError();
-//    for(int i = 0; i < out.length(); i++){//test the string of output
-//        qDebug() << i << out[i] << endl;
-//    }
-//    qDebug() << out[18] << endl;
-    if(err != ""){
-        qDebug() << "err:" <<err << endl;
-    }
-    switch (out[18].unicode()-48) {
-    case 1:
-        return "Battery using";
-    case 2:
-        return "AC charging";
-    default:
-        return "Error!!";
-    }
+    int _level = battery->getBatteryLevel();
+    QString _status = battery->getBatteryStatus();
+    displayBatteryThings(_level,_status);
 }
 
 void MainWindow::displayBatteryThings(int batteryLevel, QString batteryStatus)
@@ -156,7 +120,8 @@ void MainWindow::on_actionMinimize_triggered()
 {
     tray->setVisible(true);
     this->hide();
-    tray->showMessage(tr("Info"),tr("Minimize to system tray!")); 
+    tray->showMessage(tr("Info"),tr("Minimize to system tray!"),
+                      QSystemTrayIcon::Information, 5000);
 }
 
 void MainWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
@@ -171,9 +136,4 @@ void MainWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
     default:
         break;
     }
-}
-
-void MainWindow::updateDisplay()
-{
-    displayBatteryThings(getBatteryLevel(),getBatteryStatus());
 }

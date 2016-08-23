@@ -435,6 +435,41 @@ border: 1px solid black;
     <string>Quit</string>
    </property>
   </action>
+  <action name="action0_1_s">
+   <property name="text">
+    <string>0.1 s</string>
+   </property>
+  </action>
+  <action name="action0_5_s">
+   <property name="text">
+    <string>0.5 s</string>
+   </property>
+  </action>
+  <action name="action1_0_s">
+   <property name="text">
+    <string>1.0 s</string>
+   </property>
+  </action>
+  <action name="action5_0_s">
+   <property name="text">
+    <string>5.0 s</string>
+   </property>
+  </action>
+  <action name="action10_s">
+   <property name="text">
+    <string>10 s</string>
+   </property>
+  </action>
+  <action name="action1_min">
+   <property name="text">
+    <string>1 min</string>
+   </property>
+  </action>
+  <action name="action30_s">
+   <property name="text">
+    <string>30 s</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
