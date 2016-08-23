@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     initMenu();
     initSystemTrayIcon();
+    initBatteryStatus();
 }
 MainWindow::~MainWindow()
 {
@@ -74,6 +75,22 @@ void MainWindow::initSystemTrayIcon()
     trayIconMenu->addAction(restoreAction);
     trayIconMenu->addAction(ui->actionQuit);//quit action from ui
     tray->setContextMenu(trayIconMenu);
+}
+
+void MainWindow::initBatteryStatus()
+{
+    cmdProcess = new QProcess;
+    cmdProcess->start("WMIC PATH Win32_Battery Get EstimatedChargeRemaining");
+    cmdProcess->waitForFinished(-1); // will wait forever until finished
+
+    QString out = cmdProcess->readAllStandardOutput();
+    QString err = cmdProcess->readAllStandardError();
+//    for(int i = 0; i < out.length(); i++){//test the string of output
+//        qDebug() << i << out[i] << endl;
+//    }
+//    qDebug() << out[29] << out[30] << endl;
+    batteryStatus = (out[29].unicode()-48)*10 + (out[30].unicode()-48);
+    qDebug() << batteryStatus << endl;
 }
 
 void MainWindow::displaySchedule()

@@ -9,6 +9,7 @@
 #include <QMenu>
 #include <QAction>
 #include <QSystemTrayIcon>
+#include <QProcess>
 
 namespace Ui {
 class MainWindow;
@@ -24,6 +25,7 @@ public:
     void initMenu();
     void applyLanguage();
     void initSystemTrayIcon();
+    void initBatteryStatus();
     void displaySchedule();
 
 private slots:
@@ -42,6 +44,8 @@ private:
     QTranslator *translator;
     QString languageMode;
     QSystemTrayIcon *tray;
+    QProcess *cmdProcess;
+    int batteryStatus;
 };
 
 #endif // MAINWINDOW_H
