@@ -21,7 +21,6 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QProgressBar>
 #include <QtWidgets/QTableView>
-#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -38,12 +37,13 @@ public:
     QAction *actionQuit;
     QWidget *centralWidget;
     QGraphicsView *graphicsView;
-    QWidget *layoutWidget;
-    QVBoxLayout *verticalLayout;
-    QLabel *label_batteryStatus;
-    QProgressBar *progressBar;
-    QLabel *label_persent_status;
     QTableView *tableView;
+    QLabel *label_status;
+    QLabel *label_batteryStatus;
+    QLabel *label_batteryLevel_2;
+    QLabel *label_level;
+    QLabel *label_batteryLevel;
+    QProgressBar *progressBar;
     QMenuBar *menuBar;
     QMenu *menuWindow;
     QMenu *menuSetting;
@@ -88,31 +88,53 @@ public:
         graphicsView = new QGraphicsView(centralWidget);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
         graphicsView->setGeometry(QRect(10, 10, 441, 261));
-        layoutWidget = new QWidget(centralWidget);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(30, 40, 81, 226));
-        verticalLayout = new QVBoxLayout(layoutWidget);
-        verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label_batteryStatus = new QLabel(layoutWidget);
-        label_batteryStatus->setObjectName(QStringLiteral("label_batteryStatus"));
-        label_batteryStatus->setMinimumSize(QSize(51, 21));
+        tableView = new QTableView(centralWidget);
+        tableView->setObjectName(QStringLiteral("tableView"));
+        tableView->setGeometry(QRect(150, 101, 256, 141));
+        label_status = new QLabel(centralWidget);
+        label_status->setObjectName(QStringLiteral("label_status"));
+        label_status->setGeometry(QRect(150, 70, 51, 21));
+        label_status->setMinimumSize(QSize(51, 21));
         QFont font1;
         font1.setFamily(QString::fromUtf8("\345\276\256\350\273\237\346\255\243\351\273\221\351\253\224"));
         font1.setPointSize(12);
+        label_status->setFont(font1);
+        label_status->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        label_batteryStatus = new QLabel(centralWidget);
+        label_batteryStatus->setObjectName(QStringLiteral("label_batteryStatus"));
+        label_batteryStatus->setGeometry(QRect(210, 70, 131, 21));
+        label_batteryStatus->setMinimumSize(QSize(51, 21));
         label_batteryStatus->setFont(font1);
-        label_batteryStatus->setAlignment(Qt::AlignCenter);
-
-        verticalLayout->addWidget(label_batteryStatus);
-
-        progressBar = new QProgressBar(layoutWidget);
-        progressBar->setObjectName(QStringLiteral("progressBar"));
-        progressBar->setMinimumSize(QSize(79, 171));
+        label_batteryStatus->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        label_batteryLevel_2 = new QLabel(centralWidget);
+        label_batteryLevel_2->setObjectName(QStringLiteral("label_batteryLevel_2"));
+        label_batteryLevel_2->setGeometry(QRect(40, 140, 79, 21));
+        label_batteryLevel_2->setMinimumSize(QSize(51, 20));
         QFont font2;
-        font2.setFamily(QStringLiteral("Adobe Arabic"));
-        progressBar->setFont(font2);
+        font2.setFamily(QString::fromUtf8("\345\276\256\350\273\237\346\255\243\351\273\221\351\253\224"));
+        font2.setPointSize(14);
+        label_batteryLevel_2->setFont(font2);
+        label_batteryLevel_2->setStyleSheet(QStringLiteral(""));
+        label_batteryLevel_2->setAlignment(Qt::AlignCenter);
+        label_level = new QLabel(centralWidget);
+        label_level->setObjectName(QStringLiteral("label_level"));
+        label_level->setGeometry(QRect(150, 50, 51, 21));
+        label_level->setMinimumSize(QSize(51, 21));
+        label_level->setFont(font1);
+        label_level->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        label_batteryLevel = new QLabel(centralWidget);
+        label_batteryLevel->setObjectName(QStringLiteral("label_batteryLevel"));
+        label_batteryLevel->setGeometry(QRect(210, 50, 121, 21));
+        label_batteryLevel->setMinimumSize(QSize(51, 20));
+        label_batteryLevel->setFont(font1);
+        label_batteryLevel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        progressBar = new QProgressBar(centralWidget);
+        progressBar->setObjectName(QStringLiteral("progressBar"));
+        progressBar->setGeometry(QRect(40, 58, 79, 191));
+        progressBar->setMinimumSize(QSize(79, 171));
+        QFont font3;
+        font3.setFamily(QStringLiteral("Adobe Arabic"));
+        progressBar->setFont(font3);
         progressBar->setLayoutDirection(Qt::LeftToRight);
         progressBar->setStyleSheet(QLatin1String("QProgressBar {\n"
 "border: 1px solid black;\n"
@@ -141,26 +163,12 @@ public:
 "}\n"
 "\n"
 ""));
-        progressBar->setValue(24);
+        progressBar->setValue(44);
         progressBar->setAlignment(Qt::AlignCenter);
         progressBar->setTextVisible(false);
         progressBar->setOrientation(Qt::Vertical);
         progressBar->setInvertedAppearance(false);
         progressBar->setTextDirection(QProgressBar::TopToBottom);
-
-        verticalLayout->addWidget(progressBar);
-
-        label_persent_status = new QLabel(layoutWidget);
-        label_persent_status->setObjectName(QStringLiteral("label_persent_status"));
-        label_persent_status->setMinimumSize(QSize(51, 20));
-        label_persent_status->setFont(font1);
-        label_persent_status->setAlignment(Qt::AlignCenter);
-
-        verticalLayout->addWidget(label_persent_status);
-
-        tableView = new QTableView(centralWidget);
-        tableView->setObjectName(QStringLiteral("tableView"));
-        tableView->setGeometry(QRect(150, 60, 256, 192));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -183,9 +191,9 @@ public:
         menuHelp->setFont(font);
         menuSchedule = new QMenu(menuBar);
         menuSchedule->setObjectName(QStringLiteral("menuSchedule"));
-        QFont font3;
-        font3.setPointSize(10);
-        menuSchedule->setFont(font3);
+        QFont font4;
+        font4.setPointSize(10);
+        menuSchedule->setFont(font4);
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         MainWindow->setMenuBar(menuBar);
@@ -211,7 +219,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Battery", 0));
         actionMinimize->setText(QApplication::translate("MainWindow", "Minimize", 0));
         action_enUS->setText(QApplication::translate("MainWindow", "English_US", 0));
         action_zhTW->setText(QApplication::translate("MainWindow", "\347\271\201\351\253\224\344\270\255\346\226\207", 0));
@@ -222,8 +230,11 @@ public:
         actionCheck_log->setText(QApplication::translate("MainWindow", "Check log", 0));
         actionCheck_log->setShortcut(QApplication::translate("MainWindow", "Ctrl+C", 0));
         actionQuit->setText(QApplication::translate("MainWindow", "Quit", 0));
-        label_batteryStatus->setText(QApplication::translate("MainWindow", "Status", 0));
-        label_persent_status->setText(QApplication::translate("MainWindow", "24%", 0));
+        label_status->setText(QApplication::translate("MainWindow", "Status:", 0));
+        label_batteryStatus->setText(QApplication::translate("MainWindow", "[+]batteryStatus", 0));
+        label_batteryLevel_2->setText(QApplication::translate("MainWindow", "%", 0));
+        label_level->setText(QApplication::translate("MainWindow", "Level:", 0));
+        label_batteryLevel->setText(QApplication::translate("MainWindow", "[+]batteryLevel", 0));
         menuWindow->setTitle(QApplication::translate("MainWindow", "Window", 0));
         menuSetting->setTitle(QApplication::translate("MainWindow", "Setting", 0));
         submenuLanguage->setTitle(QApplication::translate("MainWindow", "Language", 0));

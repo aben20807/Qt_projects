@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     initMenu();
     initSystemTrayIcon();
-    initBatteryStatus();
+    displayBatteryThings(getBatteryLevel(),getBatteryStatus());
 }
 MainWindow::~MainWindow()
 {
@@ -77,9 +77,9 @@ void MainWindow::initSystemTrayIcon()
     tray->setContextMenu(trayIconMenu);
 }
 
-void MainWindow::initBatteryStatus()
+int MainWindow::getBatteryLevel()
 {
-    cmdProcess = new QProcess;
+    QProcess * cmdProcess = new QProcess;
     cmdProcess->start("WMIC PATH Win32_Battery Get EstimatedChargeRemaining");
     cmdProcess->waitForFinished(-1); // will wait forever until finished
 
@@ -89,8 +89,49 @@ void MainWindow::initBatteryStatus()
 //        qDebug() << i << out[i] << endl;
 //    }
 //    qDebug() << out[29] << out[30] << endl;
-    batteryStatus = (out[29].unicode()-48)*10 + (out[30].unicode()-48);
-    qDebug() << batteryStatus << endl;
+    if(err != ""){
+        qDebug() << "err:" << err << endl;
+    }
+    int batteryLevel = (out[29].unicode()-48)*10 + (out[30].unicode()-48);
+//    qDebug() << batteryLevel << endl;
+    return batteryLevel;
+}
+
+QString MainWindow::getBatteryStatus()
+{
+    QProcess * cmdProcess = new QProcess;
+    cmdProcess->start("WMIC Path Win32_Battery Get BatteryStatus");
+    cmdProcess->waitForFinished(-1); // will wait forever until finished
+
+    QString out = cmdProcess->readAllStandardOutput();
+    QString err = cmdProcess->readAllStandardError();
+//    for(int i = 0; i < out.length(); i++){//test the string of output
+//        qDebug() << i << out[i] << endl;
+//    }
+//    qDebug() << out[18] << endl;
+    if(err != ""){
+        qDebug() << "err:" <<err << endl;
+    }
+    switch (out[18].unicode()-48) {
+    case 1:
+        return "Battery using";
+    case 2:
+        return "AC charging";
+    default:
+        return "Error!!";
+    }
+}
+
+void MainWindow::displayBatteryThings(int batteryLevel, QString batteryStatus)
+{
+    ui->progressBar->setValue(batteryLevel);
+    ui->label_batteryLevel->setText(QString::number(batteryLevel) + "%");
+    ui->label_batteryLevel_2->setText(QString::number(batteryLevel) + "%");
+    ui->label_batteryLevel_2->raise();
+    if(batteryLevel >= 55){
+        ui->label_batteryLevel_2->setStyleSheet("color: rgb(255, 255, 255)");
+    }
+    ui->label_batteryStatus->setText(batteryStatus);
 }
 
 void MainWindow::displaySchedule()

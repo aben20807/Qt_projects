@@ -25,7 +25,9 @@ public:
     void initMenu();
     void applyLanguage();
     void initSystemTrayIcon();
-    void initBatteryStatus();
+    int getBatteryLevel();
+    QString getBatteryStatus();
+    void displayBatteryThings(int batteryLevel, QString batteryStatus);
     void displaySchedule();
 
 private slots:
@@ -44,8 +46,8 @@ private:
     QTranslator *translator;
     QString languageMode;
     QSystemTrayIcon *tray;
-    QProcess *cmdProcess;
-    int batteryStatus;
+//    int batteryLevel;
+//    QString batteryStatus;
 };
 
 #endif // MAINWINDOW_H
