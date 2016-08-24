@@ -280,6 +280,15 @@ border: 1px solid black;
     <property name="title">
      <string>Window</string>
     </property>
+    <widget class="QMenu" name="menuMinimize_to">
+     <property name="title">
+      <string>Minimize to </string>
+     </property>
+     <addaction name="actionSystem_tray"/>
+     <addaction name="actionTaskbar"/>
+    </widget>
+    <addaction name="menuMinimize_to"/>
+    <addaction name="separator"/>
     <addaction name="actionMinimize"/>
    </widget>
    <widget class="QMenu" name="menuSetting">
@@ -348,7 +357,7 @@ border: 1px solid black;
   </widget>
   <action name="actionMinimize">
    <property name="text">
-    <string>Minimize</string>
+    <string>Minimize to system tray</string>
    </property>
    <property name="font">
     <font>
@@ -468,6 +477,16 @@ border: 1px solid black;
   <action name="action30_s">
    <property name="text">
     <string>30 s</string>
+   </property>
+  </action>
+  <action name="actionSystem_tray">
+   <property name="text">
+    <string>System tray</string>
+   </property>
+  </action>
+  <action name="actionTaskbar">
+   <property name="text">
+    <string>Taskbar</string>
    </property>
   </action>
  </widget>

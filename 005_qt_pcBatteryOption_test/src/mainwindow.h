@@ -8,6 +8,7 @@
 #include <QTranslator>
 #include <QMenu>
 #include <QAction>
+#include <QTimer>
 #include <QSystemTrayIcon>
 #include <QProcess>
 #include "battery.h"
@@ -28,6 +29,9 @@ public:
     void initSystemTrayIcon();
     void initDisplay();
     void displayBatteryThings(int batteryLevel, QString batteryStatus);
+    void changeEvent(QEvent *event);
+    void show();
+
     void displaySchedule();
 
 private slots:
@@ -48,6 +52,7 @@ private:
     QTranslator *translator;
     QString languageMode;
     QSystemTrayIcon *tray;
+    QAction *restoreAction;
     QTimer *updateTime;
     Battery *battery;
 };

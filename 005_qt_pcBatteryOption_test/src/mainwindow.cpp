@@ -10,6 +10,12 @@ MainWindow::MainWindow(QWidget *parent) :
     initMenu();
     initSystemTrayIcon();
     initDisplay();
+
+//    QProcess * cmdProcess = new QProcess;
+//    cmdProcess->start("shutdown /h");
+//    cmdProcess->waitForFinished(-1); // will wait forever until finished
+//    QString out = cmdProcess->readAllStandardOutput();
+//    qDebug() << "out:" << out << endl;
 }
 MainWindow::~MainWindow()
 {
@@ -66,10 +72,11 @@ void MainWindow::initSystemTrayIcon()
     connect(tray,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(iconActivated(QSystemTrayIcon::ActivationReason)));
 
-    QAction *restoreAction;
+
     restoreAction = new QAction(QIcon(":/img/flag_taiwan"), "Restore", this);
     connect(restoreAction, SIGNAL(triggered()), this, SLOT(show()));
     connect(restoreAction, SIGNAL(triggered()), tray, SLOT(hide()));
+//    connect(restoreAction, SIGNAL(triggered()), this, SLOT(()));
 
     QMenu *trayIconMenu;//the menu of QSystemTrayIcon
     trayIconMenu = new QMenu(this);
@@ -104,6 +111,30 @@ void MainWindow::displayBatteryThings(int batteryLevel, QString batteryStatus)
         ui->label_batteryLevel_2->setStyleSheet("color: rgb(255, 255, 255)");
     }
     ui->label_batteryStatus->setText(batteryStatus);
+    /*TODO when low battery, change color of progressBar*/
+}
+
+void MainWindow::changeEvent(QEvent *event)
+{
+    if( event->type() == QEvent::WindowStateChange )
+    {
+        if( windowState() == Qt::WindowMinimized )
+        {
+            ui->actionMinimize->trigger();
+
+        }
+        else if( windowState() == Qt::WindowNoState )
+        {
+
+        }
+        QMainWindow::changeEvent(event);
+    }
+}
+
+void MainWindow::show()
+{
+    QWidget::show();
+    this->setWindowState(Qt::WindowNoState);
 }
 
 void MainWindow::displaySchedule()

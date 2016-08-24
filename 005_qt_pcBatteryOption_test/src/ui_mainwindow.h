@@ -42,6 +42,8 @@ public:
     QAction *action10_s;
     QAction *action1_min;
     QAction *action30_s;
+    QAction *actionSystem_tray;
+    QAction *actionTaskbar;
     QWidget *centralWidget;
     QGraphicsView *graphicsView;
     QTableView *tableView;
@@ -53,6 +55,7 @@ public:
     QProgressBar *progressBar;
     QMenuBar *menuBar;
     QMenu *menuWindow;
+    QMenu *menuMinimize_to;
     QMenu *menuSetting;
     QMenu *submenuLanguage;
     QMenu *menuHelp;
@@ -104,6 +107,10 @@ public:
         action1_min->setObjectName(QStringLiteral("action1_min"));
         action30_s = new QAction(MainWindow);
         action30_s->setObjectName(QStringLiteral("action30_s"));
+        actionSystem_tray = new QAction(MainWindow);
+        actionSystem_tray->setObjectName(QStringLiteral("actionSystem_tray"));
+        actionTaskbar = new QAction(MainWindow);
+        actionTaskbar->setObjectName(QStringLiteral("actionTaskbar"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         graphicsView = new QGraphicsView(centralWidget);
@@ -200,6 +207,8 @@ public:
         menuWindow = new QMenu(menuBar);
         menuWindow->setObjectName(QStringLiteral("menuWindow"));
         menuWindow->setFont(font);
+        menuMinimize_to = new QMenu(menuWindow);
+        menuMinimize_to->setObjectName(QStringLiteral("menuMinimize_to"));
         menuSetting = new QMenu(menuBar);
         menuSetting->setObjectName(QStringLiteral("menuSetting"));
         menuSetting->setFont(font);
@@ -224,7 +233,11 @@ public:
         menuBar->addAction(menuWindow->menuAction());
         menuBar->addAction(menuSetting->menuAction());
         menuBar->addAction(menuHelp->menuAction());
+        menuWindow->addAction(menuMinimize_to->menuAction());
+        menuWindow->addSeparator();
         menuWindow->addAction(actionMinimize);
+        menuMinimize_to->addAction(actionSystem_tray);
+        menuMinimize_to->addAction(actionTaskbar);
         menuSetting->addAction(submenuLanguage->menuAction());
         submenuLanguage->addAction(action_zhTW);
         submenuLanguage->addAction(action_enUS);
@@ -241,7 +254,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Battery", 0));
-        actionMinimize->setText(QApplication::translate("MainWindow", "Minimize", 0));
+        actionMinimize->setText(QApplication::translate("MainWindow", "Minimize to system tray", 0));
         action_enUS->setText(QApplication::translate("MainWindow", "English_US", 0));
         action_zhTW->setText(QApplication::translate("MainWindow", "\347\271\201\351\253\224\344\270\255\346\226\207", 0));
         actionAdd_new->setText(QApplication::translate("MainWindow", "Add new", 0));
@@ -258,12 +271,15 @@ public:
         action10_s->setText(QApplication::translate("MainWindow", "10 s", 0));
         action1_min->setText(QApplication::translate("MainWindow", "1 min", 0));
         action30_s->setText(QApplication::translate("MainWindow", "30 s", 0));
+        actionSystem_tray->setText(QApplication::translate("MainWindow", "System tray", 0));
+        actionTaskbar->setText(QApplication::translate("MainWindow", "Taskbar", 0));
         label_status->setText(QApplication::translate("MainWindow", "Status:", 0));
         label_batteryStatus->setText(QApplication::translate("MainWindow", "[+]batteryStatus", 0));
         label_batteryLevel_2->setText(QApplication::translate("MainWindow", "%", 0));
         label_level->setText(QApplication::translate("MainWindow", "Level:", 0));
         label_batteryLevel->setText(QApplication::translate("MainWindow", "[+]batteryLevel", 0));
         menuWindow->setTitle(QApplication::translate("MainWindow", "Window", 0));
+        menuMinimize_to->setTitle(QApplication::translate("MainWindow", "Minimize to ", 0));
         menuSetting->setTitle(QApplication::translate("MainWindow", "Setting", 0));
         submenuLanguage->setTitle(QApplication::translate("MainWindow", "Language", 0));
         menuHelp->setTitle(QApplication::translate("MainWindow", "Help", 0));
