@@ -13,6 +13,7 @@
 #include <QProcess>
 #include <QSqlDatabase>
 #include "battery.h"
+#include "schedule.h"
 
 namespace Ui {
 class MainWindow;
@@ -70,6 +71,10 @@ private slots:
 
     void on_actionTaskbar_triggered();
 
+    void close_child();//
+
+    void on_actionManage_triggered();
+
 private:
     Ui::MainWindow *ui;
     QTranslator *translator;
@@ -79,6 +84,7 @@ private:
     QAction *restoreAction;
     QTimer *updateTime;
     Battery *battery;
+    bool m_show_child;//
 };
 
 #endif // MAINWINDOW_H

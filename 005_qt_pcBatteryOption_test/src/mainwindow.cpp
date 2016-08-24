@@ -20,10 +20,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     /*database connect*/
     if(!connectOpen()){
-        ui->label_connectStatus->setText("Failed to connect db!");
+        ui->label_connectStatus->setText(tr("Failed to connect db!"));
     }
     else{
-        ui->label_connectStatus->setText("Connected!");
+        ui->label_connectStatus->setText(tr("Connected!"));
     }
 //    QProcess * cmdProcess = new QProcess;
 //    cmdProcess->start("shutdown /h");
@@ -103,6 +103,9 @@ void MainWindow::initSystemTrayIcon()
     trayIconMenu->addAction(restoreAction);
     trayIconMenu->addAction(ui->actionQuit);//quit action from ui
     tray->setContextMenu(trayIconMenu);
+
+    tray->setToolTip(("Battery : " + QString::number(battery->getBatteryLevel())));//"<br>""level : "+battery->getBatteryLevel());
+    /*TODO beautiful tooltip*/
 }
 
 void MainWindow::initDisplay()
@@ -156,7 +159,6 @@ void MainWindow::show()//Overriding show()
     this->setWindowState(Qt::WindowNoState);
 }
 
-
 void MainWindow::displaySchedule()
 {
     //number condition level action
@@ -208,4 +210,24 @@ void MainWindow::on_actionTaskbar_triggered()
         ui->actionSystem_tray->setChecked(false);
         ui->actionTaskbar->setChecked(true);
     }
+}
+
+void MainWindow::close_child()//
+{
+    m_show_child = false;
+}
+
+void MainWindow::on_actionManage_triggered()//
+{
+    connectClose();
+
+    Schedule schedule;
+    this->hide();
+    QObject::connect(&schedule,SIGNAL(close_me()),this,SLOT(close_child()));
+    m_show_child = true;
+    while (m_show_child)
+    {
+        schedule.exec();
+    }
+    this->show();
 }

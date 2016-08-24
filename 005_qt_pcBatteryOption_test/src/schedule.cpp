@@ -12,3 +12,13 @@ Schedule::~Schedule()
 {
     delete ui;
 }
+
+void Schedule::close_child()//
+{
+    m_show_child = false;
+}
+
+void Schedule::closeEvent(QCloseEvent *)//
+{
+    emit close_me();
+}
