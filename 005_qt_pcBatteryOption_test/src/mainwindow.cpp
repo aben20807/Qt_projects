@@ -179,8 +179,10 @@ void MainWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
         this->show();
         tray->setVisible(false);
         break;
-//    case (QSystemTrayIcon::Trigger):
-//        tray->showMessage(tr("Info"),tr("Minimize to system tray!"));
+    case (QSystemTrayIcon::Critical):
+        tray->showMessage(tr("Barrery"), "level : "+(QString::number(battery->getBatteryLevel()))+"%",
+                          QSystemTrayIcon::Information, 5000);
+        break;
     default:
         break;
     }
