@@ -11,6 +11,7 @@
 #include <QTimer>
 #include <QSystemTrayIcon>
 #include <QProcess>
+#include <QSqlDatabase>
 #include "battery.h"
 
 namespace Ui {
@@ -33,6 +34,24 @@ public:
     void show();
 
     void displaySchedule();
+
+    QSqlDatabase actiondb;
+    /*use for manipulare databace*/
+    bool connectOpen(){
+        actiondb = QSqlDatabase::addDatabase("QSQLITE");
+        actiondb.setDatabaseName("./res/db/batteryAction.sqlite");
+        if(!actiondb.open()){
+            qDebug() << "Failed to connect db!";
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    void connectClose(){
+        actiondb.close();
+        actiondb.removeDatabase(QSqlDatabase::defaultConnection);
+    }
 
 private slots:
     void on_action_zhTW_triggered();

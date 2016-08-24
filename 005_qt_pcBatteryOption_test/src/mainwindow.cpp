@@ -18,6 +18,13 @@ MainWindow::MainWindow(QWidget *parent) :
     initSystemTrayIcon();
     initDisplay();
 
+    /*database connect*/
+    if(!connectOpen()){
+        ui->label_connectStatus->setText("Failed to connect db!");
+    }
+    else{
+        ui->label_connectStatus->setText("Connected!");
+    }
 //    QProcess * cmdProcess = new QProcess;
 //    cmdProcess->start("shutdown /h");
 //    cmdProcess->waitForFinished(-1); // will wait forever until finished
@@ -134,14 +141,10 @@ void MainWindow::changeEvent(QEvent *event)
 {
     if( event->type() == QEvent::WindowStateChange )
     {
-        if( windowState() == Qt::WindowMinimized && minimizeMode == "System_tray")
-        {
+        if( windowState() == Qt::WindowMinimized && minimizeMode == "System_tray"){
             ui->actionMinimize->trigger();
-
         }
-        else if( windowState() == Qt::WindowNoState )
-        {
-
+        else if( windowState() == Qt::WindowNoState ){
         }
         QMainWindow::changeEvent(event);
     }
@@ -156,6 +159,7 @@ void MainWindow::show()//Overriding show()
 
 void MainWindow::displaySchedule()
 {
+    //number condition level action
 //    ui->tableView->setHorizontalHeader();
 }
 

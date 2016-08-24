@@ -46,6 +46,7 @@ public:
     QLabel *label_level;
     QLabel *label_batteryLevel;
     QProgressBar *progressBar;
+    QLabel *label_connectStatus;
     QMenuBar *menuBar;
     QMenu *menuWindow;
     QMenu *menuSetting;
@@ -176,6 +177,12 @@ public:
         progressBar->setOrientation(Qt::Vertical);
         progressBar->setInvertedAppearance(false);
         progressBar->setTextDirection(QProgressBar::TopToBottom);
+        label_connectStatus = new QLabel(centralWidget);
+        label_connectStatus->setObjectName(QStringLiteral("label_connectStatus"));
+        label_connectStatus->setGeometry(QRect(330, 250, 111, 21));
+        label_connectStatus->setMinimumSize(QSize(51, 21));
+        label_connectStatus->setFont(font);
+        label_connectStatus->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -249,6 +256,7 @@ public:
         label_batteryLevel_2->setText(QApplication::translate("MainWindow", "%", 0));
         label_level->setText(QApplication::translate("MainWindow", "Level:", 0));
         label_batteryLevel->setText(QApplication::translate("MainWindow", "[+]batteryLevel", 0));
+        label_connectStatus->setText(QApplication::translate("MainWindow", "[+]connectStatus", 0));
         menuWindow->setTitle(QApplication::translate("MainWindow", "Window", 0));
         menuSetting->setTitle(QApplication::translate("MainWindow", "Setting", 0));
         submenuLanguage->setTitle(QApplication::translate("MainWindow", "Language", 0));
