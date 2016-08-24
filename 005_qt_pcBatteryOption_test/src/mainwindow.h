@@ -47,11 +47,16 @@ private slots:
 
     void updateDisplay();
 
+    void on_actionSystem_tray_triggered();
+
+    void on_actionTaskbar_triggered();
+
 private:
     Ui::MainWindow *ui;
     QTranslator *translator;
     QString languageMode;
     QSystemTrayIcon *tray;
+    QString minimizeMode;
     QAction *restoreAction;
     QTimer *updateTime;
     Battery *battery;

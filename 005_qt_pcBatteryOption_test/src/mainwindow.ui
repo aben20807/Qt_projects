@@ -280,15 +280,6 @@ border: 1px solid black;
     <property name="title">
      <string>Window</string>
     </property>
-    <widget class="QMenu" name="menuMinimize_to">
-     <property name="title">
-      <string>Minimize to </string>
-     </property>
-     <addaction name="actionSystem_tray"/>
-     <addaction name="actionTaskbar"/>
-    </widget>
-    <addaction name="menuMinimize_to"/>
-    <addaction name="separator"/>
     <addaction name="actionMinimize"/>
    </widget>
    <widget class="QMenu" name="menuSetting">
@@ -317,7 +308,15 @@ border: 1px solid black;
      <addaction name="action_zhTW"/>
      <addaction name="action_enUS"/>
     </widget>
+    <widget class="QMenu" name="menuMinimize_to_2">
+     <property name="title">
+      <string>Minimize to</string>
+     </property>
+     <addaction name="actionSystem_tray"/>
+     <addaction name="actionTaskbar"/>
+    </widget>
     <addaction name="submenuLanguage"/>
+    <addaction name="menuMinimize_to_2"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="font">
@@ -442,41 +441,6 @@ border: 1px solid black;
   <action name="actionQuit">
    <property name="text">
     <string>Quit</string>
-   </property>
-  </action>
-  <action name="action0_1_s">
-   <property name="text">
-    <string>0.1 s</string>
-   </property>
-  </action>
-  <action name="action0_5_s">
-   <property name="text">
-    <string>0.5 s</string>
-   </property>
-  </action>
-  <action name="action1_0_s">
-   <property name="text">
-    <string>1.0 s</string>
-   </property>
-  </action>
-  <action name="action5_0_s">
-   <property name="text">
-    <string>5.0 s</string>
-   </property>
-  </action>
-  <action name="action10_s">
-   <property name="text">
-    <string>10 s</string>
-   </property>
-  </action>
-  <action name="action1_min">
-   <property name="text">
-    <string>1 min</string>
-   </property>
-  </action>
-  <action name="action30_s">
-   <property name="text">
-    <string>30 s</string>
    </property>
   </action>
   <action name="actionSystem_tray">

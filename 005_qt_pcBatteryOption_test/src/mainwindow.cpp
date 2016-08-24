@@ -6,6 +6,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    Qt::WindowFlags flags = 0;
+        flags |= Qt::WindowMinimizeButtonHint;
+        flags |= Qt::WindowCloseButtonHint;
+        setWindowFlags(flags);//Maximize ban
+        setFixedSize(QWidget::geometry().width(), QWidget::geometry().height());//Prohibition on changing the window size
+
     battery = new Battery;
     initMenu();
     initSystemTrayIcon();
@@ -29,6 +36,12 @@ void MainWindow::initMenu()
     ui->action_enUS->setCheckable(true);
     ui->action_enUS->setCheckable(true);
     languageMode = "enUS";
+    ui->action_enUS->setChecked(true);
+
+    ui->actionSystem_tray->setCheckable(true);
+    ui->actionTaskbar->setCheckable(true);
+    minimizeMode = "Taskbar";
+    ui->actionTaskbar->setChecked(true);
 }
 
 void MainWindow::on_action_zhTW_triggered()
@@ -108,7 +121,10 @@ void MainWindow::displayBatteryThings(int batteryLevel, QString batteryStatus)
     ui->label_batteryLevel_2->setText(QString::number(batteryLevel) + "%");
     ui->label_batteryLevel_2->raise();
     if(batteryLevel >= 55){
-        ui->label_batteryLevel_2->setStyleSheet("color: rgb(255, 255, 255)");
+        ui->label_batteryLevel_2->setStyleSheet("color: rgb(255, 255, 255)");//white
+    }
+    else{
+        ui->label_batteryLevel_2->setStyleSheet("color: rgb(0, 0, 0)");//black
     }
     ui->label_batteryStatus->setText(batteryStatus);
     /*TODO when low battery, change color of progressBar*/
@@ -118,7 +134,7 @@ void MainWindow::changeEvent(QEvent *event)
 {
     if( event->type() == QEvent::WindowStateChange )
     {
-        if( windowState() == Qt::WindowMinimized )
+        if( windowState() == Qt::WindowMinimized && minimizeMode == "System_tray")
         {
             ui->actionMinimize->trigger();
 
@@ -131,11 +147,12 @@ void MainWindow::changeEvent(QEvent *event)
     }
 }
 
-void MainWindow::show()
+void MainWindow::show()//Overriding show()
 {
     QWidget::show();
     this->setWindowState(Qt::WindowNoState);
 }
+
 
 void MainWindow::displaySchedule()
 {
@@ -166,5 +183,23 @@ void MainWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
 //        tray->showMessage(tr("Info"),tr("Minimize to system tray!"));
     default:
         break;
+    }
+}
+
+void MainWindow::on_actionSystem_tray_triggered()
+{
+    if(minimizeMode != "System_tray"){
+        minimizeMode = "System_tray";
+        ui->actionSystem_tray->setChecked(true);
+        ui->actionTaskbar->setChecked(false);
+    }
+}
+
+void MainWindow::on_actionTaskbar_triggered()
+{
+    if(minimizeMode != "Taskbar"){
+        minimizeMode = "Taskbar";
+        ui->actionSystem_tray->setChecked(false);
+        ui->actionTaskbar->setChecked(true);
     }
 }
