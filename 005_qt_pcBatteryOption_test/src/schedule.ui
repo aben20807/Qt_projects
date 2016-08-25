@@ -13,441 +13,6 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>70</y>
-     <width>316</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_3">
-    <item alignment="Qt::AlignLeft">
-     <widget class="QSlider" name="hSlider_1">
-      <property name="minimumSize">
-       <size>
-        <width>121</width>
-        <height>19</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>121</width>
-        <height>19</height>
-       </size>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="singleStep">
-       <number>1</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="lEdit_1">
-      <property name="minimumSize">
-       <size>
-        <width>51</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>51</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Noto Sans T Chinese Medium</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item alignment="Qt::AlignLeft">
-     <widget class="QLabel" name="label_persent_1">
-      <property name="minimumSize">
-       <size>
-        <width>16</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>16</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Noto Sans T Chinese Medium</family>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>%</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <spacer name="horizontalSpacer">
-      <property name="minimumSize">
-       <size>
-        <width>21</width>
-        <height>23</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>21</width>
-        <height>23</height>
-       </size>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>18</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
-     <widget class="QComboBox" name="comboBox_action1">
-      <property name="minimumSize">
-       <size>
-        <width>81</width>
-        <height>22</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>81</width>
-        <height>22</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Noto Sans T Chinese Medium</family>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <item>
-       <property name="text">
-        <string>Nothing</string>
-       </property>
-      </item>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="layoutWidget_2">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>170</y>
-     <width>316</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_5">
-    <item alignment="Qt::AlignLeft">
-     <widget class="QSlider" name="hSlider_3">
-      <property name="minimumSize">
-       <size>
-        <width>121</width>
-        <height>19</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>121</width>
-        <height>19</height>
-       </size>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="singleStep">
-       <number>1</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="lEdit_3">
-      <property name="minimumSize">
-       <size>
-        <width>51</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>51</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Noto Sans T Chinese Medium</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item alignment="Qt::AlignLeft">
-     <widget class="QLabel" name="label_persent_3">
-      <property name="minimumSize">
-       <size>
-        <width>16</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>16</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Noto Sans T Chinese Medium</family>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>%</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <spacer name="horizontalSpacer_3">
-      <property name="minimumSize">
-       <size>
-        <width>21</width>
-        <height>23</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>21</width>
-        <height>23</height>
-       </size>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>18</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
-     <widget class="QComboBox" name="comboBox_action3">
-      <property name="minimumSize">
-       <size>
-        <width>81</width>
-        <height>22</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>81</width>
-        <height>22</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Noto Sans T Chinese Medium</family>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <item>
-       <property name="text">
-        <string>Nothing</string>
-       </property>
-      </item>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="layoutWidget_3">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>120</y>
-     <width>316</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_4">
-    <item alignment="Qt::AlignLeft">
-     <widget class="QSlider" name="hSlider_2">
-      <property name="minimumSize">
-       <size>
-        <width>121</width>
-        <height>19</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>121</width>
-        <height>19</height>
-       </size>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="singleStep">
-       <number>1</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="lEdit_2">
-      <property name="minimumSize">
-       <size>
-        <width>51</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>51</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Noto Sans T Chinese Medium</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item alignment="Qt::AlignLeft">
-     <widget class="QLabel" name="label_persent_2">
-      <property name="minimumSize">
-       <size>
-        <width>16</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>16</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Noto Sans T Chinese Medium</family>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>%</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <spacer name="horizontalSpacer_2">
-      <property name="minimumSize">
-       <size>
-        <width>21</width>
-        <height>23</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>21</width>
-        <height>23</height>
-       </size>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>18</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
-     <widget class="QComboBox" name="comboBox_action2">
-      <property name="minimumSize">
-       <size>
-        <width>81</width>
-        <height>22</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>81</width>
-        <height>22</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Noto Sans T Chinese Medium</family>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <item>
-       <property name="text">
-        <string>Nothing</string>
-       </property>
-      </item>
-     </widget>
-    </item>
-   </layout>
-  </widget>
   <widget class="QGraphicsView" name="graphicsView">
    <property name="geometry">
     <rect>
@@ -457,156 +22,16 @@
      <height>281</height>
     </rect>
    </property>
-  </widget>
-  <widget class="QWidget" name="layoutWidget_4">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>220</y>
-     <width>316</width>
-     <height>25</height>
-    </rect>
+   <property name="font">
+    <font>
+     <family>微軟正黑體</family>
+    </font>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_6">
-    <item alignment="Qt::AlignLeft">
-     <widget class="QSlider" name="hSlider_4">
-      <property name="minimumSize">
-       <size>
-        <width>121</width>
-        <height>19</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>121</width>
-        <height>19</height>
-       </size>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="singleStep">
-       <number>1</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="lEdit_4">
-      <property name="minimumSize">
-       <size>
-        <width>51</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>51</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Noto Sans T Chinese Medium</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item alignment="Qt::AlignLeft">
-     <widget class="QLabel" name="label_persent_4">
-      <property name="minimumSize">
-       <size>
-        <width>16</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>16</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Noto Sans T Chinese Medium</family>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>%</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <spacer name="horizontalSpacer_4">
-      <property name="minimumSize">
-       <size>
-        <width>21</width>
-        <height>23</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>21</width>
-        <height>23</height>
-       </size>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>18</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
-     <widget class="QComboBox" name="comboBox_action4">
-      <property name="minimumSize">
-       <size>
-        <width>81</width>
-        <height>22</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>81</width>
-        <height>22</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Noto Sans T Chinese Medium</family>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <item>
-       <property name="text">
-        <string>Nothing</string>
-       </property>
-      </item>
-     </widget>
-    </item>
-   </layout>
   </widget>
-  <widget class="QLabel" name="label_action">
+  <widget class="QLabel" name="label_action_to_do">
    <property name="geometry">
     <rect>
-     <x>270</x>
+     <x>290</x>
      <y>40</y>
      <width>81</width>
      <height>20</height>
@@ -614,7 +39,7 @@
    </property>
    <property name="font">
     <font>
-     <family>Noto Sans T Chinese Medium</family>
+     <family>微軟正黑體</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -625,12 +50,628 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <widget class="QComboBox" name="comboBox_condition1">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>70</y>
+     <width>101</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微軟正黑體</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <item>
+    <property name="text">
+     <string>Choose one</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>If level &gt;</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>If level &lt;</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_level">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>40</y>
+     <width>31</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微軟正黑體</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Level</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_condition">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>40</y>
+     <width>61</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微軟正黑體</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Condition</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lEdit_1">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>70</y>
+     <width>41</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微軟正黑體</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_persent_1">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>70</y>
+     <width>16</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微軟正黑體</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>%</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_action1">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>70</y>
+     <width>91</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微軟正黑體</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <item>
+    <property name="text">
+     <string>Nothing</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Remind</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Shut down</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Sleep</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Hibernate</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_number1">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>70</y>
+     <width>16</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微軟正黑體</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>1.</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QDialogButtonBox" name="buttonBox_okCancel">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>250</y>
+     <width>156</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lEdit_2">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>110</y>
+     <width>41</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微軟正黑體</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_persent_2">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>110</y>
+     <width>16</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微軟正黑體</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>%</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_condition2">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>110</y>
+     <width>101</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微軟正黑體</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <item>
+    <property name="text">
+     <string>Choose one</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>If level &gt;</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>If level &lt;</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QComboBox" name="comboBox_action2">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>110</y>
+     <width>91</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微軟正黑體</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <item>
+    <property name="text">
+     <string>Nothing</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Remind</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Shut down</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Sleep</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Hibernate</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_number2">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>110</y>
+     <width>16</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微軟正黑體</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>2.</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lEdit_3">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>150</y>
+     <width>41</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微軟正黑體</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_persent_3">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>150</y>
+     <width>16</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微軟正黑體</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>%</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_condition3">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>150</y>
+     <width>101</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微軟正黑體</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <item>
+    <property name="text">
+     <string>Choose one</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>If level &gt;</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>If level &lt;</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QComboBox" name="comboBox_action3">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>150</y>
+     <width>91</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微軟正黑體</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <item>
+    <property name="text">
+     <string>Nothing</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Remind</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Shut down</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Sleep</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Hibernate</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_number3">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>150</y>
+     <width>16</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微軟正黑體</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>3.</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lEdit_4">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>190</y>
+     <width>41</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微軟正黑體</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_persent_4">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>190</y>
+     <width>16</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微軟正黑體</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>%</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_condition4">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>190</y>
+     <width>101</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微軟正黑體</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <item>
+    <property name="text">
+     <string>Choose one</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>If level &gt;</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>If level &lt;</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QComboBox" name="comboBox_action4">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>190</y>
+     <width>91</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微軟正黑體</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <item>
+    <property name="text">
+     <string>Nothing</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Remind</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Shut down</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Sleep</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Hibernate</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_number4">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>190</y>
+     <width>16</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微軟正黑體</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>4.</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
   <zorder>graphicsView</zorder>
-  <zorder>layoutWidget</zorder>
-  <zorder>layoutWidget_2</zorder>
-  <zorder>layoutWidget_3</zorder>
-  <zorder>layoutWidget_4</zorder>
-  <zorder>label_action</zorder>
+  <zorder>lEdit_1</zorder>
+  <zorder>label_persent_1</zorder>
+  <zorder>comboBox_action1</zorder>
+  <zorder>label_action_to_do</zorder>
+  <zorder>comboBox_condition1</zorder>
+  <zorder>label_level</zorder>
+  <zorder>label_condition</zorder>
+  <zorder>label_number1</zorder>
+  <zorder>buttonBox_okCancel</zorder>
+  <zorder>lEdit_2</zorder>
+  <zorder>label_persent_2</zorder>
+  <zorder>comboBox_condition2</zorder>
+  <zorder>comboBox_action2</zorder>
+  <zorder>label_number2</zorder>
+  <zorder>lEdit_3</zorder>
+  <zorder>label_persent_3</zorder>
+  <zorder>comboBox_condition3</zorder>
+  <zorder>comboBox_action3</zorder>
+  <zorder>label_number3</zorder>
+  <zorder>lEdit_4</zorder>
+  <zorder>label_persent_4</zorder>
+  <zorder>comboBox_condition4</zorder>
+  <zorder>comboBox_action4</zorder>
+  <zorder>label_number4</zorder>
  </widget>
  <resources/>
  <connections/>
