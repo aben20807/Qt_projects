@@ -366,7 +366,6 @@ border: 1px solid black;
     <property name="title">
      <string>Schedule</string>
     </property>
-    <addaction name="actionAdd_new"/>
     <addaction name="actionManage"/>
     <addaction name="actionCheck_log"/>
    </widget>
@@ -422,20 +421,6 @@ border: 1px solid black;
    </property>
    <property name="autoRepeat">
     <bool>true</bool>
-   </property>
-  </action>
-  <action name="actionAdd_new">
-   <property name="text">
-    <string>Add new</string>
-   </property>
-   <property name="font">
-    <font>
-     <family>微軟正黑體</family>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+A</string>
    </property>
   </action>
   <action name="actionManage">

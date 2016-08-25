@@ -2,6 +2,8 @@
 #define SCHEDULE_H
 
 #include <QDialog>
+#include <QDebug>
+#include <QAbstractButton>
 
 namespace Ui {
 class Schedule;
@@ -23,6 +25,8 @@ signals:
 
 private slots:
     void close_child();//
+
+    void on_buttonBox_okCancel_clicked(QAbstractButton *button);
 
 private:
     Ui::Schedule *ui;

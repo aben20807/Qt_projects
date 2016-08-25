@@ -232,14 +232,14 @@
   <widget class="QDialogButtonBox" name="buttonBox_okCancel">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>235</x>
      <y>250</y>
-     <width>156</width>
+     <width>201</width>
      <height>23</height>
     </rect>
    </property>
    <property name="standardButtons">
-    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+    <set>QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
   <widget class="QLineEdit" name="lEdit_2">

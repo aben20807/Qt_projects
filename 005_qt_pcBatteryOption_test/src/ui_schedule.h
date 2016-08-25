@@ -109,8 +109,8 @@ public:
         label_number1->setAlignment(Qt::AlignCenter);
         buttonBox_okCancel = new QDialogButtonBox(Schedule);
         buttonBox_okCancel->setObjectName(QStringLiteral("buttonBox_okCancel"));
-        buttonBox_okCancel->setGeometry(QRect(280, 250, 156, 23));
-        buttonBox_okCancel->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
+        buttonBox_okCancel->setGeometry(QRect(235, 250, 201, 23));
+        buttonBox_okCancel->setStandardButtons(QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         lEdit_2 = new QLineEdit(Schedule);
         lEdit_2->setObjectName(QStringLiteral("lEdit_2"));
         lEdit_2->setGeometry(QRect(210, 110, 41, 22));

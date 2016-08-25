@@ -31,7 +31,6 @@ public:
     QAction *actionMinimize;
     QAction *action_enUS;
     QAction *action_zhTW;
-    QAction *actionAdd_new;
     QAction *actionManage;
     QAction *actionCheck_log;
     QAction *actionQuit;
@@ -76,9 +75,6 @@ public:
         action_zhTW->setObjectName(QStringLiteral("action_zhTW"));
         action_zhTW->setFont(font);
         action_zhTW->setAutoRepeat(true);
-        actionAdd_new = new QAction(MainWindow);
-        actionAdd_new->setObjectName(QStringLiteral("actionAdd_new"));
-        actionAdd_new->setFont(font);
         actionManage = new QAction(MainWindow);
         actionManage->setObjectName(QStringLiteral("actionManage"));
         actionManage->setFont(font);
@@ -226,7 +222,6 @@ public:
         submenuLanguage->addAction(action_enUS);
         menuMinimize_to_2->addAction(actionSystem_tray);
         menuMinimize_to_2->addAction(actionTaskbar);
-        menuSchedule->addAction(actionAdd_new);
         menuSchedule->addAction(actionManage);
         menuSchedule->addAction(actionCheck_log);
         menuFile->addAction(actionQuit);
@@ -242,8 +237,6 @@ public:
         actionMinimize->setText(QApplication::translate("MainWindow", "Minimize to system tray", 0));
         action_enUS->setText(QApplication::translate("MainWindow", "English_US", 0));
         action_zhTW->setText(QApplication::translate("MainWindow", "\347\271\201\351\253\224\344\270\255\346\226\207", 0));
-        actionAdd_new->setText(QApplication::translate("MainWindow", "Add new", 0));
-        actionAdd_new->setShortcut(QApplication::translate("MainWindow", "Ctrl+A", 0));
         actionManage->setText(QApplication::translate("MainWindow", "Manage", 0));
         actionManage->setShortcut(QApplication::translate("MainWindow", "Ctrl+M", 0));
         actionCheck_log->setText(QApplication::translate("MainWindow", "Check log", 0));
