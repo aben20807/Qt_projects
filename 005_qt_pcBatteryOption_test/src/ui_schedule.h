@@ -51,6 +51,7 @@ public:
     QComboBox *comboBox_condition4;
     QComboBox *comboBox_action4;
     QLabel *label_number4;
+    QLabel *label_connectStatus;
 
     void setupUi(QDialog *Schedule)
     {
@@ -109,7 +110,7 @@ public:
         label_number1->setAlignment(Qt::AlignCenter);
         buttonBox_okCancel = new QDialogButtonBox(Schedule);
         buttonBox_okCancel->setObjectName(QStringLiteral("buttonBox_okCancel"));
-        buttonBox_okCancel->setGeometry(QRect(235, 250, 201, 23));
+        buttonBox_okCancel->setGeometry(QRect(200, 260, 241, 23));
         buttonBox_okCancel->setStandardButtons(QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         lEdit_2 = new QLineEdit(Schedule);
         lEdit_2->setObjectName(QStringLiteral("lEdit_2"));
@@ -180,6 +181,12 @@ public:
         label_number4->setGeometry(QRect(70, 190, 16, 22));
         label_number4->setFont(font2);
         label_number4->setAlignment(Qt::AlignCenter);
+        label_connectStatus = new QLabel(Schedule);
+        label_connectStatus->setObjectName(QStringLiteral("label_connectStatus"));
+        label_connectStatus->setGeometry(QRect(330, 10, 111, 21));
+        label_connectStatus->setMinimumSize(QSize(51, 21));
+        label_connectStatus->setFont(font1);
+        label_connectStatus->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         graphicsView->raise();
         lEdit_1->raise();
         label_persent_1->raise();
@@ -205,6 +212,7 @@ public:
         comboBox_condition4->raise();
         comboBox_action4->raise();
         label_number4->raise();
+        label_connectStatus->raise();
 
         retranslateUi(Schedule);
 
@@ -213,7 +221,7 @@ public:
 
     void retranslateUi(QDialog *Schedule)
     {
-        Schedule->setWindowTitle(QApplication::translate("Schedule", "Dialog", 0));
+        Schedule->setWindowTitle(QApplication::translate("Schedule", "Schedule", 0));
         label_action_to_do->setText(QApplication::translate("Schedule", "Action to do", 0));
         comboBox_condition1->clear();
         comboBox_condition1->insertItems(0, QStringList()
@@ -281,6 +289,7 @@ public:
          << QApplication::translate("Schedule", "Hibernate", 0)
         );
         label_number4->setText(QApplication::translate("Schedule", "4.", 0));
+        label_connectStatus->setText(QApplication::translate("Schedule", "[+]connectStatus", 0));
     } // retranslateUi
 
 };

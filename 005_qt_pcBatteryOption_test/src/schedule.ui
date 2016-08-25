@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Schedule</string>
   </property>
   <widget class="QGraphicsView" name="graphicsView">
    <property name="geometry">
@@ -232,9 +232,9 @@
   <widget class="QDialogButtonBox" name="buttonBox_okCancel">
    <property name="geometry">
     <rect>
-     <x>235</x>
-     <y>250</y>
-     <width>201</width>
+     <x>200</x>
+     <y>260</y>
+     <width>241</width>
      <height>23</height>
     </rect>
    </property>
@@ -647,6 +647,34 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <widget class="QLabel" name="label_connectStatus">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>10</y>
+     <width>111</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>51</width>
+     <height>21</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>微軟正黑體</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>[+]connectStatus</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
   <zorder>graphicsView</zorder>
   <zorder>lEdit_1</zorder>
   <zorder>label_persent_1</zorder>
@@ -672,6 +700,7 @@
   <zorder>comboBox_condition4</zorder>
   <zorder>comboBox_action4</zorder>
   <zorder>label_number4</zorder>
+  <zorder>label_connectStatus</zorder>
  </widget>
  <resources/>
  <connections/>

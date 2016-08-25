@@ -11,7 +11,7 @@
 #include <QTimer>
 #include <QSystemTrayIcon>
 #include <QProcess>
-#include <QSqlDatabase>
+#include <QtSql>
 #include "battery.h"
 #include "schedule.h"
 
