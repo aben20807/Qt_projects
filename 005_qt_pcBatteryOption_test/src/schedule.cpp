@@ -59,8 +59,35 @@ void Schedule::catchInformations()
     tmp_action4 = ui->comboBox_action4->currentText();
 }
 
+bool Schedule::isAllLeditCanConvertToInt()
+{
+    bool isLeditCanConvertToInt1 = true;
+    bool isLeditCanConvertToInt2 = true;
+    bool isLeditCanConvertToInt3 = true;
+    bool isLeditCanConvertToInt4 = true;
+    if(!tmp_level1.isEmpty())num_level1 = tmp_level1.toInt(&isLeditCanConvertToInt1);
+    if(!tmp_level2.isEmpty())num_level2 = tmp_level2.toInt(&isLeditCanConvertToInt2);
+    if(!tmp_level3.isEmpty())num_level3 = tmp_level3.toInt(&isLeditCanConvertToInt3);
+    if(!tmp_level4.isEmpty())num_level4 = tmp_level4.toInt(&isLeditCanConvertToInt4);
+    if(!isLeditCanConvertToInt1 ||
+            !isLeditCanConvertToInt2 ||
+            !isLeditCanConvertToInt3 ||
+            !isLeditCanConvertToInt4 ||
+            num_level1 > 100 || num_level1 < 0 ||
+            num_level2 > 100 || num_level2 < 0 ||
+            num_level3 > 100 || num_level3 < 0 ||
+            num_level4 > 100 || num_level4 < 0){
+        QMessageBox::warning(this, tr("Error"), tr("Need to input legal level!"));
+        return false;
+    }
+    return true;
+}
+
 void Schedule::updateDataToDatabase()
 {
+    if(!isAllLeditCanConvertToInt()){
+        return;
+    }
     MainWindow conn;
     if(!conn.connectOpen()){
         qDebug() << "Fail to open db" << endl;

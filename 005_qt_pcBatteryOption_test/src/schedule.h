@@ -21,6 +21,7 @@ public:
     void catchInformations();
     void updateDataToDatabase();
     void readDataFromDatabase();
+    bool isAllLeditCanConvertToInt();
 
 protected:
     void closeEvent(QCloseEvent *);//
@@ -39,15 +40,19 @@ private:
 
     QString tmp_condition1;
     QString tmp_level1;
+    int num_level1;
     QString tmp_action1;
     QString tmp_condition2;
     QString tmp_level2;
+    int num_level2;
     QString tmp_action2;
     QString tmp_condition3;
     QString tmp_level3;
+    int num_level3;
     QString tmp_action3;
     QString tmp_condition4;
     QString tmp_level4;
+    int num_level4;
     QString tmp_action4;
 };
 
