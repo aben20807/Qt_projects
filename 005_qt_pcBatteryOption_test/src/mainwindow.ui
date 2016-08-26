@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Battery</string>
   </property>
+  <property name="toolTip">
+   <string/>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QGraphicsView" name="graphicsView">
     <property name="geometry">
@@ -28,17 +31,32 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>101</y>
-      <width>256</width>
-      <height>141</height>
+      <y>80</y>
+      <width>271</width>
+      <height>171</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Schedule</string>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="lineWidth">
+     <number>1</number>
+    </property>
+    <property name="textElideMode">
+     <enum>Qt::ElideLeft</enum>
     </property>
    </widget>
    <widget class="QLabel" name="label_status">
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>70</y>
+      <y>50</y>
       <width>51</width>
       <height>21</height>
      </rect>
@@ -66,7 +84,7 @@
     <property name="geometry">
      <rect>
       <x>210</x>
-      <y>70</y>
+      <y>50</y>
       <width>131</width>
       <height>21</height>
      </rect>
@@ -94,7 +112,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>140</y>
+      <y>130</y>
       <width>79</width>
       <height>21</height>
      </rect>
@@ -125,7 +143,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>50</y>
+      <y>30</y>
       <width>51</width>
       <height>21</height>
      </rect>
@@ -153,7 +171,7 @@
     <property name="geometry">
      <rect>
       <x>210</x>
-      <y>50</y>
+      <y>30</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -181,9 +199,9 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>58</y>
+      <y>38</y>
       <width>79</width>
-      <height>191</height>
+      <height>211</height>
      </rect>
     </property>
     <property name="minimumSize">
@@ -196,6 +214,9 @@
      <font>
       <family>Adobe Arabic</family>
      </font>
+    </property>
+    <property name="toolTip">
+     <string>Battery level</string>
     </property>
     <property name="layoutDirection">
      <enum>Qt::LeftToRight</enum>
@@ -252,7 +273,7 @@ border: 1px solid black;
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>250</y>
+      <y>10</y>
       <width>111</width>
       <height>21</height>
      </rect>
@@ -268,6 +289,15 @@ border: 1px solid black;
       <family>微軟正黑體</family>
       <pointsize>10</pointsize>
      </font>
+    </property>
+    <property name="toolTip">
+     <string>The connection status to database</string>
+    </property>
+    <property name="statusTip">
+     <string/>
+    </property>
+    <property name="whatsThis">
+     <string/>
     </property>
     <property name="text">
      <string>[+]connectStatus</string>

@@ -95,7 +95,6 @@ void MainWindow::initSystemTrayIcon()
     connect(tray,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(iconActivated(QSystemTrayIcon::ActivationReason)));
 
-
     restoreAction = new QAction(QIcon(":/img/flag_taiwan"), "Restore", this);
     connect(restoreAction, SIGNAL(triggered()), this, SLOT(show()));
     connect(restoreAction, SIGNAL(triggered()), tray, SLOT(hide()));
@@ -128,9 +127,10 @@ void MainWindow::updateBatteryDisplay()
 void MainWindow::initTableDisplay()
 {
     updateTableDisplay();//init when begin
-//    Schedule schedule;
-//    connect(&schedule, SIGNAL(updateTable()),
-//            this, SLOT(updateTableDisplay()));
+    ui->tableView->horizontalHeader()->setStretchLastSection(true);
+    ui->tableView->setColumnWidth(0, ui->tableView->width()/3);
+    ui->tableView->setColumnWidth(1, ui->tableView->width()/4);
+    ui->tableView->setColumnWidth(2, ui->tableView->width()/3);
 }
 
 void MainWindow::updateTableDisplay()
@@ -144,6 +144,7 @@ void MainWindow::updateTableDisplay()
     ui->tableView->setModel(model);
     connectClose();
 //    qDebug() << model->rowCount();
+    /*TODO center the text*/
 }
 
 void MainWindow::displayBatteryThings(int batteryLevel, QString batteryStatus)
@@ -179,12 +180,6 @@ void MainWindow::show()//Overriding show()
 {
     QWidget::show();
     this->setWindowState(Qt::WindowNoState);
-}
-
-void MainWindow::displaySchedule()
-{
-    //number condition level action
-//    ui->tableView->setHorizontalHeader();
 }
 
 void MainWindow::on_actionQuit_triggered()

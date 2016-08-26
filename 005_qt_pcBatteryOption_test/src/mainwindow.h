@@ -35,8 +35,6 @@ public:
     void initTableDisplay();
     void show();
 
-    void displaySchedule();
-
     QSqlDatabase actiondb;
     /*use for manipulare databace*/
     bool connectOpen(){

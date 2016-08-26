@@ -289,6 +289,9 @@ public:
          << QApplication::translate("Schedule", "Hibernate", 0)
         );
         label_number4->setText(QApplication::translate("Schedule", "4.", 0));
+#ifndef QT_NO_TOOLTIP
+        label_connectStatus->setToolTip(QApplication::translate("Schedule", "The connection status to database", 0));
+#endif // QT_NO_TOOLTIP
         label_connectStatus->setText(QApplication::translate("Schedule", "[+]connectStatus", 0));
     } // retranslateUi
 

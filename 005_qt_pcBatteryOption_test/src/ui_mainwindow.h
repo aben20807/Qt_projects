@@ -94,10 +94,14 @@ public:
         graphicsView->setGeometry(QRect(10, 10, 441, 261));
         tableView = new QTableView(centralWidget);
         tableView->setObjectName(QStringLiteral("tableView"));
-        tableView->setGeometry(QRect(150, 101, 256, 141));
+        tableView->setGeometry(QRect(150, 80, 271, 171));
+        tableView->setLayoutDirection(Qt::LeftToRight);
+        tableView->setStyleSheet(QStringLiteral(""));
+        tableView->setLineWidth(1);
+        tableView->setTextElideMode(Qt::ElideLeft);
         label_status = new QLabel(centralWidget);
         label_status->setObjectName(QStringLiteral("label_status"));
-        label_status->setGeometry(QRect(150, 70, 51, 21));
+        label_status->setGeometry(QRect(150, 50, 51, 21));
         label_status->setMinimumSize(QSize(51, 21));
         QFont font1;
         font1.setFamily(QString::fromUtf8("\345\276\256\350\273\237\346\255\243\351\273\221\351\253\224"));
@@ -106,13 +110,13 @@ public:
         label_status->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         label_batteryStatus = new QLabel(centralWidget);
         label_batteryStatus->setObjectName(QStringLiteral("label_batteryStatus"));
-        label_batteryStatus->setGeometry(QRect(210, 70, 131, 21));
+        label_batteryStatus->setGeometry(QRect(210, 50, 131, 21));
         label_batteryStatus->setMinimumSize(QSize(51, 21));
         label_batteryStatus->setFont(font1);
         label_batteryStatus->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         label_batteryLevel_2 = new QLabel(centralWidget);
         label_batteryLevel_2->setObjectName(QStringLiteral("label_batteryLevel_2"));
-        label_batteryLevel_2->setGeometry(QRect(40, 140, 79, 21));
+        label_batteryLevel_2->setGeometry(QRect(40, 130, 79, 21));
         label_batteryLevel_2->setMinimumSize(QSize(51, 20));
         QFont font2;
         font2.setFamily(QString::fromUtf8("\345\276\256\350\273\237\346\255\243\351\273\221\351\253\224"));
@@ -122,19 +126,19 @@ public:
         label_batteryLevel_2->setAlignment(Qt::AlignCenter);
         label_level = new QLabel(centralWidget);
         label_level->setObjectName(QStringLiteral("label_level"));
-        label_level->setGeometry(QRect(150, 50, 51, 21));
+        label_level->setGeometry(QRect(150, 30, 51, 21));
         label_level->setMinimumSize(QSize(51, 21));
         label_level->setFont(font1);
         label_level->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         label_batteryLevel = new QLabel(centralWidget);
         label_batteryLevel->setObjectName(QStringLiteral("label_batteryLevel"));
-        label_batteryLevel->setGeometry(QRect(210, 50, 121, 21));
+        label_batteryLevel->setGeometry(QRect(210, 30, 121, 21));
         label_batteryLevel->setMinimumSize(QSize(51, 20));
         label_batteryLevel->setFont(font1);
         label_batteryLevel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         progressBar = new QProgressBar(centralWidget);
         progressBar->setObjectName(QStringLiteral("progressBar"));
-        progressBar->setGeometry(QRect(40, 58, 79, 191));
+        progressBar->setGeometry(QRect(40, 38, 79, 211));
         progressBar->setMinimumSize(QSize(79, 171));
         QFont font3;
         font3.setFamily(QStringLiteral("Adobe Arabic"));
@@ -175,7 +179,7 @@ public:
         progressBar->setTextDirection(QProgressBar::TopToBottom);
         label_connectStatus = new QLabel(centralWidget);
         label_connectStatus->setObjectName(QStringLiteral("label_connectStatus"));
-        label_connectStatus->setGeometry(QRect(330, 250, 111, 21));
+        label_connectStatus->setGeometry(QRect(330, 10, 111, 21));
         label_connectStatus->setMinimumSize(QSize(51, 21));
         label_connectStatus->setFont(font);
         label_connectStatus->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
@@ -243,6 +247,9 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Battery", 0));
+#ifndef QT_NO_TOOLTIP
+        MainWindow->setToolTip(QString());
+#endif // QT_NO_TOOLTIP
         actionMinimize->setText(QApplication::translate("MainWindow", "Minimize to system tray", 0));
         action_enUS->setText(QApplication::translate("MainWindow", "English_US", 0));
         action_zhTW->setText(QApplication::translate("MainWindow", "\347\271\201\351\253\224\344\270\255\346\226\207", 0));
@@ -253,11 +260,26 @@ public:
         actionQuit->setText(QApplication::translate("MainWindow", "Quit", 0));
         actionSystem_tray->setText(QApplication::translate("MainWindow", "System tray", 0));
         actionTaskbar->setText(QApplication::translate("MainWindow", "Taskbar", 0));
+#ifndef QT_NO_TOOLTIP
+        tableView->setToolTip(QApplication::translate("MainWindow", "Schedule", 0));
+#endif // QT_NO_TOOLTIP
         label_status->setText(QApplication::translate("MainWindow", "Status:", 0));
         label_batteryStatus->setText(QApplication::translate("MainWindow", "[+]batteryStatus", 0));
         label_batteryLevel_2->setText(QApplication::translate("MainWindow", "%", 0));
         label_level->setText(QApplication::translate("MainWindow", "Level:", 0));
         label_batteryLevel->setText(QApplication::translate("MainWindow", "[+]batteryLevel", 0));
+#ifndef QT_NO_TOOLTIP
+        progressBar->setToolTip(QApplication::translate("MainWindow", "Battery level", 0));
+#endif // QT_NO_TOOLTIP
+#ifndef QT_NO_TOOLTIP
+        label_connectStatus->setToolTip(QApplication::translate("MainWindow", "The connection status to database", 0));
+#endif // QT_NO_TOOLTIP
+#ifndef QT_NO_STATUSTIP
+        label_connectStatus->setStatusTip(QString());
+#endif // QT_NO_STATUSTIP
+#ifndef QT_NO_WHATSTHIS
+        label_connectStatus->setWhatsThis(QString());
+#endif // QT_NO_WHATSTHIS
         label_connectStatus->setText(QApplication::translate("MainWindow", "[+]connectStatus", 0));
         menuWindow->setTitle(QApplication::translate("MainWindow", "Window", 0));
         menuSetting->setTitle(QApplication::translate("MainWindow", "Setting", 0));

@@ -668,6 +668,9 @@
      <pointsize>10</pointsize>
     </font>
    </property>
+   <property name="toolTip">
+    <string>The connection status to database</string>
+   </property>
    <property name="text">
     <string>[+]connectStatus</string>
    </property>

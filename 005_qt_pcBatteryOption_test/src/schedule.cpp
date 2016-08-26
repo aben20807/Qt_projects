@@ -30,7 +30,7 @@ void Schedule::on_buttonBox_okCancel_clicked(QAbstractButton *button)
         //        qDebug() << "OK" << endl;
         updateDataToDatabase();
         conn.connectClose();
-        if(isAllLeditCanConvertToInt()){
+        if(isAllLeditCanConvertToInt()){//Only close when can apply
             this->close();
         }
     }
@@ -79,7 +79,6 @@ bool Schedule::isAllLeditCanConvertToInt()
             num_level2 > 100 || num_level2 < 0 ||
             num_level3 > 100 || num_level3 < 0 ||
             num_level4 > 100 || num_level4 < 0){
-        QMessageBox::warning(this, tr("Error"), tr("Need to input legal level!"));
         return false;
     }
     return true;
@@ -88,6 +87,7 @@ bool Schedule::isAllLeditCanConvertToInt()
 void Schedule::updateDataToDatabase()
 {
     if(!isAllLeditCanConvertToInt()){
+        QMessageBox::warning(this, tr("Error"), tr("Need to input legal level!"));
         return;
     }
     MainWindow conn;
