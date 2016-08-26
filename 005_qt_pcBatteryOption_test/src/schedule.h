@@ -20,6 +20,7 @@ public:
     ~Schedule();
     void catchInformations();
     void updateDataToDatabase();
+    void readDataFromDatabase();
 
 protected:
     void closeEvent(QCloseEvent *);//
