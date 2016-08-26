@@ -180,6 +180,15 @@ public:
         label_connectStatus->setFont(font);
         label_connectStatus->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         MainWindow->setCentralWidget(centralWidget);
+        graphicsView->raise();
+        tableView->raise();
+        label_status->raise();
+        label_batteryStatus->raise();
+        label_level->raise();
+        label_batteryLevel->raise();
+        progressBar->raise();
+        label_connectStatus->raise();
+        label_batteryLevel_2->raise();
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 460, 23));

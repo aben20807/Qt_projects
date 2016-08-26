@@ -28,6 +28,7 @@ protected:
 
 signals:
     void close_me();//
+    void updateTable();
 
 private slots:
     void close_child();//

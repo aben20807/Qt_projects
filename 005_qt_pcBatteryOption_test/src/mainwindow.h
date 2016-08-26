@@ -29,9 +29,10 @@ public:
     void initMenu();
     void applyLanguage();
     void initSystemTrayIcon();
-    void initDisplay();
+    void initBatteryDisplay();
     void displayBatteryThings(int batteryLevel, QString batteryStatus);
     void changeEvent(QEvent *event);
+    void initTableDisplay();
     void show();
 
     void displaySchedule();
@@ -65,7 +66,9 @@ private slots:
 
     void iconActivated(QSystemTrayIcon::ActivationReason reason);
 
-    void updateDisplay();
+    void updateBatteryDisplay();
+
+    void updateTableDisplay();
 
     void on_actionSystem_tray_triggered();
 

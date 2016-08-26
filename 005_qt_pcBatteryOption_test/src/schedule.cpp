@@ -30,7 +30,9 @@ void Schedule::on_buttonBox_okCancel_clicked(QAbstractButton *button)
         //        qDebug() << "OK" << endl;
         updateDataToDatabase();
         conn.connectClose();
-        this->close();
+        if(isAllLeditCanConvertToInt()){
+            this->close();
+        }
     }
     else if((QPushButton *)button == ui->buttonBox_okCancel->button(QDialogButtonBox::Cancel)){
         //        qDebug() << "Cancel" << endl;

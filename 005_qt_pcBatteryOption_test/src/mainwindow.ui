@@ -276,6 +276,15 @@ border: 1px solid black;
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
+   <zorder>graphicsView</zorder>
+   <zorder>tableView</zorder>
+   <zorder>label_status</zorder>
+   <zorder>label_batteryStatus</zorder>
+   <zorder>label_level</zorder>
+   <zorder>label_batteryLevel</zorder>
+   <zorder>progressBar</zorder>
+   <zorder>label_connectStatus</zorder>
+   <zorder>label_batteryLevel_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

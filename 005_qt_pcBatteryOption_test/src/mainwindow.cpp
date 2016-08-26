@@ -16,7 +16,10 @@ MainWindow::MainWindow(QWidget *parent) :
     battery = new Battery;
     initMenu();
     initSystemTrayIcon();
-    initDisplay();
+    updateTime = new QTimer;
+    updateTime->start(1000);
+    initBatteryDisplay();
+    initTableDisplay();
 
     /*database connect*/
     if(!connectOpen()){
@@ -108,20 +111,39 @@ void MainWindow::initSystemTrayIcon()
     /*TODO beautiful tooltip*/
 }
 
-void MainWindow::initDisplay()
+void MainWindow::initBatteryDisplay()
 {
-    updateDisplay();//init when begin
-    updateTime = new QTimer;
-    updateTime->start(1000);
+    updateBatteryDisplay();//init when begin
     connect(updateTime, SIGNAL(timeout()),
-            this, SLOT(updateDisplay()));
+            this, SLOT(updateBatteryDisplay()));
 }
 
-void MainWindow::updateDisplay()
+void MainWindow::updateBatteryDisplay()
 {
     int _level = battery->getBatteryLevel();
     QString _status = battery->getBatteryStatus();
     displayBatteryThings(_level,_status);
+}
+
+void MainWindow::initTableDisplay()
+{
+    updateTableDisplay();//init when begin
+//    Schedule schedule;
+//    connect(&schedule, SIGNAL(updateTable()),
+//            this, SLOT(updateTableDisplay()));
+}
+
+void MainWindow::updateTableDisplay()
+{
+    QSqlQueryModel *model = new QSqlQueryModel();
+    connectOpen();
+    QSqlQuery *qry = new QSqlQuery(actiondb);
+    qry->prepare("select Condition,level,action from data");
+    qry->exec();
+    model->setQuery(*qry);
+    ui->tableView->setModel(model);
+    connectClose();
+//    qDebug() << model->rowCount();
 }
 
 void MainWindow::displayBatteryThings(int batteryLevel, QString batteryStatus)
@@ -229,5 +251,6 @@ void MainWindow::on_actionManage_triggered()//
     {
         schedule.exec();
     }
+    updateTableDisplay();//init table when mainwindow reopen
     this->show();
 }
