@@ -67,18 +67,24 @@ bool Schedule::isAllLeditCanConvertToInt()
     bool isLeditCanConvertToInt2 = true;
     bool isLeditCanConvertToInt3 = true;
     bool isLeditCanConvertToInt4 = true;
-    if(!tmp_level1.isEmpty())num_level1 = tmp_level1.toInt(&isLeditCanConvertToInt1);
-    if(!tmp_level2.isEmpty())num_level2 = tmp_level2.toInt(&isLeditCanConvertToInt2);
-    if(!tmp_level3.isEmpty())num_level3 = tmp_level3.toInt(&isLeditCanConvertToInt3);
-    if(!tmp_level4.isEmpty())num_level4 = tmp_level4.toInt(&isLeditCanConvertToInt4);
-    if(!isLeditCanConvertToInt1 ||
-            !isLeditCanConvertToInt2 ||
-            !isLeditCanConvertToInt3 ||
-            !isLeditCanConvertToInt4 ||
-            num_level1 > 100 || num_level1 < 0 ||
-            num_level2 > 100 || num_level2 < 0 ||
-            num_level3 > 100 || num_level3 < 0 ||
-            num_level4 > 100 || num_level4 < 0){
+    num_level1 = 0;
+    num_level2 = 0;
+    num_level3 = 0;
+    num_level4 = 0;
+    if(!ui->lEdit_1->text().isEmpty())num_level1 = tmp_level1.toInt(&isLeditCanConvertToInt1);
+    if(!ui->lEdit_2->text().isEmpty())num_level2 = tmp_level2.toInt(&isLeditCanConvertToInt2);
+    if(!ui->lEdit_3->text().isEmpty())num_level3 = tmp_level3.toInt(&isLeditCanConvertToInt3);
+    if(!ui->lEdit_4->text().isEmpty())num_level4 = tmp_level4.toInt(&isLeditCanConvertToInt4);
+//    qDebug() << isLeditCanConvertToInt1 << isLeditCanConvertToInt2 <<
+//                isLeditCanConvertToInt3 << isLeditCanConvertToInt4 <<
+//                (num_level1 > 100 || num_level1 < 0) << num_level1 <<
+//                (num_level2 > 100 || num_level2 < 0) << num_level2 <<
+//                (num_level3 > 100 || num_level3 < 0) << num_level3 <<
+//                (num_level4 > 100 || num_level4 < 0) << num_level4;
+    if((!isLeditCanConvertToInt1 || (isLeditCanConvertToInt1 && (num_level1 > 100 || num_level1 < 0))) ||
+            (!isLeditCanConvertToInt2 || (isLeditCanConvertToInt2 && (num_level2 > 100 || num_level2 < 0))) ||
+            (!isLeditCanConvertToInt3 || (isLeditCanConvertToInt3 && (num_level3 > 100 || num_level3 < 0))) ||
+            (!isLeditCanConvertToInt4 || (isLeditCanConvertToInt4 && (num_level4 > 100 || num_level4 < 0)))){
         return false;
     }
     return true;
