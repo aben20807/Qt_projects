@@ -24,14 +24,14 @@ public:
     bool isAllLeditCanConvertToInt();
 
 protected:
-    void closeEvent(QCloseEvent *);//
+    void closeEvent(QCloseEvent *);
 
 signals:
-    void close_me();//
+    void close_me();
     void updateTable();
 
 private slots:
-    void close_child();//
+    void close_child();
 
     void on_buttonBox_okCancel_clicked(QAbstractButton *button);
 

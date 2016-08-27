@@ -75,12 +75,12 @@ bool Schedule::isAllLeditCanConvertToInt()
     if(!ui->lEdit_2->text().isEmpty())num_level2 = tmp_level2.toInt(&isLeditCanConvertToInt2);
     if(!ui->lEdit_3->text().isEmpty())num_level3 = tmp_level3.toInt(&isLeditCanConvertToInt3);
     if(!ui->lEdit_4->text().isEmpty())num_level4 = tmp_level4.toInt(&isLeditCanConvertToInt4);
-//    qDebug() << isLeditCanConvertToInt1 << isLeditCanConvertToInt2 <<
-//                isLeditCanConvertToInt3 << isLeditCanConvertToInt4 <<
-//                (num_level1 > 100 || num_level1 < 0) << num_level1 <<
-//                (num_level2 > 100 || num_level2 < 0) << num_level2 <<
-//                (num_level3 > 100 || num_level3 < 0) << num_level3 <<
-//                (num_level4 > 100 || num_level4 < 0) << num_level4;
+    //    qDebug() << isLeditCanConvertToInt1 << isLeditCanConvertToInt2 <<
+    //                isLeditCanConvertToInt3 << isLeditCanConvertToInt4 <<
+    //                (num_level1 > 100 || num_level1 < 0) << num_level1 <<
+    //                (num_level2 > 100 || num_level2 < 0) << num_level2 <<
+    //                (num_level3 > 100 || num_level3 < 0) << num_level3 <<
+    //                (num_level4 > 100 || num_level4 < 0) << num_level4;
     if((!isLeditCanConvertToInt1 || (isLeditCanConvertToInt1 && (num_level1 > 100 || num_level1 < 0))) ||
             (!isLeditCanConvertToInt2 || (isLeditCanConvertToInt2 && (num_level2 > 100 || num_level2 < 0))) ||
             (!isLeditCanConvertToInt3 || (isLeditCanConvertToInt3 && (num_level3 > 100 || num_level3 < 0))) ||
@@ -198,12 +198,12 @@ void Schedule::readDataFromDatabase()
     conn.connectClose();
 }
 
-void Schedule::close_child()//
+void Schedule::close_child()
 {
     m_show_child = false;
 }
 
-void Schedule::closeEvent(QCloseEvent *)//
+void Schedule::closeEvent(QCloseEvent *)
 {
     emit close_me();
 }

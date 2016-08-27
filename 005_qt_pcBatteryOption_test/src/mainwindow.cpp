@@ -7,19 +7,12 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    /*set not to change the size of window*/
     Qt::WindowFlags flags = 0;
-        flags |= Qt::WindowMinimizeButtonHint;
-        flags |= Qt::WindowCloseButtonHint;
-        setWindowFlags(flags);//Maximize ban
-        setFixedSize(QWidget::geometry().width(), QWidget::geometry().height());//Prohibition on changing the window size
-
-    battery = new Battery;
-    initMenu();
-    initSystemTrayIcon();
-    updateTime = new QTimer;
-    updateTime->start(1000);
-    initBatteryDisplay();
-    initTableDisplay();
+    flags |= Qt::WindowMinimizeButtonHint;
+    flags |= Qt::WindowCloseButtonHint;
+    setWindowFlags(flags);//Maximize ban
+    setFixedSize(QWidget::geometry().width(), QWidget::geometry().height());//Prohibition on changing the window size
 
     /*database connect*/
     if(!connectOpen()){
@@ -28,11 +21,21 @@ MainWindow::MainWindow(QWidget *parent) :
     else{
         ui->label_connectStatus->setText(tr("Connected!"));
     }
-//    QProcess * cmdProcess = new QProcess;
-//    cmdProcess->start("shutdown /h");
-//    cmdProcess->waitForFinished(-1); // will wait forever until finished
-//    QString out = cmdProcess->readAllStandardOutput();
-//    qDebug() << "out:" << out << endl;
+
+    /*init*/
+    battery = new Battery;
+    initMenu();
+    initSystemTrayIcon();
+    updateTime = new QTimer;//the period of update battery level and status
+    updateTime->start(1000);
+    initBatteryDisplay();
+    initTableDisplay();
+
+    //    QProcess * cmdProcess = new QProcess;
+    //    cmdProcess->start("shutdown /h");
+    //    cmdProcess->waitForFinished(-1); // will wait forever until finished
+    //    QString out = cmdProcess->readAllStandardOutput();
+    //    qDebug() << "out:" << out << endl;
 }
 MainWindow::~MainWindow()
 {
@@ -74,31 +77,31 @@ void MainWindow::applyLanguage()
 {
     if(languageMode == "zhTW"){
         qDebug() << "change to 繁體中文" << endl;
-//        translator->load(QString("./language/zh_TW"));
+        //        translator->load(QString("./language/zh_TW"));
         ui->action_zhTW->setChecked(true);
         ui->action_enUS->setChecked(false);
     }
     else if(languageMode == "enUS"){
         qDebug() << "change to English" << endl;
-//        translator->load(QString("./language/en_US"));
+        //        translator->load(QString("./language/en_US"));
         ui->action_enUS->setChecked(true);
         ui->action_zhTW->setChecked(false);
     }
-//    qApp->installTranslator(translator);
+    //    qApp->installTranslator(translator);
     //initGui
 }
 
 void MainWindow::initSystemTrayIcon()
 {
     tray = new QSystemTrayIcon(this);
-    tray->setIcon(QIcon(":/img/flag_taiwan"));/*TODO find icon*/
+    tray->setIcon(QIcon(":/img/flag_taiwan"));
+    /*TODO find icon*/
     connect(tray,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(iconActivated(QSystemTrayIcon::ActivationReason)));
 
     restoreAction = new QAction(QIcon(":/img/flag_taiwan"), "Restore", this);
     connect(restoreAction, SIGNAL(triggered()), this, SLOT(show()));
     connect(restoreAction, SIGNAL(triggered()), tray, SLOT(hide()));
-//    connect(restoreAction, SIGNAL(triggered()), this, SLOT(()));
 
     QMenu *trayIconMenu;//the menu of QSystemTrayIcon
     trayIconMenu = new QMenu(this);
@@ -106,7 +109,7 @@ void MainWindow::initSystemTrayIcon()
     trayIconMenu->addAction(ui->actionQuit);//quit action from ui
     tray->setContextMenu(trayIconMenu);
 
-    tray->setToolTip(("Battery : " + QString::number(battery->getBatteryLevel())));//"<br>""level : "+battery->getBatteryLevel());
+    tray->setToolTip(("Battery : " + QString::number(battery->getBatteryLevel())));
     /*TODO beautiful tooltip*/
 }
 
@@ -143,7 +146,7 @@ void MainWindow::updateTableDisplay()
     model->setQuery(*qry);
     ui->tableView->setModel(model);
     connectClose();
-//    qDebug() << model->rowCount();
+    //    qDebug() << model->rowCount();
     /*TODO center the text*/
 }
 
@@ -168,7 +171,7 @@ void MainWindow::changeEvent(QEvent *event)
     if( event->type() == QEvent::WindowStateChange )
     {
         if( windowState() == Qt::WindowMinimized && minimizeMode == "System_tray"){
-            ui->actionMinimize->trigger();
+            ui->actionMinimize->trigger();//minimize to tray when ischecked
         }
         else if( windowState() == Qt::WindowNoState ){
         }
@@ -179,7 +182,7 @@ void MainWindow::changeEvent(QEvent *event)
 void MainWindow::show()//Overriding show()
 {
     QWidget::show();
-    this->setWindowState(Qt::WindowNoState);
+    this->setWindowState(Qt::WindowNoState);//set the window open in the screen
 }
 
 void MainWindow::on_actionQuit_triggered()
@@ -229,12 +232,12 @@ void MainWindow::on_actionTaskbar_triggered()
     }
 }
 
-void MainWindow::close_child()//
+void MainWindow::close_child()
 {
     m_show_child = false;
 }
 
-void MainWindow::on_actionManage_triggered()//
+void MainWindow::on_actionManage_triggered()
 {
     connectClose();
 

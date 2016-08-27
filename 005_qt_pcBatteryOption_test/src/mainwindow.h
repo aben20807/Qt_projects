@@ -72,7 +72,7 @@ private slots:
 
     void on_actionTaskbar_triggered();
 
-    void close_child();//
+    void close_child();
 
     void on_actionManage_triggered();
 
@@ -85,7 +85,7 @@ private:
     QAction *restoreAction;
     QTimer *updateTime;
     Battery *battery;
-    bool m_show_child;//
+    bool m_show_child;
 };
 
 #endif // MAINWINDOW_H
