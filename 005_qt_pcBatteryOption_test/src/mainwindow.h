@@ -17,8 +17,9 @@
 
 namespace Ui {
 class MainWindow;
-}
 
+}
+class Schedule;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -33,6 +34,7 @@ public:
     void displayBatteryThings(int batteryLevel, QString batteryStatus);
     void changeEvent(QEvent *event);
     void initTableDisplay();
+    void initActionToDo();
     void show();
 
     QSqlDatabase actiondb;
@@ -68,6 +70,8 @@ private slots:
 
     void updateTableDisplay();
 
+    void updateActionToDo();
+
     void on_actionSystem_tray_triggered();
 
     void on_actionTaskbar_triggered();
@@ -85,7 +89,12 @@ private:
     QAction *restoreAction;
     QTimer *updateTime;
     Battery *battery;
+    Schedule *schedule;
     bool m_show_child;
+    bool doAction1;
+    bool doAction2;
+    bool doAction3;
+    bool doAction4;
 };
 
 #endif // MAINWINDOW_H

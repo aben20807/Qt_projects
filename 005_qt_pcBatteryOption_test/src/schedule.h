@@ -18,10 +18,11 @@ class Schedule : public QDialog
 public:
     explicit Schedule(QWidget *parent = 0);
     ~Schedule();
-    void catchInformations();
+    void catchInformationsFromUi();
     void updateDataToDatabase();
     void readDataFromDatabase();
     bool isAllLeditCanConvertToInt();
+    bool checkRowIsFilled(int row);
 
 protected:
     void closeEvent(QCloseEvent *);

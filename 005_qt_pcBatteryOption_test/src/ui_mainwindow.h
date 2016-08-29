@@ -36,6 +36,9 @@ public:
     QAction *actionQuit;
     QAction *actionSystem_tray;
     QAction *actionTaskbar;
+    QAction *actionError_report;
+    QAction *actionAbout;
+    QAction *actionAction_explaintion;
     QWidget *centralWidget;
     QGraphicsView *graphicsView;
     QTableView *tableView;
@@ -87,6 +90,12 @@ public:
         actionSystem_tray->setObjectName(QStringLiteral("actionSystem_tray"));
         actionTaskbar = new QAction(MainWindow);
         actionTaskbar->setObjectName(QStringLiteral("actionTaskbar"));
+        actionError_report = new QAction(MainWindow);
+        actionError_report->setObjectName(QStringLiteral("actionError_report"));
+        actionAbout = new QAction(MainWindow);
+        actionAbout->setObjectName(QStringLiteral("actionAbout"));
+        actionAction_explaintion = new QAction(MainWindow);
+        actionAction_explaintion->setObjectName(QStringLiteral("actionAction_explaintion"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         graphicsView = new QGraphicsView(centralWidget);
@@ -235,6 +244,9 @@ public:
         submenuLanguage->addAction(action_enUS);
         menuMinimize_to_2->addAction(actionSystem_tray);
         menuMinimize_to_2->addAction(actionTaskbar);
+        menuHelp->addAction(actionError_report);
+        menuHelp->addAction(actionAbout);
+        menuHelp->addAction(actionAction_explaintion);
         menuSchedule->addAction(actionManage);
         menuSchedule->addAction(actionCheck_log);
         menuFile->addAction(actionQuit);
@@ -250,16 +262,19 @@ public:
 #ifndef QT_NO_TOOLTIP
         MainWindow->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
-        actionMinimize->setText(QApplication::translate("MainWindow", "Minimize to system tray", 0));
+        actionMinimize->setText(QApplication::translate("MainWindow", "Minimize To System Tray", 0));
         action_enUS->setText(QApplication::translate("MainWindow", "English_US", 0));
         action_zhTW->setText(QApplication::translate("MainWindow", "\347\271\201\351\253\224\344\270\255\346\226\207", 0));
         actionManage->setText(QApplication::translate("MainWindow", "Manage", 0));
         actionManage->setShortcut(QApplication::translate("MainWindow", "Ctrl+M", 0));
-        actionCheck_log->setText(QApplication::translate("MainWindow", "Check log", 0));
+        actionCheck_log->setText(QApplication::translate("MainWindow", "Check Log", 0));
         actionCheck_log->setShortcut(QApplication::translate("MainWindow", "Ctrl+C", 0));
         actionQuit->setText(QApplication::translate("MainWindow", "Quit", 0));
         actionSystem_tray->setText(QApplication::translate("MainWindow", "System tray", 0));
         actionTaskbar->setText(QApplication::translate("MainWindow", "Taskbar", 0));
+        actionError_report->setText(QApplication::translate("MainWindow", "Error Report", 0));
+        actionAbout->setText(QApplication::translate("MainWindow", "About", 0));
+        actionAction_explaintion->setText(QApplication::translate("MainWindow", "Action Explanation", 0));
 #ifndef QT_NO_TOOLTIP
         tableView->setToolTip(QApplication::translate("MainWindow", "Schedule", 0));
 #endif // QT_NO_TOOLTIP
@@ -284,7 +299,7 @@ public:
         menuWindow->setTitle(QApplication::translate("MainWindow", "Window", 0));
         menuSetting->setTitle(QApplication::translate("MainWindow", "Setting", 0));
         submenuLanguage->setTitle(QApplication::translate("MainWindow", "Language", 0));
-        menuMinimize_to_2->setTitle(QApplication::translate("MainWindow", "Minimize to", 0));
+        menuMinimize_to_2->setTitle(QApplication::translate("MainWindow", "Minimize To", 0));
         menuHelp->setTitle(QApplication::translate("MainWindow", "Help", 0));
         menuSchedule->setTitle(QApplication::translate("MainWindow", "Schedule", 0));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0));

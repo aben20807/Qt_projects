@@ -24,12 +24,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
     /*init*/
     battery = new Battery;
+//    schedule = new Schedule;
     initMenu();
     initSystemTrayIcon();
     updateTime = new QTimer;//the period of update battery level and status
     updateTime->start(1000);
     initBatteryDisplay();
     initTableDisplay();
+    initActionToDo();
 
     //    QProcess * cmdProcess = new QProcess;
     //    cmdProcess->start("shutdown /h");
@@ -134,6 +136,76 @@ void MainWindow::initTableDisplay()
     ui->tableView->setColumnWidth(0, ui->tableView->width()/3);
     ui->tableView->setColumnWidth(1, ui->tableView->width()/4);
     ui->tableView->setColumnWidth(2, ui->tableView->width()/3);
+}
+
+void MainWindow::updateActionToDo()
+{
+    connectOpen();
+    QSqlQuery qry;
+    /*1*/
+    qry.prepare("select * from data where Number=1");
+    if(qry.exec()){
+        while(qry.next()){
+//            QString s1 = qry.value(1).toString();//for debug
+//            QString s2 = qry.value(2).toString();
+//            QString s3 = qry.value(3).toString();
+            if(qry.value(1).toString() != "Choose one" &&
+            (qry.value(2).toString() != "") &&
+            qry.value(3).toString() != "Nothing"){
+//                qDebug() << s1 << s2 << s3 << "Do action1";
+            }
+        }
+    }
+    else{
+        QMessageBox::critical(this, tr("Error a1::"), qry.lastError().text());
+    }
+    /*2*/
+    qry.prepare("select * from data where Number=2");
+    if(qry.exec()){
+        while(qry.next()){
+            if(qry.value(1).toString() != "Choose one" &&
+            (qry.value(2).toString() != "") &&
+            qry.value(3).toString() != "Nothing"){
+//                qDebug() << "Do action2";
+            }
+        }
+    }
+    else{
+        QMessageBox::critical(this, tr("Error a2::"), qry.lastError().text());
+    }
+    /*3*/
+    qry.prepare("select * from data where Number=3");
+    if(qry.exec()){
+        while(qry.next()){
+            if(qry.value(1).toString() != "Choose one" &&
+            (qry.value(2).toString() != "") &&
+            qry.value(3).toString() != "Nothing"){
+//                qDebug() << "Do action3";
+            }
+        }
+    }
+    else{
+        QMessageBox::critical(this, tr("Error a3::"), qry.lastError().text());
+    }
+    /*4*/
+    qry.prepare("select * from data where Number=4");
+    if(qry.exec()){
+        while(qry.next()){
+            if(qry.value(1).toString() != "Choose one" &&
+            (qry.value(2).toString() != "") &&
+            qry.value(3).toString() != "Nothing"){
+//                qDebug() << "Do action4";
+            }
+        }
+    }
+    else{
+        QMessageBox::critical(this, tr("Error a4::"), qry.lastError().text());
+    }
+}
+
+void MainWindow::initActionToDo()
+{
+    updateActionToDo();
 }
 
 void MainWindow::updateTableDisplay()
@@ -241,13 +313,13 @@ void MainWindow::on_actionManage_triggered()
 {
     connectClose();
 
-    Schedule schedule;
+    schedule = new Schedule;
     this->hide();
-    QObject::connect(&schedule,SIGNAL(close_me()),this,SLOT(close_child()));
+    QObject::connect(schedule,SIGNAL(close_me()),this,SLOT(close_child()));
     m_show_child = true;
     while (m_show_child)
     {
-        schedule.exec();
+        schedule->exec();
     }
     updateTableDisplay();//init table when mainwindow reopen
     this->show();

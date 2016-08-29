@@ -377,7 +377,7 @@ border: 1px solid black;
     </widget>
     <widget class="QMenu" name="menuMinimize_to_2">
      <property name="title">
-      <string>Minimize to</string>
+      <string>Minimize To</string>
      </property>
      <addaction name="actionSystem_tray"/>
      <addaction name="actionTaskbar"/>
@@ -395,6 +395,9 @@ border: 1px solid black;
     <property name="title">
      <string>Help</string>
     </property>
+    <addaction name="actionError_report"/>
+    <addaction name="actionAbout"/>
+    <addaction name="actionAction_explaintion"/>
    </widget>
    <widget class="QMenu" name="menuSchedule">
     <property name="font">
@@ -422,7 +425,7 @@ border: 1px solid black;
   </widget>
   <action name="actionMinimize">
    <property name="text">
-    <string>Minimize to system tray</string>
+    <string>Minimize To System Tray</string>
    </property>
    <property name="font">
     <font>
@@ -478,7 +481,7 @@ border: 1px solid black;
   </action>
   <action name="actionCheck_log">
    <property name="text">
-    <string>Check log</string>
+    <string>Check Log</string>
    </property>
    <property name="font">
     <font>
@@ -503,6 +506,21 @@ border: 1px solid black;
   <action name="actionTaskbar">
    <property name="text">
     <string>Taskbar</string>
+   </property>
+  </action>
+  <action name="actionError_report">
+   <property name="text">
+    <string>Error Report</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionAction_explaintion">
+   <property name="text">
+    <string>Action Explanation</string>
    </property>
   </action>
  </widget>
