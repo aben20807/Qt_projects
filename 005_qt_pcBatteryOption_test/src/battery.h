@@ -14,12 +14,13 @@ public:
     int getBatteryLevel();
     QString getBatteryStatus();
 
+    CmdProcess *cmdprocess;
 signals:
 
 public slots:
 
 private:
-    CmdProcess *cmdprocess;
+
 };
 
 #endif // BATTERY_H

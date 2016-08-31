@@ -17,9 +17,13 @@ public:
     void doSleepAction();
     void doHibernateAction();
 
+
 signals:
 
 public slots:
+
+private:
+    QProcess *cmdProcess;
 };
 
 #endif // CMDPROCESS_H

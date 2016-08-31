@@ -2,15 +2,13 @@
 
 CmdProcess::CmdProcess(QObject *parent) : QObject(parent)
 {
-
+    cmdProcess = new QProcess;
 }
 
 QString CmdProcess::getOutputOfBatteryLevel()
 {
-    QProcess * cmdProcess = new QProcess;
     cmdProcess->start("WMIC PATH Win32_Battery Get EstimatedChargeRemaining");
     cmdProcess->waitForFinished(-1); // will wait forever until finished
-
     QString out = cmdProcess->readAllStandardOutput();
     QString err = cmdProcess->readAllStandardError();
 //    for(int i = 0; i < out.length(); i++){//test the string of output
@@ -25,10 +23,8 @@ QString CmdProcess::getOutputOfBatteryLevel()
 
 QString CmdProcess::getOutputOfBatteryStatus()
 {
-    QProcess * cmdProcess = new QProcess;
     cmdProcess->start("WMIC Path Win32_Battery Get BatteryStatus");
     cmdProcess->waitForFinished(-1); // will wait forever until finished
-
     QString out = cmdProcess->readAllStandardOutput();
     QString err = cmdProcess->readAllStandardError();
 //    for(int i = 0; i < out.length(); i++){//test the string of output

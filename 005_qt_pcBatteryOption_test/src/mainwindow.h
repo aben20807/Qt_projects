@@ -12,6 +12,7 @@
 #include <QSystemTrayIcon>
 #include <QProcess>
 #include <QtSql>
+#include <QPainter>
 #include "battery.h"
 #include "schedule.h"
 #include "cmdprocess.h"
@@ -92,10 +93,7 @@ private:
     Battery *battery;
     Schedule *schedule;
     bool m_show_child;
-    bool doAction1;
-    bool doAction2;
-    bool doAction3;
-    bool doAction4;
+    QPainter *painter;
 };
 
 #endif // MAINWINDOW_H

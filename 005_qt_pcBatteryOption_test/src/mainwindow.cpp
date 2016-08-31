@@ -96,11 +96,22 @@ void MainWindow::applyLanguage()
 void MainWindow::initSystemTrayIcon()
 {
     tray = new QSystemTrayIcon(this);
-    tray->setIcon(QIcon(":/img/flag_taiwan"));
-    /*TODO find icon*/
+    /*design icon*/
+    QPixmap pixmap(24,24);//icon size
+    pixmap.fill(Qt::white);//icon backround
+    painter = new QPainter(&pixmap);
+    QFont font = painter->font();
+    font.setPointSize(14);
+    font.setBold(true);
+    font.setFamily("Microsoft JhengHei");//微軟正黑體
+    painter->setFont(font);
+    painter->drawText(pixmap.rect(),Qt::AlignCenter,QString::number(battery->getBatteryLevel()));
+    tray->setIcon((pixmap));
+
     connect(tray,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(iconActivated(QSystemTrayIcon::ActivationReason)));
 
+    /*TODO find restore icon*/
     restoreAction = new QAction(QIcon(":/img/flag_taiwan"), "Restore", this);
     connect(restoreAction, SIGNAL(triggered()), this, SLOT(show()));
     connect(restoreAction, SIGNAL(triggered()), tray, SLOT(hide()));
@@ -112,7 +123,7 @@ void MainWindow::initSystemTrayIcon()
     tray->setContextMenu(trayIconMenu);
 
     tray->setToolTip(("Battery : " + QString::number(battery->getBatteryLevel())));
-    /*TODO beautiful tooltip*/
+    /*TODO beautiful tooltip, pic?*/
 }
 
 void MainWindow::initBatteryDisplay()
