@@ -26,9 +26,9 @@ MainWindow::MainWindow(QWidget *parent) :
     battery = new Battery;
     //    schedule = new Schedule;
     initMenu();
-    initSystemTrayIcon();
     updateTime = new QTimer;//the period of update battery level and status
     updateTime->start(1000);
+    initSystemTrayIcon();
     initBatteryDisplay();
     initTableDisplay();
     initActionToDo();
@@ -96,18 +96,7 @@ void MainWindow::applyLanguage()
 void MainWindow::initSystemTrayIcon()
 {
     tray = new QSystemTrayIcon(this);
-    /*design icon*/
-    QPixmap pixmap(24,24);//icon size
-    pixmap.fill(Qt::white);//icon backround
-    painter = new QPainter(&pixmap);
-    QFont font = painter->font();
-    font.setPointSize(14);
-    font.setBold(true);
-    font.setFamily("Microsoft JhengHei");//微軟正黑體
-    painter->setFont(font);
-    painter->drawText(pixmap.rect(),Qt::AlignCenter,QString::number(battery->getBatteryLevel()));
-    tray->setIcon((pixmap));
-
+    updateSystemTrayIconDisplay();
     connect(tray,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(iconActivated(QSystemTrayIcon::ActivationReason)));
 
@@ -121,9 +110,26 @@ void MainWindow::initSystemTrayIcon()
     trayIconMenu->addAction(restoreAction);
     trayIconMenu->addAction(ui->actionQuit);//quit action from ui
     tray->setContextMenu(trayIconMenu);
+    connect(updateTime, SIGNAL(timeout()),
+            this, SLOT(updateSystemTrayIconDisplay()));//Update icon every second
+}
 
+void MainWindow::updateSystemTrayIconDisplay()
+{
+    QPixmap pixmap(24,24);//icon size
+    pixmap.fill(Qt::white);//icon backround
+    QPainter painter(&pixmap);
+    QFont font = painter.font();
+    font.setPointSize(14);
+    font.setBold(true);
+    font.setFamily("Microsoft JhengHei");//微軟正黑體
+    painter.setFont(font);
+    painter.drawText(pixmap.rect(),Qt::AlignCenter,QString::number(battery->getBatteryLevel()));
+    /*TODO red when low level, change backround when charging or not*/
+    //    qDebug() << QString::number(battery->getBatteryLevel());
+    tray->setIcon((pixmap));
     tray->setToolTip(("Battery : " + QString::number(battery->getBatteryLevel())));
-    /*TODO beautiful tooltip, pic?*/
+    /*TODO beautiful tooltip, add picture?*/
 }
 
 void MainWindow::initBatteryDisplay()
@@ -135,9 +141,7 @@ void MainWindow::initBatteryDisplay()
 
 void MainWindow::updateBatteryDisplay()
 {
-    int _level = battery->getBatteryLevel();
-    QString _status = battery->getBatteryStatus();
-    displayBatteryThings(_level,_status);
+    displayBatteryThings(battery->getBatteryLevel(),battery->getBatteryStatus());
 }
 
 void MainWindow::initTableDisplay()
@@ -269,8 +273,8 @@ void MainWindow::on_actionMinimize_triggered()
 {
     tray->setVisible(true);
     this->hide();
-    tray->showMessage(tr("Info"),tr("Minimize to system tray!"),
-                      QSystemTrayIcon::Information, 5000);
+    //    tray->showMessage(tr("Info"),tr("Minimize to system tray!"),
+    //                      QSystemTrayIcon::Information, 5000);
 }
 
 void MainWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
@@ -280,10 +284,10 @@ void MainWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
         this->show();
         tray->setVisible(false);
         break;
-    case (QSystemTrayIcon::Critical):
-        tray->showMessage(tr("Barrery"), "level : "+(QString::number(battery->getBatteryLevel()))+"%",
-                          QSystemTrayIcon::Information, 5000);
-        break;
+        //    case (QSystemTrayIcon::Critical):
+        //        tray->showMessage(tr("Barrery"), "level : "+(QString::number(battery->getBatteryLevel()))+"%",
+        //                          QSystemTrayIcon::Information, 5000);
+        //        break;
     default:
         break;
     }

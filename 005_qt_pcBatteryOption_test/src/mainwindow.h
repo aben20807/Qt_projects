@@ -68,6 +68,8 @@ private slots:
 
     void iconActivated(QSystemTrayIcon::ActivationReason reason);
 
+    void updateSystemTrayIconDisplay();
+
     void updateBatteryDisplay();
 
     void updateTableDisplay();
@@ -93,7 +95,7 @@ private:
     Battery *battery;
     Schedule *schedule;
     bool m_show_child;
-    QPainter *painter;
+//    QPainter *painter;
 };
 
 #endif // MAINWINDOW_H
