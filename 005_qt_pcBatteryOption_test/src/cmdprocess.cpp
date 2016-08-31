@@ -36,3 +36,23 @@ QString CmdProcess::getOutputOfBatteryStatus()
     }
     return out;
 }
+
+//void CmdProcess::doRemindAction()
+//{
+
+//}
+
+//void CmdProcess::doShutdownAction()
+//{
+
+//}
+
+//void CmdProcess::doSleepAction()
+//{
+
+//}
+
+//void CmdProcess::doHibernateAction()
+//{
+
+//}

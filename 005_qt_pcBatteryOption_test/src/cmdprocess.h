@@ -17,7 +17,6 @@ public:
     void doSleepAction();
     void doHibernateAction();
 
-
 signals:
 
 public slots:

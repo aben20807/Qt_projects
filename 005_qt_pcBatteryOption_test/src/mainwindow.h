@@ -95,7 +95,6 @@ private:
     Battery *battery;
     Schedule *schedule;
     bool m_show_child;
-//    QPainter *painter;
 };
 
 #endif // MAINWINDOW_H
