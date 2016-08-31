@@ -110,16 +110,25 @@ void MainWindow::initSystemTrayIcon()
 
 void MainWindow::updateSystemTrayIconDisplay()
 {
-    QPixmap pixmap(24,24);//icon size
-    pixmap.fill(Qt::white);//icon backround
+    QPixmap pixmap(26,26);//icon size
+    if(battery->getBatteryLevel() < 30){//icon backround
+        pixmap.fill(QColor("#e60012"));//red
+    }
+    else if(battery->getBatteryStatus() == "Battery using"){
+        pixmap.fill(QColor("#22ac38"));//green
+    }
+    else{
+        pixmap.fill(QColor("#0075a9"));//blue
+    }
     QPainter painter(&pixmap);
     QFont font = painter.font();
     font.setPointSize(14);
     font.setBold(true);
     font.setFamily("Microsoft JhengHei");//微軟正黑體
     painter.setFont(font);
+    QPen penHText(QColor("#ffffff"));//white text
+    painter.setPen(penHText);
     painter.drawText(pixmap.rect(),Qt::AlignCenter,QString::number(battery->getBatteryLevel()));
-    /*TODO red when low level, change backround when charging or not*/
     //    qDebug() << QString::number(battery->getBatteryLevel());
     tray->setIcon((pixmap));
     tray->setToolTip(("Battery : " + QString::number(battery->getBatteryLevel())));
