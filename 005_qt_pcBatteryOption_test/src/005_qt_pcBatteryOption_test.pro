@@ -15,11 +15,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     schedule.cpp \
-    battery.cpp
+    battery.cpp \
+    cmdprocess.cpp
 
 HEADERS  += mainwindow.h \
     schedule.h \
-    battery.h
+    battery.h \
+    cmdprocess.h
 
 FORMS    += mainwindow.ui \
     schedule.ui

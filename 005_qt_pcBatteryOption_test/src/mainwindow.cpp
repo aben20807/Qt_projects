@@ -24,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     /*init*/
     battery = new Battery;
-//    schedule = new Schedule;
+    //    schedule = new Schedule;
     initMenu();
     initSystemTrayIcon();
     updateTime = new QTimer;//the period of update battery level and status
@@ -146,13 +146,11 @@ void MainWindow::updateActionToDo()
     qry.prepare("select * from data where Number=1");
     if(qry.exec()){
         while(qry.next()){
-//            QString s1 = qry.value(1).toString();//for debug
-//            QString s2 = qry.value(2).toString();
-//            QString s3 = qry.value(3).toString();
-            if(qry.value(1).toString() != "Choose one" &&
-            (qry.value(2).toString() != "") &&
-            qry.value(3).toString() != "Nothing"){
-//                qDebug() << s1 << s2 << s3 << "Do action1";
+            //            QString s1 = qry.value(1).toString();//for debug
+            //            QString s2 = qry.value(2).toString();
+            //            QString s3 = qry.value(3).toString();
+            if(qry.value(1).toString() != "Choose one" && (qry.value(2).toString() != "") && qry.value(3).toString() != "Nothing"){
+                //                qDebug() << s1 << s2 << s3 << "Do action1";
             }
         }
     }
@@ -163,10 +161,8 @@ void MainWindow::updateActionToDo()
     qry.prepare("select * from data where Number=2");
     if(qry.exec()){
         while(qry.next()){
-            if(qry.value(1).toString() != "Choose one" &&
-            (qry.value(2).toString() != "") &&
-            qry.value(3).toString() != "Nothing"){
-//                qDebug() << "Do action2";
+            if(qry.value(1).toString() != "Choose one" && (qry.value(2).toString() != "") && qry.value(3).toString() != "Nothing"){
+                //                qDebug() << "Do action2";
             }
         }
     }
@@ -177,10 +173,8 @@ void MainWindow::updateActionToDo()
     qry.prepare("select * from data where Number=3");
     if(qry.exec()){
         while(qry.next()){
-            if(qry.value(1).toString() != "Choose one" &&
-            (qry.value(2).toString() != "") &&
-            qry.value(3).toString() != "Nothing"){
-//                qDebug() << "Do action3";
+            if(qry.value(1).toString() != "Choose one" && (qry.value(2).toString() != "") && qry.value(3).toString() != "Nothing"){
+                //                qDebug() << "Do action3";
             }
         }
     }
@@ -191,10 +185,8 @@ void MainWindow::updateActionToDo()
     qry.prepare("select * from data where Number=4");
     if(qry.exec()){
         while(qry.next()){
-            if(qry.value(1).toString() != "Choose one" &&
-            (qry.value(2).toString() != "") &&
-            qry.value(3).toString() != "Nothing"){
-//                qDebug() << "Do action4";
+            if(qry.value(1).toString() != "Choose one" && (qry.value(2).toString() != "") && qry.value(3).toString() != "Nothing"){
+                //                qDebug() << "Do action4";
             }
         }
     }
@@ -321,6 +313,7 @@ void MainWindow::on_actionManage_triggered()
     {
         schedule->exec();
     }
-    updateTableDisplay();//init table when mainwindow reopen
+    updateTableDisplay();//update table when mainwindow reopen
+    updateActionToDo();//update action when mainwindow reopen
     this->show();
 }
