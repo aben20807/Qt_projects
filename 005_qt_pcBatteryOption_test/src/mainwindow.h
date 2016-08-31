@@ -37,6 +37,7 @@ public:
     void changeEvent(QEvent *event);
     void initTableDisplay();
     void initActionToDo();
+    void detectActionAndDo(QSqlQuery *qry);
     void show();
 
     QSqlDatabase actiondb;
@@ -95,6 +96,7 @@ private:
     Battery *battery;
     Schedule *schedule;
     bool m_show_child;
+    CmdProcess *cmdprocess;
 };
 
 #endif // MAINWINDOW_H

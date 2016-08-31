@@ -122,7 +122,12 @@ void MainWindow::updateSystemTrayIconDisplay()
     }
     QPainter painter(&pixmap);
     QFont font = painter.font();
-    font.setPointSize(14);
+    if(battery->getBatteryLevel() == 100){
+        font.setPointSize(12);
+    }
+    else{
+        font.setPointSize(14);
+    }
     font.setBold(true);
     font.setFamily("Microsoft JhengHei");//微軟正黑體
     painter.setFont(font);
@@ -156,6 +161,26 @@ void MainWindow::initTableDisplay()
     ui->tableView->setColumnWidth(2, ui->tableView->width()/3);
 }
 
+void MainWindow::updateTableDisplay()
+{
+    QSqlQueryModel *model = new QSqlQueryModel();
+    connectOpen();
+    QSqlQuery *qry = new QSqlQuery(actiondb);
+    qry->prepare("select Condition,level,action from data");
+    qry->exec();
+    model->setQuery(*qry);
+    ui->tableView->setModel(model);
+    connectClose();
+    //    qDebug() << model->rowCount();
+    /*TODO center the text*/
+}
+
+void MainWindow::initActionToDo()
+{
+    connect(updateTime, SIGNAL(timeout()),
+            this, SLOT(updateActionToDo()));
+}
+
 void MainWindow::updateActionToDo()
 {
     connectOpen();
@@ -169,6 +194,7 @@ void MainWindow::updateActionToDo()
             //QString s3 = qry.value(3).toString();
             if(qry.value(1).toString() != "Choose one" && (qry.value(2).toString() != "") && qry.value(3).toString() != "Nothing"){
                 //qDebug() << s1 << s2 << s3 << "Do action1";
+                detectActionAndDo(&qry);
             }
         }
     }
@@ -181,6 +207,7 @@ void MainWindow::updateActionToDo()
         while(qry.next()){
             if(qry.value(1).toString() != "Choose one" && (qry.value(2).toString() != "") && qry.value(3).toString() != "Nothing"){
                 //qDebug() << "Do action2";
+                detectActionAndDo(&qry);
             }
         }
     }
@@ -193,6 +220,7 @@ void MainWindow::updateActionToDo()
         while(qry.next()){
             if(qry.value(1).toString() != "Choose one" && (qry.value(2).toString() != "") && qry.value(3).toString() != "Nothing"){
                 //qDebug() << "Do action3";
+                detectActionAndDo(&qry);
             }
         }
     }
@@ -205,6 +233,7 @@ void MainWindow::updateActionToDo()
         while(qry.next()){
             if(qry.value(1).toString() != "Choose one" && (qry.value(2).toString() != "") && qry.value(3).toString() != "Nothing"){
                 //qDebug() << "Do action4";
+                detectActionAndDo(&qry);
             }
         }
     }
@@ -213,23 +242,43 @@ void MainWindow::updateActionToDo()
     }
 }
 
-void MainWindow::initActionToDo()
+void MainWindow::detectActionAndDo(QSqlQuery *qry)
 {
-    updateActionToDo();
-}
-
-void MainWindow::updateTableDisplay()
-{
-    QSqlQueryModel *model = new QSqlQueryModel();
-    connectOpen();
-    QSqlQuery *qry = new QSqlQuery(actiondb);
-    qry->prepare("select Condition,level,action from data");
-    qry->exec();
-    model->setQuery(*qry);
-    ui->tableView->setModel(model);
-    connectClose();
-    //    qDebug() << model->rowCount();
-    /*TODO center the text*/
+    bool ok;
+    int _level = battery->getBatteryLevel();
+    if(qry->value(1).toString() == "If level >"){
+        if(_level > qry->value(2).toString().toInt(&ok)){
+            if(qry->value(3).toString() == "Remind"){
+                cmdprocess->doAction("RemindMorethan", qry->value(2).toString().toInt(&ok));
+                //qDebug() << "Do Remind";
+            }
+            else if(qry->value(3).toString() == "Shut down"){
+                cmdprocess->doAction("Shutdown", qry->value(2).toString().toInt(&ok));
+            }
+            else if(qry->value(3).toString() == "Sleep"){
+                cmdprocess->doAction("Sleep", qry->value(2).toString().toInt(&ok));
+            }
+            else if(qry->value(3).toString() == "Hibernate"){
+                cmdprocess->doAction("Hibernate", qry->value(2).toString().toInt(&ok));
+            }
+        }
+    }
+    else if(qry->value(1).toString() == "If level <"){
+        if(_level < qry->value(2).toString().toInt(&ok)){
+            if(qry->value(3).toString() == "Remind"){
+                cmdprocess->doAction("RemindLessthan", qry->value(2).toString().toInt(&ok));
+            }
+            else if(qry->value(3).toString() == "Shut down"){
+                cmdprocess->doAction("Shutdown", qry->value(2).toString().toInt(&ok));
+            }
+            else if(qry->value(3).toString() == "Sleep"){
+                cmdprocess->doAction("Sleep", qry->value(2).toString().toInt(&ok));
+            }
+            else if(qry->value(3).toString() == "Hibernate"){
+                cmdprocess->doAction("Hibernate", qry->value(2).toString().toInt(&ok));
+            }
+        }
+    }
 }
 
 void MainWindow::displayBatteryThings(int batteryLevel, QString batteryStatus)
