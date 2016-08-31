@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QProcess>
 #include <QDebug>
+#include <QMessageBox>
 
 class CmdProcess : public QObject
 {
@@ -12,10 +13,7 @@ public:
     explicit CmdProcess(QObject *parent = 0);
     QString getOutputOfBatteryLevel();
     QString getOutputOfBatteryStatus();
-    void doRemindAction();
-    void doShutdownAction();
-    void doSleepAction();
-    void doHibernateAction();
+    void doAction(QString action, int level);
 
 signals:
 

@@ -32,12 +32,6 @@ MainWindow::MainWindow(QWidget *parent) :
     initBatteryDisplay();
     initTableDisplay();
     initActionToDo();
-
-    //    QProcess * cmdProcess = new QProcess;
-    //    cmdProcess->start("shutdown /h");
-    //    cmdProcess->waitForFinished(-1); // will wait forever until finished
-    //    QString out = cmdProcess->readAllStandardOutput();
-    //    qDebug() << "out:" << out << endl;
 }
 MainWindow::~MainWindow()
 {
@@ -161,11 +155,11 @@ void MainWindow::updateActionToDo()
     qry.prepare("select * from data where Number=1");
     if(qry.exec()){
         while(qry.next()){
-            //            QString s1 = qry.value(1).toString();//for debug
-            //            QString s2 = qry.value(2).toString();
-            //            QString s3 = qry.value(3).toString();
+            //QString s1 = qry.value(1).toString();//for debug
+            //QString s2 = qry.value(2).toString();
+            //QString s3 = qry.value(3).toString();
             if(qry.value(1).toString() != "Choose one" && (qry.value(2).toString() != "") && qry.value(3).toString() != "Nothing"){
-                //                qDebug() << s1 << s2 << s3 << "Do action1";
+                //qDebug() << s1 << s2 << s3 << "Do action1";
             }
         }
     }
@@ -177,7 +171,7 @@ void MainWindow::updateActionToDo()
     if(qry.exec()){
         while(qry.next()){
             if(qry.value(1).toString() != "Choose one" && (qry.value(2).toString() != "") && qry.value(3).toString() != "Nothing"){
-                //                qDebug() << "Do action2";
+                //qDebug() << "Do action2";
             }
         }
     }
@@ -189,7 +183,7 @@ void MainWindow::updateActionToDo()
     if(qry.exec()){
         while(qry.next()){
             if(qry.value(1).toString() != "Choose one" && (qry.value(2).toString() != "") && qry.value(3).toString() != "Nothing"){
-                //                qDebug() << "Do action3";
+                //qDebug() << "Do action3";
             }
         }
     }
@@ -201,7 +195,7 @@ void MainWindow::updateActionToDo()
     if(qry.exec()){
         while(qry.next()){
             if(qry.value(1).toString() != "Choose one" && (qry.value(2).toString() != "") && qry.value(3).toString() != "Nothing"){
-                //                qDebug() << "Do action4";
+                //qDebug() << "Do action4";
             }
         }
     }
