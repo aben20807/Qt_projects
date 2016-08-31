@@ -2,24 +2,12 @@
 
 Battery::Battery(QObject *parent) : QObject(parent)
 {
-
+    cmdprocess = new CmdProcess;
 }
 
 int Battery::getBatteryLevel()
 {
-    QProcess * cmdProcess = new QProcess;
-    cmdProcess->start("WMIC PATH Win32_Battery Get EstimatedChargeRemaining");
-    cmdProcess->waitForFinished(-1); // will wait forever until finished
-
-    QString out = cmdProcess->readAllStandardOutput();
-    QString err = cmdProcess->readAllStandardError();
-//    for(int i = 0; i < out.length(); i++){//test the string of output
-//        qDebug() << i << out[i] << endl;
-//    }
-//    qDebug() << out[29] << out[30] << endl;
-    if(err != ""){
-        qDebug() << "err:" << err << endl;
-    }
+    QString out = cmdprocess->getOutputOfBatteryLevel();
     int batteryLevel;
     if(out[31] == '0'){//if batteryLevel = 100
         batteryLevel = 100;
@@ -36,19 +24,7 @@ int Battery::getBatteryLevel()
 
 QString Battery::getBatteryStatus()
 {
-    QProcess * cmdProcess = new QProcess;
-    cmdProcess->start("WMIC Path Win32_Battery Get BatteryStatus");
-    cmdProcess->waitForFinished(-1); // will wait forever until finished
-
-    QString out = cmdProcess->readAllStandardOutput();
-    QString err = cmdProcess->readAllStandardError();
-//    for(int i = 0; i < out.length(); i++){//test the string of output
-//        qDebug() << i << out[i] << endl;
-//    }
-//    qDebug() << out[18] << endl;
-    if(err != ""){
-        qDebug() << "err:" <<err << endl;
-    }
+    QString out = cmdprocess->getOutputOfBatteryStatus();
     switch (out[18].unicode()-48) {
     case 1:
         return "Battery using";

@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QProcess>
 #include <QDebug>
+#include "cmdprocess.h"
 
 class Battery : public QObject
 {
@@ -16,6 +17,9 @@ public:
 signals:
 
 public slots:
+
+private:
+    CmdProcess *cmdprocess;
 };
 
 #endif // BATTERY_H

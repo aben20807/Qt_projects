@@ -14,6 +14,7 @@
 #include <QtSql>
 #include "battery.h"
 #include "schedule.h"
+#include "cmdprocess.h"
 
 namespace Ui {
 class MainWindow;
