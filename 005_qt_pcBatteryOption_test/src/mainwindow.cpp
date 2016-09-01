@@ -177,6 +177,14 @@ void MainWindow::updateTableDisplay()
 
 void MainWindow::initActionToDo()
 {
+    updateTime1 = new QTimer;//the period of action1 detection
+    updateTime1->start(1000);
+    updateTime2 = new QTimer;//the period of action2 detection
+    updateTime2->start(1000);
+    updateTime3 = new QTimer;//the period of action3 detection
+    updateTime3->start(1000);
+    updateTime4 = new QTimer;//the period of action4 detection
+    updateTime4->start(1000);
     for(int i = 0; i < 5; i++){
         doOnce[i] = true;
     }
@@ -194,13 +202,19 @@ void MainWindow::updateActionToDo()
     if(qry.exec()){
         while(qry.next()){
             if(qry.value(1).toString() != "Choose one" && (qry.value(2).toString() != "") && qry.value(3).toString() != "Nothing"){
-                //qDebug() << s1 << s2 << s3 << "Do action1";//for debug
+                //qDebug() << "Do action1";//for debug
                 _condition[1] = qry.value(1).toString();
                 _level[1] = qry.value(2).toString().toInt(&ok);
                 _action[1] = qry.value(3).toString();
-                connect(updateTime, SIGNAL(timeout()), signalMapper, SLOT(map()));
-                signalMapper->setMapping(updateTime, 1);
+                //qDebug() << _condition[1] << _level[1] << _action[1];
+                updateTime1->start();
+                connect(updateTime1, SIGNAL(timeout()), signalMapper, SLOT(map()));
+                signalMapper->setMapping(updateTime1, 1);
                 connect(signalMapper, SIGNAL(mapped(const int &)), this, SLOT(detectActionAndDo(const int &)));
+            }
+            else{
+                //qDebug() << "else";
+                updateTime1->stop();
             }
         }
     }
@@ -216,9 +230,13 @@ void MainWindow::updateActionToDo()
                 _condition[2] = qry.value(1).toString();
                 _level[2] = qry.value(2).toString().toInt(&ok);
                 _action[2] = qry.value(3).toString();
-                connect(updateTime, SIGNAL(timeout()), signalMapper, SLOT(map()));
-                signalMapper->setMapping(updateTime, 2);
+                updateTime2->start();
+                connect(updateTime2, SIGNAL(timeout()), signalMapper, SLOT(map()));
+                signalMapper->setMapping(updateTime2, 2);
                 connect(signalMapper, SIGNAL(mapped(const int &)), this, SLOT(detectActionAndDo(const int &)));
+            }
+            else{
+                updateTime2->stop();
             }
         }
     }
@@ -234,9 +252,13 @@ void MainWindow::updateActionToDo()
                 _condition[3] = qry.value(1).toString();
                 _level[3] = qry.value(2).toString().toInt(&ok);
                 _action[3] = qry.value(3).toString();
-                connect(updateTime, SIGNAL(timeout()), signalMapper, SLOT(map()));
-                signalMapper->setMapping(updateTime, 3);
+                updateTime3->start();
+                connect(updateTime3, SIGNAL(timeout()), signalMapper, SLOT(map()));
+                signalMapper->setMapping(updateTime3, 3);
                 connect(signalMapper, SIGNAL(mapped(const int &)), this, SLOT(detectActionAndDo(const int &)));
+            }
+            else{
+                updateTime3->stop();
             }
         }
     }
@@ -252,26 +274,32 @@ void MainWindow::updateActionToDo()
                 _condition[4] = qry.value(1).toString();
                 _level[4] = qry.value(2).toString().toInt(&ok);
                 _action[4] = qry.value(3).toString();
-                connect(updateTime, SIGNAL(timeout()), signalMapper, SLOT(map()));
-                signalMapper->setMapping(updateTime, 4);
+                updateTime4->start();
+                connect(updateTime4, SIGNAL(timeout()), signalMapper, SLOT(map()));
+                signalMapper->setMapping(updateTime4, 4);
                 connect(signalMapper, SIGNAL(mapped(const int &)), this, SLOT(detectActionAndDo(const int &)));
+            }
+            else{
+                updateTime4->stop();
             }
         }
     }
     else{
         QMessageBox::critical(this, tr("Error a4::"), qry.lastError().text());
     }
+    connectClose();
 }
 
 void MainWindow::detectActionAndDo(const int &_numOfAction)
 {
+//    qDebug() << _numOfAction;
     int _nowLevel = battery->getBatteryLevel();
     if(_condition[_numOfAction] == "If level >"){
         if(_nowLevel >= _level[_numOfAction] && doOnce[_numOfAction] == true){
             doOnce[_numOfAction] = false;
             if(_action[_numOfAction] == "Remind"){
                 cmdprocess->doAction("RemindMorethan", _level[_numOfAction]);
-                //qDebug() << "Do Remind";
+                qDebug() << "Do Remind";
             }
             else if(_action[_numOfAction] == "Shut down"){
                 cmdprocess->doAction("Shutdown", _level[_numOfAction]);
@@ -292,6 +320,7 @@ void MainWindow::detectActionAndDo(const int &_numOfAction)
             doOnce[_numOfAction] = false;
             if(_action[_numOfAction] == "Remind"){
                 cmdprocess->doAction("RemindLessthan", _level[_numOfAction]);
+                qDebug() << "Do Remind";
             }
             else if(_action[_numOfAction] == "Shut down"){
                 cmdprocess->doAction("Shutdown", _level[_numOfAction]);
@@ -411,7 +440,6 @@ void MainWindow::on_actionManage_triggered()
     }
     updateTableDisplay();//update table when mainwindow reopen
     updateActionToDo();//update action when mainwindow reopen
-    updateActionToDo();
     for(int i = 0; i < 5; i++){
         doOnce[i] = true;
     }
