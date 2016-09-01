@@ -481,13 +481,13 @@ debug/moc_mainwindow.cpp: C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QMainWi
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/QPainter \
 		battery.h \
 		cmdprocess.h \
-		schedule.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QDialog \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qdialog.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QAbstractButton \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QMessageBox \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qmessagebox.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qdialog.h \
+		schedule.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QDialog \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QAbstractButton \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qabstractbutton.h \
 		mainwindow.h \
 		mainwindow.h
 	C:\Qt\Qt5.6.0\5.6\mingw49_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.6.0/5.6/mingw49_32/mkspecs/win32-g++ -IC:/cygwin64/home/user/pro/selfpro/Qt_projects/005_qt_pcBatteryOption_test/src -IC:/Qt/Qt5.6.0/5.6/mingw49_32/include -IC:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets -IC:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui -IC:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtANGLE -IC:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtSql -IC:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore mainwindow.h -o debug\moc_mainwindow.cpp
@@ -937,6 +937,46 @@ debug/moc_battery.cpp: C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/QObject \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qset.h \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qcontiguouscache.h \
 		cmdprocess.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QMessageBox \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qmessagebox.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qwidget.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qwindowdefs.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qwindowdefs_win.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qmargins.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qpaintdevice.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qrect.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qsize.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qpalette.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qcolor.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qrgb.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qrgba64.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qbrush.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qmatrix.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qpolygon.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qregion.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qdatastream.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qline.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qtransform.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qpainterpath.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qimage.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qpixelformat.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qpixmap.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qsharedpointer.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qsharedpointer_impl.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qfont.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qfontmetrics.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qfontinfo.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qsizepolicy.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qcursor.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qkeysequence.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qevent.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qurl.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qurlquery.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qfile.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qfiledevice.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qvector2d.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qtouchdevice.h \
 		battery.h
 	C:\Qt\Qt5.6.0\5.6\mingw49_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.6.0/5.6/mingw49_32/mkspecs/win32-g++ -IC:/cygwin64/home/user/pro/selfpro/Qt_projects/005_qt_pcBatteryOption_test/src -IC:/Qt/Qt5.6.0/5.6/mingw49_32/include -IC:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets -IC:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui -IC:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtANGLE -IC:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtSql -IC:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore battery.h -o debug\moc_battery.cpp
 
@@ -1010,6 +1050,46 @@ debug/moc_cmdprocess.cpp: C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/QObject \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qpoint.h \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qset.h \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qcontiguouscache.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QMessageBox \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qmessagebox.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qwidget.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qwindowdefs.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qwindowdefs_win.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qmargins.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qpaintdevice.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qrect.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qsize.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qpalette.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qcolor.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qrgb.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qrgba64.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qbrush.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qmatrix.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qpolygon.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qregion.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qdatastream.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qline.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qtransform.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qpainterpath.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qimage.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qpixelformat.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qpixmap.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qsharedpointer.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qsharedpointer_impl.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qfont.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qfontmetrics.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qfontinfo.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qsizepolicy.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qcursor.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qkeysequence.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qevent.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qurl.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qurlquery.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qfile.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qfiledevice.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qvector2d.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qtouchdevice.h \
 		cmdprocess.h
 	C:\Qt\Qt5.6.0\5.6\mingw49_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.6.0/5.6/mingw49_32/mkspecs/win32-g++ -IC:/cygwin64/home/user/pro/selfpro/Qt_projects/005_qt_pcBatteryOption_test/src -IC:/Qt/Qt5.6.0/5.6/mingw49_32/include -IC:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets -IC:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui -IC:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtANGLE -IC:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtSql -IC:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore cmdprocess.h -o debug\moc_cmdprocess.cpp
 
@@ -1400,13 +1480,13 @@ debug/main.o: main.cpp mainwindow.h \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/QPainter \
 		battery.h \
 		cmdprocess.h \
-		schedule.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QDialog \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qdialog.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QAbstractButton \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QMessageBox \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qmessagebox.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qdialog.h \
+		schedule.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QDialog \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QAbstractButton \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QApplication \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qapplication.h \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qdesktopwidget.h
@@ -1776,13 +1856,13 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/QPainter \
 		battery.h \
 		cmdprocess.h \
-		schedule.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QDialog \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qdialog.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QAbstractButton \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QMessageBox \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qmessagebox.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qdialog.h \
+		schedule.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QDialog \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QAbstractButton \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qabstractbutton.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o mainwindow.cpp
 
@@ -2231,7 +2311,47 @@ debug/battery.o: battery.cpp battery.h \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qpoint.h \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qset.h \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qcontiguouscache.h \
-		cmdprocess.h
+		cmdprocess.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QMessageBox \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qmessagebox.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qwidget.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qwindowdefs.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qwindowdefs_win.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qmargins.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qpaintdevice.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qrect.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qsize.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qpalette.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qcolor.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qrgb.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qrgba64.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qbrush.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qmatrix.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qpolygon.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qregion.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qdatastream.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qline.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qtransform.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qpainterpath.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qimage.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qpixelformat.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qpixmap.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qsharedpointer.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qsharedpointer_impl.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qfont.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qfontmetrics.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qfontinfo.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qsizepolicy.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qcursor.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qkeysequence.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qevent.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qurl.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qurlquery.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qfile.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qfiledevice.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qvector2d.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qtouchdevice.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\battery.o battery.cpp
 
 debug/cmdprocess.o: cmdprocess.cpp cmdprocess.h \
@@ -2304,7 +2424,47 @@ debug/cmdprocess.o: cmdprocess.cpp cmdprocess.h \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qvector.h \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qpoint.h \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qset.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qcontiguouscache.h
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qcontiguouscache.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QMessageBox \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qmessagebox.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qwidget.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qwindowdefs.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qwindowdefs_win.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qmargins.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qpaintdevice.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qrect.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qsize.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qpalette.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qcolor.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qrgb.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qrgba64.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qbrush.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qmatrix.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qpolygon.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qregion.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qdatastream.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qline.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qtransform.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qpainterpath.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qimage.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qpixelformat.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qpixmap.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qsharedpointer.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qsharedpointer_impl.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qfont.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qfontmetrics.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qfontinfo.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qsizepolicy.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qcursor.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qkeysequence.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qevent.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qurl.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qurlquery.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qfile.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/qfiledevice.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qvector2d.h \
+		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui/qtouchdevice.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\cmdprocess.o cmdprocess.cpp
 
 debug/qrc_resources.o: debug/qrc_resources.cpp 

@@ -13,6 +13,7 @@
 #include <QProcess>
 #include <QtSql>
 #include <QPainter>
+#include <QSignalMapper>
 #include "battery.h"
 #include "schedule.h"
 #include "cmdprocess.h"
@@ -37,7 +38,7 @@ public:
     void changeEvent(QEvent *event);
     void initTableDisplay();
     void initActionToDo();
-    void detectActionAndDo(QSqlQuery *qry);
+
     void show();
 
     QSqlDatabase actiondb;
@@ -77,6 +78,8 @@ private slots:
 
     void updateActionToDo();
 
+    void detectActionAndDo(const int &_numOfAction);
+
     void on_actionSystem_tray_triggered();
 
     void on_actionTaskbar_triggered();
@@ -97,6 +100,10 @@ private:
     Schedule *schedule;
     bool m_show_child;
     CmdProcess *cmdprocess;
+    bool doOnce[5];
+    QString _condition[5];
+    int _level[5];
+    QString _action[5];
 };
 
 #endif // MAINWINDOW_H

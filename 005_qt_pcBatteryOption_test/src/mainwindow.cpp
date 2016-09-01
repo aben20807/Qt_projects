@@ -177,24 +177,30 @@ void MainWindow::updateTableDisplay()
 
 void MainWindow::initActionToDo()
 {
-    connect(updateTime, SIGNAL(timeout()),
-            this, SLOT(updateActionToDo()));
+    for(int i = 0; i < 5; i++){
+        doOnce[i] = true;
+    }
+    updateActionToDo();
 }
 
 void MainWindow::updateActionToDo()
 {
+    QSignalMapper *signalMapper = new QSignalMapper;
     connectOpen();
+    bool ok;
     QSqlQuery qry;
     /*1*/
     qry.prepare("select * from data where Number=1");
     if(qry.exec()){
         while(qry.next()){
-            //QString s1 = qry.value(1).toString();//for debug
-            //QString s2 = qry.value(2).toString();
-            //QString s3 = qry.value(3).toString();
             if(qry.value(1).toString() != "Choose one" && (qry.value(2).toString() != "") && qry.value(3).toString() != "Nothing"){
-                //qDebug() << s1 << s2 << s3 << "Do action1";
-                detectActionAndDo(&qry);
+                //qDebug() << s1 << s2 << s3 << "Do action1";//for debug
+                _condition[1] = qry.value(1).toString();
+                _level[1] = qry.value(2).toString().toInt(&ok);
+                _action[1] = qry.value(3).toString();
+                connect(updateTime, SIGNAL(timeout()), signalMapper, SLOT(map()));
+                signalMapper->setMapping(updateTime, 1);
+                connect(signalMapper, SIGNAL(mapped(const int &)), this, SLOT(detectActionAndDo(const int &)));
             }
         }
     }
@@ -207,7 +213,12 @@ void MainWindow::updateActionToDo()
         while(qry.next()){
             if(qry.value(1).toString() != "Choose one" && (qry.value(2).toString() != "") && qry.value(3).toString() != "Nothing"){
                 //qDebug() << "Do action2";
-                detectActionAndDo(&qry);
+                _condition[2] = qry.value(1).toString();
+                _level[2] = qry.value(2).toString().toInt(&ok);
+                _action[2] = qry.value(3).toString();
+                connect(updateTime, SIGNAL(timeout()), signalMapper, SLOT(map()));
+                signalMapper->setMapping(updateTime, 2);
+                connect(signalMapper, SIGNAL(mapped(const int &)), this, SLOT(detectActionAndDo(const int &)));
             }
         }
     }
@@ -220,7 +231,12 @@ void MainWindow::updateActionToDo()
         while(qry.next()){
             if(qry.value(1).toString() != "Choose one" && (qry.value(2).toString() != "") && qry.value(3).toString() != "Nothing"){
                 //qDebug() << "Do action3";
-                detectActionAndDo(&qry);
+                _condition[3] = qry.value(1).toString();
+                _level[3] = qry.value(2).toString().toInt(&ok);
+                _action[3] = qry.value(3).toString();
+                connect(updateTime, SIGNAL(timeout()), signalMapper, SLOT(map()));
+                signalMapper->setMapping(updateTime, 3);
+                connect(signalMapper, SIGNAL(mapped(const int &)), this, SLOT(detectActionAndDo(const int &)));
             }
         }
     }
@@ -233,7 +249,12 @@ void MainWindow::updateActionToDo()
         while(qry.next()){
             if(qry.value(1).toString() != "Choose one" && (qry.value(2).toString() != "") && qry.value(3).toString() != "Nothing"){
                 //qDebug() << "Do action4";
-                detectActionAndDo(&qry);
+                _condition[4] = qry.value(1).toString();
+                _level[4] = qry.value(2).toString().toInt(&ok);
+                _action[4] = qry.value(3).toString();
+                connect(updateTime, SIGNAL(timeout()), signalMapper, SLOT(map()));
+                signalMapper->setMapping(updateTime, 4);
+                connect(signalMapper, SIGNAL(mapped(const int &)), this, SLOT(detectActionAndDo(const int &)));
             }
         }
     }
@@ -242,43 +263,51 @@ void MainWindow::updateActionToDo()
     }
 }
 
-void MainWindow::detectActionAndDo(QSqlQuery *qry)
+void MainWindow::detectActionAndDo(const int &_numOfAction)
 {
-    bool ok;
-    int _level = battery->getBatteryLevel();
-    if(qry->value(1).toString() == "If level >"){
-        if(_level > qry->value(2).toString().toInt(&ok)){
-            if(qry->value(3).toString() == "Remind"){
-                cmdprocess->doAction("RemindMorethan", qry->value(2).toString().toInt(&ok));
+    int _nowLevel = battery->getBatteryLevel();
+    if(_condition[_numOfAction] == "If level >"){
+        if(_nowLevel >= _level[_numOfAction] && doOnce[_numOfAction] == true){
+            doOnce[_numOfAction] = false;
+            if(_action[_numOfAction] == "Remind"){
+                cmdprocess->doAction("RemindMorethan", _level[_numOfAction]);
                 //qDebug() << "Do Remind";
             }
-            else if(qry->value(3).toString() == "Shut down"){
-                cmdprocess->doAction("Shutdown", qry->value(2).toString().toInt(&ok));
+            else if(_action[_numOfAction] == "Shut down"){
+                cmdprocess->doAction("Shutdown", _level[_numOfAction]);
             }
-            else if(qry->value(3).toString() == "Sleep"){
-                cmdprocess->doAction("Sleep", qry->value(2).toString().toInt(&ok));
+            else if(_action[_numOfAction] == "Sleep"){
+                cmdprocess->doAction("Sleep", _level[_numOfAction]);
             }
-            else if(qry->value(3).toString() == "Hibernate"){
-                cmdprocess->doAction("Hibernate", qry->value(2).toString().toInt(&ok));
-            }
-        }
-    }
-    else if(qry->value(1).toString() == "If level <"){
-        if(_level < qry->value(2).toString().toInt(&ok)){
-            if(qry->value(3).toString() == "Remind"){
-                cmdprocess->doAction("RemindLessthan", qry->value(2).toString().toInt(&ok));
-            }
-            else if(qry->value(3).toString() == "Shut down"){
-                cmdprocess->doAction("Shutdown", qry->value(2).toString().toInt(&ok));
-            }
-            else if(qry->value(3).toString() == "Sleep"){
-                cmdprocess->doAction("Sleep", qry->value(2).toString().toInt(&ok));
-            }
-            else if(qry->value(3).toString() == "Hibernate"){
-                cmdprocess->doAction("Hibernate", qry->value(2).toString().toInt(&ok));
+            else if(_action[_numOfAction] == "Hibernate"){
+                cmdprocess->doAction("Hibernate", _level[_numOfAction]);
             }
         }
+        else if(_nowLevel < _level[_numOfAction] && doOnce[_numOfAction] == false){
+            doOnce[_numOfAction] = true;
+        }
     }
+    else if(_condition[_numOfAction] == "If level <"){
+        if(_nowLevel <= _level[_numOfAction] && doOnce[_numOfAction] == true){
+            doOnce[_numOfAction] = false;
+            if(_action[_numOfAction] == "Remind"){
+                cmdprocess->doAction("RemindLessthan", _level[_numOfAction]);
+            }
+            else if(_action[_numOfAction] == "Shut down"){
+                cmdprocess->doAction("Shutdown", _level[_numOfAction]);
+            }
+            else if(_action[_numOfAction] == "Sleep"){
+                cmdprocess->doAction("Sleep", _level[_numOfAction]);
+            }
+            else if(_action[_numOfAction] == "Hibernate"){
+                cmdprocess->doAction("Hibernate", _level[_numOfAction]);
+            }
+        }
+        else if(_nowLevel > _level[_numOfAction] && doOnce[_numOfAction] == false){
+            doOnce[_numOfAction] = true;
+        }
+    }
+    doOnce[_numOfAction] = false;
 }
 
 void MainWindow::displayBatteryThings(int batteryLevel, QString batteryStatus)
@@ -382,5 +411,9 @@ void MainWindow::on_actionManage_triggered()
     }
     updateTableDisplay();//update table when mainwindow reopen
     updateActionToDo();//update action when mainwindow reopen
+    updateActionToDo();
+    for(int i = 0; i < 5; i++){
+        doOnce[i] = true;
+    }
     this->show();
 }
