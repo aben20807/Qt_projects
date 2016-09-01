@@ -221,14 +221,14 @@ void MainWindow::updateActionToDo()
 
 void MainWindow::detectActionAndDo(const int &_numOfAction)
 {
-//    qDebug() << _numOfAction;
+    //qDebug() << _numOfAction << doOnce[_numOfAction];
     int _nowLevel = battery->getBatteryLevel();
     if(_condition[_numOfAction] == "If level >"){
         if(_nowLevel >= _level[_numOfAction] && doOnce[_numOfAction] == true){
             doOnce[_numOfAction] = false;
             if(_action[_numOfAction] == "Remind"){
                 cmdprocess->doAction("RemindMorethan", _level[_numOfAction]);
-                qDebug() << "Do Remind";
+                //qDebug() << "Do Remind";
             }
             else if(_action[_numOfAction] == "Shut down"){
                 cmdprocess->doAction("Shutdown", _level[_numOfAction]);
@@ -249,7 +249,7 @@ void MainWindow::detectActionAndDo(const int &_numOfAction)
             doOnce[_numOfAction] = false;
             if(_action[_numOfAction] == "Remind"){
                 cmdprocess->doAction("RemindLessthan", _level[_numOfAction]);
-                qDebug() << "Do Remind";
+                //qDebug() << "Do Remind";
             }
             else if(_action[_numOfAction] == "Shut down"){
                 cmdprocess->doAction("Shutdown", _level[_numOfAction]);
@@ -265,7 +265,6 @@ void MainWindow::detectActionAndDo(const int &_numOfAction)
             doOnce[_numOfAction] = true;
         }
     }
-    doOnce[_numOfAction] = false;
 }
 
 void MainWindow::displayBatteryThings(int batteryLevel, QString batteryStatus)
