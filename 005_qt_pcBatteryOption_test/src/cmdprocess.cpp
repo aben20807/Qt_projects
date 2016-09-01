@@ -18,6 +18,8 @@ QString CmdProcess::getOutputOfBatteryLevel()
     if(err != ""){
         qDebug() << "err:" << err << endl;
     }
+    cmdProcess->start("cls");//clean cmd
+    cmdProcess->waitForFinished(-1); // will wait forever until finished
     return out;
 }
 
@@ -34,6 +36,8 @@ QString CmdProcess::getOutputOfBatteryStatus()
     if(err != ""){
         qDebug() << "err:" <<err << endl;
     }
+    cmdProcess->start("cls");//clean cmd
+    cmdProcess->waitForFinished(-1); // will wait forever until finished
     return out;
 }
 
@@ -81,5 +85,7 @@ void CmdProcess::doAction(QString action, int level)
         }
         //qDebug() << "out:" << out << endl;
     }
-    else return;
+    cmdProcess->start("cls");//clean cmd
+    cmdProcess->waitForFinished(-1); // will wait forever until finished
+    return;
 }
