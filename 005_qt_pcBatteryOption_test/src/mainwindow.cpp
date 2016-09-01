@@ -177,15 +177,9 @@ void MainWindow::updateTableDisplay()
 
 void MainWindow::initActionToDo()
 {
-    updateTime1 = new QTimer;//the period of action1 detection
-    updateTime1->start(1000);
-    updateTime2 = new QTimer;//the period of action2 detection
-    updateTime2->start(1000);
-    updateTime3 = new QTimer;//the period of action3 detection
-    updateTime3->start(1000);
-    updateTime4 = new QTimer;//the period of action4 detection
-    updateTime4->start(1000);
     for(int i = 0; i < 5; i++){
+        detectTime[i] = new QTimer;
+        detectTime[i]->start(1000);
         doOnce[i] = true;
     }
     updateActionToDo();
@@ -197,95 +191,30 @@ void MainWindow::updateActionToDo()
     connectOpen();
     bool ok;
     QSqlQuery qry;
-    /*1*/
-    qry.prepare("select * from data where Number=1");
-    if(qry.exec()){
-        while(qry.next()){
-            if(qry.value(1).toString() != "Choose one" && (qry.value(2).toString() != "") && qry.value(3).toString() != "Nothing"){
-                //qDebug() << "Do action1";//for debug
-                _condition[1] = qry.value(1).toString();
-                _level[1] = qry.value(2).toString().toInt(&ok);
-                _action[1] = qry.value(3).toString();
-                //qDebug() << _condition[1] << _level[1] << _action[1];
-                updateTime1->start();
-                connect(updateTime1, SIGNAL(timeout()), signalMapper, SLOT(map()));
-                signalMapper->setMapping(updateTime1, 1);
-                connect(signalMapper, SIGNAL(mapped(const int &)), this, SLOT(detectActionAndDo(const int &)));
-            }
-            else{
-                //qDebug() << "else";
-                updateTime1->stop();
-            }
-        }
-    }
-    else{
-        QMessageBox::critical(this, tr("Error a1::"), qry.lastError().text());
-    }
-    /*2*/
-    qry.prepare("select * from data where Number=2");
-    if(qry.exec()){
-        while(qry.next()){
-            if(qry.value(1).toString() != "Choose one" && (qry.value(2).toString() != "") && qry.value(3).toString() != "Nothing"){
-                //qDebug() << "Do action2";
-                _condition[2] = qry.value(1).toString();
-                _level[2] = qry.value(2).toString().toInt(&ok);
-                _action[2] = qry.value(3).toString();
-                updateTime2->start();
-                connect(updateTime2, SIGNAL(timeout()), signalMapper, SLOT(map()));
-                signalMapper->setMapping(updateTime2, 2);
-                connect(signalMapper, SIGNAL(mapped(const int &)), this, SLOT(detectActionAndDo(const int &)));
-            }
-            else{
-                updateTime2->stop();
+    for(int i = 1; i < 5; i++){//detect 4 action by for loop
+        qry.prepare("select * from data where Number='"+QString::number(i)+"'");
+        if(qry.exec()){
+            while(qry.next()){
+                if(qry.value(1).toString() != "Choose one" && (qry.value(2).toString() != "") && qry.value(3).toString() != "Nothing"){
+                    //qDebug() << "Do action1";//for debug
+                    _condition[i] = qry.value(1).toString();
+                    _level[i] = qry.value(2).toString().toInt(&ok);
+                    _action[i] = qry.value(3).toString();
+                    //qDebug() << _condition[1] << _level[1] << _action[1];
+                    detectTime[i]->start();
+                    connect(detectTime[i], SIGNAL(timeout()), signalMapper, SLOT(map()));
+                    signalMapper->setMapping(detectTime[i], i);
+                    connect(signalMapper, SIGNAL(mapped(const int &)), this, SLOT(detectActionAndDo(const int &)));
+                }
+                else{
+                    //qDebug() << "else";
+                    detectTime[i]->stop();
+                }
             }
         }
-    }
-    else{
-        QMessageBox::critical(this, tr("Error a2::"), qry.lastError().text());
-    }
-    /*3*/
-    qry.prepare("select * from data where Number=3");
-    if(qry.exec()){
-        while(qry.next()){
-            if(qry.value(1).toString() != "Choose one" && (qry.value(2).toString() != "") && qry.value(3).toString() != "Nothing"){
-                //qDebug() << "Do action3";
-                _condition[3] = qry.value(1).toString();
-                _level[3] = qry.value(2).toString().toInt(&ok);
-                _action[3] = qry.value(3).toString();
-                updateTime3->start();
-                connect(updateTime3, SIGNAL(timeout()), signalMapper, SLOT(map()));
-                signalMapper->setMapping(updateTime3, 3);
-                connect(signalMapper, SIGNAL(mapped(const int &)), this, SLOT(detectActionAndDo(const int &)));
-            }
-            else{
-                updateTime3->stop();
-            }
+        else{
+            QMessageBox::critical(this, tr("Error a::"), qry.lastError().text());
         }
-    }
-    else{
-        QMessageBox::critical(this, tr("Error a3::"), qry.lastError().text());
-    }
-    /*4*/
-    qry.prepare("select * from data where Number=4");
-    if(qry.exec()){
-        while(qry.next()){
-            if(qry.value(1).toString() != "Choose one" && (qry.value(2).toString() != "") && qry.value(3).toString() != "Nothing"){
-                //qDebug() << "Do action4";
-                _condition[4] = qry.value(1).toString();
-                _level[4] = qry.value(2).toString().toInt(&ok);
-                _action[4] = qry.value(3).toString();
-                updateTime4->start();
-                connect(updateTime4, SIGNAL(timeout()), signalMapper, SLOT(map()));
-                signalMapper->setMapping(updateTime4, 4);
-                connect(signalMapper, SIGNAL(mapped(const int &)), this, SLOT(detectActionAndDo(const int &)));
-            }
-            else{
-                updateTime4->stop();
-            }
-        }
-    }
-    else{
-        QMessageBox::critical(this, tr("Error a4::"), qry.lastError().text());
     }
     connectClose();
 }

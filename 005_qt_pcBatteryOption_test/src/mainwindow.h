@@ -104,10 +104,7 @@ private:
     QString _condition[5];
     int _level[5];
     QString _action[5];
-    QTimer *updateTime1;
-    QTimer *updateTime2;
-    QTimer *updateTime3;
-    QTimer *updateTime4;
+    QTimer *detectTime[5];
 };
 
 #endif // MAINWINDOW_H
