@@ -19,7 +19,7 @@ signals:
 public slots:
 
 private:
-    CmdProcess *cmdprocess;
+
 };
 
 #endif // BATTERY_H
