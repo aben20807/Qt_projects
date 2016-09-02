@@ -245,8 +245,8 @@ public:
         menuMinimize_to_2->addAction(actionSystem_tray);
         menuMinimize_to_2->addAction(actionTaskbar);
         menuHelp->addAction(actionError_report);
-        menuHelp->addAction(actionAbout);
         menuHelp->addAction(actionAction_explaintion);
+        menuHelp->addAction(actionAbout);
         menuSchedule->addAction(actionManage);
         menuSchedule->addAction(actionCheck_log);
         menuFile->addAction(actionQuit);

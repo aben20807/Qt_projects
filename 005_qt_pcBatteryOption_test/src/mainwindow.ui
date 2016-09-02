@@ -396,8 +396,8 @@ border: 1px solid black;
      <string>Help</string>
     </property>
     <addaction name="actionError_report"/>
-    <addaction name="actionAbout"/>
     <addaction name="actionAction_explaintion"/>
+    <addaction name="actionAbout"/>
    </widget>
    <widget class="QMenu" name="menuSchedule">
     <property name="font">

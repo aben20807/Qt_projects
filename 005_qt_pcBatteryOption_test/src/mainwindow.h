@@ -87,6 +87,12 @@ private slots:
 
     void on_actionManage_triggered();
 
+    void on_actionError_report_triggered();
+
+    void on_actionAbout_triggered();
+
+    void on_actionAction_explaintion_triggered();
+
 private:
     Ui::MainWindow *ui;
     QTranslator *translator;

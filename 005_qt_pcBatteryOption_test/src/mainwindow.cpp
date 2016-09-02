@@ -382,3 +382,38 @@ void MainWindow::on_actionManage_triggered()
     }
     this->show();
 }
+
+void MainWindow::on_actionError_report_triggered()
+{
+    QMessageBox errorReport;
+    QFont font = errorReport.font();
+    font.setPointSize(10);
+    font.setFamily("Microsoft JhengHei");//微軟正黑體
+    errorReport.setFont(font);
+    errorReport.setWindowTitle("Error Report");
+    errorReport.setText(tr("Let me know by following method\nGitHub : https://github.com/aben20807"));
+    errorReport.setStandardButtons(QMessageBox::Ok);
+    errorReport.show();
+    errorReport.exec();
+}
+
+void MainWindow::on_actionAbout_triggered()
+{
+    QMessageBox about;
+    QFont font = about.font();
+    font.setPointSize(10);
+    font.setFamily("Microsoft JhengHei");//微軟正黑體
+    about.setFont(font);
+    about.setWindowTitle("About");
+    about.setText("aben20807's Program");
+    about.setInformativeText("LICENSE : GPLv3\nI wrote this program for practicing.");
+    about.setStandardButtons(QMessageBox::Ok);
+//    about.setIconPixmap(QPixMap(":/pics"));
+    about.show();
+    about.exec();
+}
+
+void MainWindow::on_actionAction_explaintion_triggered()
+{
+
+}
