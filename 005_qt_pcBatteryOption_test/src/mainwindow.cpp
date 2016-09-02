@@ -40,7 +40,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::initMenu()
+void inline MainWindow::initMenu()
 {
     ui->action_zhTW->setIcon(QIcon(":/img/flag_taiwan"));
     ui->action_enUS->setIcon(QIcon(":/img/flag_usa"));
@@ -71,7 +71,7 @@ void MainWindow::on_action_enUS_triggered()
     }
 }
 
-void MainWindow::applyLanguage()
+void inline MainWindow::applyLanguage()
 {
     if(languageMode == "zhTW"){
         qDebug() << "change to 繁體中文" << endl;
@@ -89,7 +89,7 @@ void MainWindow::applyLanguage()
     //initGui
 }
 
-void MainWindow::initSystemTrayIcon()
+void inline MainWindow::initSystemTrayIcon()
 {
     tray = new QSystemTrayIcon(this);
     updateSystemTrayIconDisplay();
@@ -112,23 +112,24 @@ void MainWindow::initSystemTrayIcon()
 
 void MainWindow::updateSystemTrayIconDisplay()
 {
-    QPixmap pixmap(26,26);//icon size
+    QPixmap pixmap(32, 32);//icon size
     if(battery->getBatteryLevel() < 30){//icon backround
         pixmap.fill(QColor("#e60012"));//red
     }
     else if(battery->getBatteryStatus() == "Battery using"){
-        pixmap.fill(QColor("#22ac38"));//green
+        pixmap.fill(QColor("#22af38"));//green
     }
     else{
         pixmap.fill(QColor("#0075a9"));//blue
     }
     QPainter painter(&pixmap);
     QFont font = painter.font();
+
     if(battery->getBatteryLevel() == 100){
-        font.setPointSize(12);
+        font.setPointSize(14);
     }
     else{
-        font.setPointSize(14);
+        font.setPointSize(18);
     }
     font.setBold(true);
     font.setFamily("Microsoft JhengHei");//微軟正黑體
@@ -142,7 +143,7 @@ void MainWindow::updateSystemTrayIconDisplay()
     /*TODO beautiful tooltip, add picture?*/
 }
 
-void MainWindow::initBatteryDisplay()
+void inline MainWindow::initBatteryDisplay()
 {
     updateBatteryDisplay();//init when begin
     connect(updateTime, SIGNAL(timeout()),
@@ -154,7 +155,7 @@ void MainWindow::updateBatteryDisplay()
     displayBatteryThings(battery->getBatteryLevel(),battery->getBatteryStatus());
 }
 
-void MainWindow::initTableDisplay()
+void inline MainWindow::initTableDisplay()
 {
     updateTableDisplay();//init when begin
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
@@ -177,7 +178,7 @@ void MainWindow::updateTableDisplay()
     /*TODO center the text*/
 }
 
-void MainWindow::initActionToDo()
+void inline MainWindow::initActionToDo()
 {
     for(int i = 0; i < 5; i++){
         detectTime[i] = new QTimer;
@@ -269,7 +270,7 @@ void MainWindow::detectActionAndDo(const int &_numOfAction)
     }
 }
 
-void MainWindow::displayBatteryThings(int batteryLevel, QString batteryStatus)
+void inline MainWindow::displayBatteryThings(int batteryLevel, QString batteryStatus)
 {
     ui->progressBar->setValue(batteryLevel);
     ui->label_batteryLevel->setText(QString::number(batteryLevel) + "%");

@@ -30,20 +30,19 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void initMenu();
-    void applyLanguage();
-    void initSystemTrayIcon();
-    void initBatteryDisplay();
-    void displayBatteryThings(int batteryLevel, QString batteryStatus);
+    inline void initMenu();
+    inline void applyLanguage();
+    inline void initSystemTrayIcon();
+    inline void initBatteryDisplay();
+    inline void displayBatteryThings(int batteryLevel, QString batteryStatus);
     void changeEvent(QEvent *event);
-    void initTableDisplay();
-    void initActionToDo();
-
+    inline void initTableDisplay();
+    inline void initActionToDo();
     void show();
 
     QSqlDatabase actiondb;
     /*use for manipulare databace*/
-    bool connectOpen(){
+    inline bool connectOpen(){
         actiondb = QSqlDatabase::addDatabase("QSQLITE");
         actiondb.setDatabaseName("./res/db/batteryAction.sqlite");
         if(!actiondb.open()){
@@ -54,7 +53,7 @@ public:
             return true;
         }
     }
-    void connectClose(){
+    inline void connectClose(){
         actiondb.close();
         actiondb.removeDatabase(QSqlDatabase::defaultConnection);
     }
