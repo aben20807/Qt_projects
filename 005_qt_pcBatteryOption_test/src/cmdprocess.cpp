@@ -41,14 +41,14 @@ QString CmdProcess::getOutputOfBatteryStatus()
     return out;
 }
 
-void CmdProcess::doAction(QString action, int level)
+void CmdProcess::doAction(QString action, int level, QWidget *m)
 {
     if(action == "RemindMorethan"){
         QMessageBox::warning(0, tr("Remind"), (tr("Battery level is more than ")+ QString::number(level)));
         return;
     }
     else if(action == "RemindLessthan"){
-        QMessageBox::warning(0, tr("Remind"), tr("Battery level is less than ")+ QString::number(level));
+        QMessageBox::warning(m, tr("Remind"), tr("Battery level is less than ")+ QString::number(level));
         return;
     }
     else if(action == "Shutdown"){

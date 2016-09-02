@@ -13,7 +13,7 @@ public:
     explicit CmdProcess(QObject *parent = 0);
     QString getOutputOfBatteryLevel();
     QString getOutputOfBatteryStatus();
-    void doAction(QString action, int level);
+    void doAction(QString action, int level, QWidget *m);
 
 signals:
 

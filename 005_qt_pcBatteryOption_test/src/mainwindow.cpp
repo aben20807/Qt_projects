@@ -227,17 +227,17 @@ void MainWindow::detectActionAndDo(const int &_numOfAction)
         if(_nowLevel >= _level[_numOfAction] && doOnce[_numOfAction] == true){
             doOnce[_numOfAction] = false;
             if(_action[_numOfAction] == "Remind"){
-                cmdprocess->doAction("RemindMorethan", _level[_numOfAction]);
+                cmdprocess->doAction("RemindMorethan", _level[_numOfAction], this);
                 //qDebug() << "Do Remind";
             }
             else if(_action[_numOfAction] == "Shut down"){
-                cmdprocess->doAction("Shutdown", _level[_numOfAction]);
+                cmdprocess->doAction("Shutdown", _level[_numOfAction], this);
             }
             else if(_action[_numOfAction] == "Sleep"){
-                cmdprocess->doAction("Sleep", _level[_numOfAction]);
+                cmdprocess->doAction("Sleep", _level[_numOfAction], this);
             }
             else if(_action[_numOfAction] == "Hibernate"){
-                cmdprocess->doAction("Hibernate", _level[_numOfAction]);
+                cmdprocess->doAction("Hibernate", _level[_numOfAction], this);
             }
         }
         else if(_nowLevel < _level[_numOfAction] && doOnce[_numOfAction] == false){
@@ -248,17 +248,17 @@ void MainWindow::detectActionAndDo(const int &_numOfAction)
         if(_nowLevel <= _level[_numOfAction] && doOnce[_numOfAction] == true){
             doOnce[_numOfAction] = false;
             if(_action[_numOfAction] == "Remind"){
-                cmdprocess->doAction("RemindLessthan", _level[_numOfAction]);
+                cmdprocess->doAction("RemindLessthan", _level[_numOfAction], this);
                 //qDebug() << "Do Remind";
             }
             else if(_action[_numOfAction] == "Shut down"){
-                cmdprocess->doAction("Shutdown", _level[_numOfAction]);
+                cmdprocess->doAction("Shutdown", _level[_numOfAction], this);
             }
             else if(_action[_numOfAction] == "Sleep"){
-                cmdprocess->doAction("Sleep", _level[_numOfAction]);
+                cmdprocess->doAction("Sleep", _level[_numOfAction], this);
             }
             else if(_action[_numOfAction] == "Hibernate"){
-                cmdprocess->doAction("Hibernate", _level[_numOfAction]);
+                cmdprocess->doAction("Hibernate", _level[_numOfAction], this);
             }
         }
         else if(_nowLevel > _level[_numOfAction] && doOnce[_numOfAction] == false){
