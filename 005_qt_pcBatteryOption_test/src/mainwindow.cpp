@@ -113,14 +113,14 @@ void inline MainWindow::initSystemTrayIcon()
 void MainWindow::updateSystemTrayIconDisplay()
 {
     QPixmap pixmap(32, 32);//icon size
-    if(battery->getBatteryLevel() < 30){//icon backround
+    if(battery->getBatteryStatus() == "AC charging"){//icon backround
+        pixmap.fill(QColor("#0075a9"));//blue
+    }
+    else if(battery->getBatteryLevel() < 30){
         pixmap.fill(QColor("#e60012"));//red
     }
-    else if(battery->getBatteryStatus() == "Battery using"){
-        pixmap.fill(QColor("#22af38"));//green
-    }
     else{
-        pixmap.fill(QColor("#0075a9"));//blue
+        pixmap.fill(QColor("#22af38"));//green
     }
     QPainter painter(&pixmap);
     QFont font = painter.font();
