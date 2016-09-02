@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+
+
     /*set not to change the size of window*/
     Qt::WindowFlags flags = 0;
     flags |= Qt::WindowMinimizeButtonHint;
@@ -304,11 +306,15 @@ void MainWindow::show()//Overriding show()
 
 void MainWindow::on_actionQuit_triggered()
 {
+    /*Set program can be closed after qmessagebox when not hide in system tray*/
+    qApp->setQuitOnLastWindowClosed(true);
     this->close();
 }
 
 void MainWindow::on_actionMinimize_triggered()
 {
+    /*Set program not to close after qmessagebox when hide in system tray*/
+    qApp->setQuitOnLastWindowClosed(false);
     tray->setVisible(true);
     this->hide();
     //    tray->showMessage(tr("Info"),tr("Minimize to system tray!"),
@@ -319,6 +325,8 @@ void MainWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
 {
     switch (reason) {
     case (QSystemTrayIcon::DoubleClick):
+        /*Set program can be closed after qmessagebox when not hide in system tray*/
+        qApp->setQuitOnLastWindowClosed(true);
         this->show();
         tray->setVisible(false);
         break;
