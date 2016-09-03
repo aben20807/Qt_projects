@@ -440,11 +440,11 @@ void MainWindow::on_actionAbout_triggered()
     font.setPointSize(10);
     font.setFamily("Microsoft JhengHei");//微軟正黑體
     about.setFont(font);
-    about.setWindowTitle(tr("About"));
-    about.setText(tr("aben20807's Program"));
-    about.setInformativeText(tr("LICENSE : GPLv3\nI wrote this program for practicing."));
+    about.setWindowTitle(tr("About Betterreminder"));
+    about.setText(tr("aben20807's Program\n"
+                     "\nBetterreminder is for Better Battery Reminder\n"
+                     "LICENSE : GPLv3\nI wrote this program for practicing."));
     about.setStandardButtons(QMessageBox::Ok);
-//    about.setIconPixmap(QPixMap(":/pics"));
     about.show();
     about.exec();
 }

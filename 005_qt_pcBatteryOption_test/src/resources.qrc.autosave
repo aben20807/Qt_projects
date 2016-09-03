@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/img">
+        <file alias="flag_taiwan">res/icon/flag-taiwan.png</file>
+        <file alias="flag_usa">res/icon/flag-usa.png</file>
+        <file alias="explaintion">res/img/explaintion.jpg</file>
+        <file alias="logo">res/img/logo.png</file>
+    </qresource>
+</RCC>

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Battery</string>
+   <string>Betterreminder</string>
   </property>
   <property name="toolTip">
    <string/>
@@ -518,7 +518,7 @@ border: 1px solid black;
   </action>
   <action name="actionAbout">
    <property name="text">
-    <string>About</string>
+    <string>About Betterreminder</string>
    </property>
   </action>
   <action name="actionAction_explaintion">

@@ -267,7 +267,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Battery", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Betterreminder", 0));
 #ifndef QT_NO_TOOLTIP
         MainWindow->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
@@ -282,7 +282,7 @@ public:
         actionSystem_tray->setText(QApplication::translate("MainWindow", "System tray", 0));
         actionTaskbar->setText(QApplication::translate("MainWindow", "Taskbar", 0));
         actionError_report->setText(QApplication::translate("MainWindow", "Error Report", 0));
-        actionAbout->setText(QApplication::translate("MainWindow", "About", 0));
+        actionAbout->setText(QApplication::translate("MainWindow", "About Betterreminder", 0));
         actionAction_explaintion->setText(QApplication::translate("MainWindow", "Action Explanation", 0));
         actionAbout_Actions->setText(QApplication::translate("MainWindow", "About Actions", 0));
         actionReference_or_Resource->setText(QApplication::translate("MainWindow", "Reference or Resource", 0));
