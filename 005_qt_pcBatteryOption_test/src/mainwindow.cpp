@@ -161,13 +161,12 @@ void inline MainWindow::displayBatteryThings(int batteryLevel, QString batterySt
     ui->label_batteryLevel->setText(QString::number(batteryLevel) + "%");
     ui->label_batteryLevel_2->setText(QString::number(batteryLevel) + "%");
     ui->label_batteryLevel_2->raise();
-    ui->label_batteryLevel_2->setStyleSheet("color: rgb(255, 255, 255)");//white
-    //    if(batteryLevel >= 55){
-    //        ui->label_batteryLevel_2->setStyleSheet("color: rgb(255, 255, 255)");//white
-    //    }
-    //    else{
-    //        ui->label_batteryLevel_2->setStyleSheet("color: rgb(0, 0, 0)");//black
-    //    }
+    if(batteryLevel >= 55){
+        ui->label_batteryLevel_2->setStyleSheet("color: rgb(255, 255, 255)");//white
+    }
+    else{
+        ui->label_batteryLevel_2->setStyleSheet("color: rgb(0, 0, 0)");//black
+    }
     ui->label_batteryStatus->setText(batteryStatus);
 
     if(battery->getBatteryStatus() == "AC charging"){//change color of progressBar
@@ -175,7 +174,7 @@ void inline MainWindow::displayBatteryThings(int batteryLevel, QString batterySt
                                        "padding: 1px;border-top-right-radius: 7px;border-top-left-radius: 7px;"
                                        "border-bottom-right-radius: 7px;border-bottom-left-radius: 7px;"
                                        "background: QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0,"
-                                       "stop: 0 #eee,stop: 0.4999 #ddd,stop: 0.5 #ccc,stop: 1 #ddd );"
+                                       "stop: 0 #fff,stop: 0.4999 #eee,stop: 0.5 #ddd,stop: 1 #eee );"
                                        "width: 15px;}"
                                        "QProgressBar::chunk {background: QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0,"
                                        "stop: 0 #78d,stop: 0.4999 #46a,stop: 0.5 #45a,stop: 1 #238 );"
@@ -187,7 +186,7 @@ void inline MainWindow::displayBatteryThings(int batteryLevel, QString batterySt
                                        "padding: 1px;border-top-right-radius: 7px;border-top-left-radius: 7px;"
                                        "border-bottom-right-radius: 7px;border-bottom-left-radius: 7px;"
                                        "background: QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0,"
-                                       "stop: 0 #eee,stop: 0.4999 #ddd,stop: 0.5 #ccc,stop: 1 #ddd );"
+                                       "stop: 0 #fff,stop: 0.4999 #eee,stop: 0.5 #ddd,stop: 1 #eee );"
                                        "width: 15px;}"
                                        "QProgressBar::chunk {background: QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0,"
                                        "stop: 0 #f78,stop: 0.4999 #d46,stop: 0.5 #d45,stop: 1 #b23 );"
@@ -199,7 +198,7 @@ void inline MainWindow::displayBatteryThings(int batteryLevel, QString batterySt
                                        "padding: 1px;border-top-right-radius: 7px;border-top-left-radius: 7px;"
                                        "border-bottom-right-radius: 7px;border-bottom-left-radius: 7px;"
                                        "background: QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0,"
-                                       "stop: 0 #eee,stop: 0.4999 #ddd,stop: 0.5 #ccc,stop: 1 #ddd );"
+                                       "stop: 0 #fff,stop: 0.4999 #eee,stop: 0.5 #ddd,stop: 1 #eee );"
                                        "width: 15px;}"
                                        "QProgressBar::chunk {background: QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0,"
                                        "stop: 0 #7d8,stop: 0.4999 #4a6,stop: 0.5 #4a5,stop: 1 #283 );"
