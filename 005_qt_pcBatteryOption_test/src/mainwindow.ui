@@ -395,8 +395,11 @@ border: 1px solid black;
     <property name="title">
      <string>Help</string>
     </property>
-    <addaction name="actionError_report"/>
+    <addaction name="actionAbout_Actions"/>
     <addaction name="actionAction_explaintion"/>
+    <addaction name="separator"/>
+    <addaction name="actionReference_or_Resource"/>
+    <addaction name="actionError_report"/>
     <addaction name="actionAbout"/>
    </widget>
    <widget class="QMenu" name="menuSchedule">
@@ -521,6 +524,16 @@ border: 1px solid black;
   <action name="actionAction_explaintion">
    <property name="text">
     <string>Action Explanation</string>
+   </property>
+  </action>
+  <action name="actionAbout_Actions">
+   <property name="text">
+    <string>About Actions</string>
+   </property>
+  </action>
+  <action name="actionReference_or_Resource">
+   <property name="text">
+    <string>Reference or Resource</string>
    </property>
   </action>
  </widget>

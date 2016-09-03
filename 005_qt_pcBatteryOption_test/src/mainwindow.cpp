@@ -427,7 +427,7 @@ void MainWindow::on_actionError_report_triggered()
     font.setPointSize(10);
     font.setFamily("Microsoft JhengHei");//微軟正黑體
     errorReport.setFont(font);
-    errorReport.setWindowTitle("Error Report");
+    errorReport.setWindowTitle(tr("Error Report"));
     errorReport.setText(tr("Let me know by following method\nGitHub : https://github.com/aben20807"));
     errorReport.setStandardButtons(QMessageBox::Ok);
     errorReport.show();
@@ -441,9 +441,9 @@ void MainWindow::on_actionAbout_triggered()
     font.setPointSize(10);
     font.setFamily("Microsoft JhengHei");//微軟正黑體
     about.setFont(font);
-    about.setWindowTitle("About");
-    about.setText("aben20807's Program");
-    about.setInformativeText("LICENSE : GPLv3\nI wrote this program for practicing.");
+    about.setWindowTitle(tr("About"));
+    about.setText(tr("aben20807's Program"));
+    about.setInformativeText(tr("LICENSE : GPLv3\nI wrote this program for practicing."));
     about.setStandardButtons(QMessageBox::Ok);
 //    about.setIconPixmap(QPixMap(":/pics"));
     about.show();
@@ -452,5 +452,45 @@ void MainWindow::on_actionAbout_triggered()
 
 void MainWindow::on_actionAction_explaintion_triggered()
 {
+    QMessageBox explaintion;
+    QFont font = explaintion.font();
+    font.setPointSize(10);
+    font.setFamily("Microsoft JhengHei");//微軟正黑體
+    explaintion.setFont(font);
+    explaintion.setWindowTitle(tr("Action Explaintion"));
+    explaintion.setIconPixmap(QPixmap(":/img/explaintion"));
+    explaintion.setStandardButtons(QMessageBox::Ok);
+    explaintion.show();
+    explaintion.exec();
+}
 
+void MainWindow::on_actionAbout_Actions_triggered()
+{
+    QMessageBox aboutActions;
+    QFont font = aboutActions.font();
+    font.setPointSize(10);
+    font.setFamily("Microsoft JhengHei");//微軟正黑體
+    aboutActions.setFont(font);
+    aboutActions.setWindowTitle(tr("About Actions"));
+    aboutActions.setText(tr("\nI will say strongly recommend you just to use \"Remind\" action\n"
+                            "\"Help -> Action Explaintion\" are my experiences or data form website\n"
+                            "Score : 5 -> Good, 1 -> Bad\n"));
+    aboutActions.setStandardButtons(QMessageBox::Ok);
+    aboutActions.show();
+    aboutActions.exec();
+}
+
+void MainWindow::on_actionReference_or_Resource_triggered()
+{
+    QMessageBox referenceResource;
+    QFont font = referenceResource.font();
+    font.setPointSize(8);
+    font.setFamily("Microsoft JhengHei");//微軟正黑體
+    referenceResource.setFont(font);
+    referenceResource.setWindowTitle(tr("Reference or Resource"));
+    referenceResource.setText(tr("Action Explaintion : https://www.foolegg.com/what-are-the-differences-between-shut-down-standby-sleep-hibernate-and-hybrid-sleep/\n"
+                                 "Language icon : https://www.iconfinder.com/iconsets/142-mini-country-flags-16x16px"));
+    referenceResource.setStandardButtons(QMessageBox::Ok);
+    referenceResource.show();
+    referenceResource.exec();
 }

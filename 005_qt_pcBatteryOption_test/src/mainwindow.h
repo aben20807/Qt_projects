@@ -93,6 +93,10 @@ private slots:
 
     void on_actionAction_explaintion_triggered();
 
+    void on_actionAbout_Actions_triggered();
+
+    void on_actionReference_or_Resource_triggered();
+
 private:
     Ui::MainWindow *ui;
     QTranslator *translator;

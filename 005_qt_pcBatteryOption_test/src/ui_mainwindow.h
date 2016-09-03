@@ -39,6 +39,8 @@ public:
     QAction *actionError_report;
     QAction *actionAbout;
     QAction *actionAction_explaintion;
+    QAction *actionAbout_Actions;
+    QAction *actionReference_or_Resource;
     QWidget *centralWidget;
     QGraphicsView *graphicsView;
     QTableView *tableView;
@@ -96,6 +98,10 @@ public:
         actionAbout->setObjectName(QStringLiteral("actionAbout"));
         actionAction_explaintion = new QAction(MainWindow);
         actionAction_explaintion->setObjectName(QStringLiteral("actionAction_explaintion"));
+        actionAbout_Actions = new QAction(MainWindow);
+        actionAbout_Actions->setObjectName(QStringLiteral("actionAbout_Actions"));
+        actionReference_or_Resource = new QAction(MainWindow);
+        actionReference_or_Resource->setObjectName(QStringLiteral("actionReference_or_Resource"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         graphicsView = new QGraphicsView(centralWidget);
@@ -244,8 +250,11 @@ public:
         submenuLanguage->addAction(action_enUS);
         menuMinimize_to_2->addAction(actionSystem_tray);
         menuMinimize_to_2->addAction(actionTaskbar);
-        menuHelp->addAction(actionError_report);
+        menuHelp->addAction(actionAbout_Actions);
         menuHelp->addAction(actionAction_explaintion);
+        menuHelp->addSeparator();
+        menuHelp->addAction(actionReference_or_Resource);
+        menuHelp->addAction(actionError_report);
         menuHelp->addAction(actionAbout);
         menuSchedule->addAction(actionManage);
         menuSchedule->addAction(actionCheck_log);
@@ -275,6 +284,8 @@ public:
         actionError_report->setText(QApplication::translate("MainWindow", "Error Report", 0));
         actionAbout->setText(QApplication::translate("MainWindow", "About", 0));
         actionAction_explaintion->setText(QApplication::translate("MainWindow", "Action Explanation", 0));
+        actionAbout_Actions->setText(QApplication::translate("MainWindow", "About Actions", 0));
+        actionReference_or_Resource->setText(QApplication::translate("MainWindow", "Reference or Resource", 0));
 #ifndef QT_NO_TOOLTIP
         tableView->setToolTip(QApplication::translate("MainWindow", "Schedule", 0));
 #endif // QT_NO_TOOLTIP
