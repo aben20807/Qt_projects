@@ -7,8 +7,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-
-
     /*set not to change the size of window*/
     Qt::WindowFlags flags = 0;
     flags |= Qt::WindowMinimizeButtonHint;
@@ -21,7 +19,8 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->label_connectStatus->setText(tr("Failed to connect db!"));
     }
     else{
-        ui->label_connectStatus->setText(tr("Connected!"));
+        //ui->label_connectStatus->setText(tr("Connected!"));
+        ui->label_connectStatus->setText(tr(""));
     }
 
     /*init*/

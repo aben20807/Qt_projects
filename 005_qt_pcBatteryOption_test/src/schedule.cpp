@@ -12,7 +12,8 @@ Schedule::Schedule(QWidget *parent) :
         ui->label_connectStatus->setText("Failed to connect db!");
     }
     else{
-        ui->label_connectStatus->setText("Connected!");
+        //ui->label_connectStatus->setText("Connected!");
+        ui->label_connectStatus->setText("");
     }
     readDataFromDatabase();
 }

@@ -2,8 +2,7 @@
     <qresource prefix="/img">
         <file alias="flag_taiwan">res/icon/flag-taiwan.png</file>
         <file alias="flag_usa">res/icon/flag-usa.png</file>
-        <file>res/img/2016-09-03_154012.jpg</file>
-        <file>res/img/2016-09-03_160413.jpg</file>
-        <file alias="explaintion">res/img/2016-09-03_163108.jpg</file>
+        <file alias="explaintion">res/img/explaintion.jpg</file>
+        <file alias="logo">res/img/logo.png</file>
     </qresource>
 </RCC>
