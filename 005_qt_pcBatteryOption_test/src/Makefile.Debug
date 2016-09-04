@@ -1880,28 +1880,7 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QDialog \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QAbstractButton \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qabstractbutton.h \
-		ui_mainwindow.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/QVariant \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QApplication \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qapplication.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QGraphicsView \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qgraphicsview.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qscrollarea.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qgraphicsscene.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QHeaderView \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QLabel \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qlabel.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QMenuBar \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qmenubar.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QProgressBar \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qprogressbar.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QTableView \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qtableview.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QWidget
+		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o mainwindow.cpp
 
 debug/schedule.o: schedule.cpp schedule.h \
@@ -2277,26 +2256,7 @@ debug/schedule.o: schedule.cpp schedule.h \
 		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/QSettings \
 		battery.h \
 		cmdprocess.h \
-		ui_schedule.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore/QVariant \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QApplication \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qapplication.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QComboBox \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QDialogButtonBox \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qdialogbuttonbox.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QGraphicsView \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qgraphicsview.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qscrollarea.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qgraphicsscene.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QHeaderView \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QLabel \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qlabel.h \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/QLineEdit \
-		C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets/qlineedit.h
+		ui_schedule.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\schedule.o schedule.cpp
 
 debug/battery.o: battery.cpp battery.h \

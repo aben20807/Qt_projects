@@ -168,7 +168,7 @@ void MainWindow::updateSystemTrayIconDisplay()
 {
     QPixmap pixmap(32, 32);//icon size
     if(battery->getBatteryStatus() == "AC charging"){//icon backround
-        pixmap.fill(QColor("#0075a9"));//blue
+        pixmap.fill(QColor("#0077aa"));//blue
     }
     else if(battery->getBatteryLevel() < 30){
         pixmap.fill(QColor("#e60012"));//red
@@ -477,7 +477,7 @@ void MainWindow::on_actionAbout_triggered()
     font.setFamily("Microsoft JhengHei");//微軟正黑體
     about.setFont(font);
     about.setWindowTitle(tr("About Betterreminder"));
-    about.setIconPixmap(QPixmap(":/img/icon.png"));
+    about.setIconPixmap(QPixmap(":/img/icon.png").scaled(48, 48));
     about.setText(tr("aben20807's Program\n"
                      "\nBetterreminder is for Better Battery Reminder\n"
                      "LICENSE : GPLv3\nI wrote this program for practicing. OuO"));
