@@ -14,6 +14,7 @@
 #include <QtSql>
 #include <QPainter>
 #include <QSignalMapper>
+#include<QSettings>
 #include "battery.h"
 #include "schedule.h"
 #include "cmdprocess.h"
@@ -30,8 +31,11 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    inline void loadSettingIni();
+    inline void saveSettingIni(QString _languageMode, QString _minimizeMode);
     inline void initMenu();
     inline void applyLanguage();
+    inline void applyMinimize();
     inline void initSystemTrayIcon();
     inline void initBatteryDisplay();
     inline void displayBatteryThings(int batteryLevel, QString batteryStatus);

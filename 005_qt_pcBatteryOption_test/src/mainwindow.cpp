@@ -26,8 +26,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     /*init*/
     battery = new Battery;
-    //    schedule = new Schedule;
     initMenu();
+    loadSettingIni();
     updateTime = new QTimer;//the period of update battery level and status
     updateTime->start(1000);
     initSystemTrayIcon();
@@ -37,22 +37,47 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 MainWindow::~MainWindow()
 {
+    saveSettingIni(minimizeMode, languageMode);
     delete ui;
+}
+
+void MainWindow::loadSettingIni()
+{
+    QString path = QApplication::applicationDirPath();
+    path += "./res/ini/setting.ini";
+    QSettings setting(path,QSettings::IniFormat);
+    setting.beginGroup("MainWindow");
+    minimizeMode = setting.value("languageMode", "Taskbar").toString();
+    languageMode = setting.value("minimizeMode", "enUS").toString();
+    setting.endGroup();
+    applyLanguage();
+    applyMinimize();
+}
+
+void MainWindow::saveSettingIni(QString _languageMode, QString _minimizeMode)
+{
+    QString path = QApplication::applicationDirPath();
+    path += "./res/ini/setting.ini";
+    QSettings setting(path,QSettings::IniFormat);
+    setting.beginGroup("MainWindow");
+    setting.setValue("minimizeMode", _minimizeMode);
+    setting.setValue("languageMode", _languageMode);
+    setting.endGroup();
 }
 
 void inline MainWindow::initMenu()
 {
     ui->action_zhTW->setIcon(QIcon(":/img/flag_taiwan"));
     ui->action_enUS->setIcon(QIcon(":/img/flag_usa"));
+    ui->action_zhTW->setCheckable(true);
     ui->action_enUS->setCheckable(true);
-    ui->action_enUS->setCheckable(true);
-    languageMode = "enUS";
-    ui->action_enUS->setChecked(true);
+//    languageMode = "enUS";
+//    ui->action_enUS->setChecked(true);
 
     ui->actionSystem_tray->setCheckable(true);
     ui->actionTaskbar->setCheckable(true);
-    minimizeMode = "Taskbar";
-    ui->actionTaskbar->setChecked(true);
+//    minimizeMode = "Taskbar";
+//    ui->actionTaskbar->setChecked(true);
 }
 
 void MainWindow::on_action_zhTW_triggered()
@@ -87,6 +112,36 @@ void inline MainWindow::applyLanguage()
     }
     //    qApp->installTranslator(translator);
     //initGui
+}
+
+void MainWindow::on_actionSystem_tray_triggered()
+{
+    if(minimizeMode != "System_tray"){
+        minimizeMode = "System_tray";
+        applyMinimize();
+    }
+}
+
+void MainWindow::on_actionTaskbar_triggered()
+{
+    if(minimizeMode != "Taskbar"){
+        minimizeMode = "Taskbar";
+        applyMinimize();
+    }
+}
+
+void MainWindow::applyMinimize()
+{
+    if(minimizeMode == "Taskbar"){
+        qDebug() << "change to Taskbar" << endl;
+        ui->actionTaskbar->setChecked(true);
+        ui->actionSystem_tray->setChecked(false);
+    }
+    else if(minimizeMode == "System_tray"){
+        qDebug() << "change to System_tray" << endl;
+        ui->actionSystem_tray->setChecked(true);
+        ui->actionTaskbar->setChecked(false);
+    }
 }
 
 void inline MainWindow::initSystemTrayIcon()
@@ -372,24 +427,6 @@ void MainWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
         //        break;
     default:
         break;
-    }
-}
-
-void MainWindow::on_actionSystem_tray_triggered()
-{
-    if(minimizeMode != "System_tray"){
-        minimizeMode = "System_tray";
-        ui->actionSystem_tray->setChecked(true);
-        ui->actionTaskbar->setChecked(false);
-    }
-}
-
-void MainWindow::on_actionTaskbar_triggered()
-{
-    if(minimizeMode != "Taskbar"){
-        minimizeMode = "Taskbar";
-        ui->actionSystem_tray->setChecked(false);
-        ui->actionTaskbar->setChecked(true);
     }
 }
 
