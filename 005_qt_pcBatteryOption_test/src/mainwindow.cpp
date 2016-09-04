@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    this->setWindowIcon(QIcon(":/img/icon.ico"));
     /*set not to change the size of window*/
     Qt::WindowFlags flags = 0;
     flags |= Qt::WindowMinimizeButtonHint;
@@ -95,8 +96,7 @@ void inline MainWindow::initSystemTrayIcon()
     connect(tray,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(iconActivated(QSystemTrayIcon::ActivationReason)));
 
-    /*TODO find restore icon*/
-    restoreAction = new QAction(QIcon(":/img/flag_taiwan"), "Restore", this);
+    restoreAction = new QAction(QIcon(":/img/restore"), "Restore", this);
     connect(restoreAction, SIGNAL(triggered()), this, SLOT(show()));
     connect(restoreAction, SIGNAL(triggered()), tray, SLOT(hide()));
 
@@ -440,9 +440,10 @@ void MainWindow::on_actionAbout_triggered()
     font.setFamily("Microsoft JhengHei");//微軟正黑體
     about.setFont(font);
     about.setWindowTitle(tr("About Betterreminder"));
+    about.setIconPixmap(QPixmap(":/img/icon.png"));
     about.setText(tr("aben20807's Program\n"
                      "\nBetterreminder is for Better Battery Reminder\n"
-                     "LICENSE : GPLv3\nI wrote this program for practicing."));
+                     "LICENSE : GPLv3\nI wrote this program for practicing. OuO"));
     about.setStandardButtons(QMessageBox::Ok);
     about.show();
     about.exec();
@@ -487,7 +488,8 @@ void MainWindow::on_actionReference_or_Resource_triggered()
     referenceResource.setFont(font);
     referenceResource.setWindowTitle(tr("Reference or Resource"));
     referenceResource.setText(tr("Action Explaintion : https://www.foolegg.com/what-are-the-differences-between-shut-down-standby-sleep-hibernate-and-hybrid-sleep/\n"
-                                 "Language icon : https://www.iconfinder.com/iconsets/142-mini-country-flags-16x16px"));
+                                 "Language Icon : https://www.iconfinder.com/iconsets/142-mini-country-flags-16x16px\n"
+                                 "Other Icon : material-design-icons-2.2.0 form https://design.google.com/icons/"));
     referenceResource.setStandardButtons(QMessageBox::Ok);
     referenceResource.show();
     referenceResource.exec();

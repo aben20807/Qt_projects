@@ -28,3 +28,7 @@ FORMS    += mainwindow.ui \
 
 RESOURCES += \
     resources.qrc
+
+win32:RC_ICONS += ./res/icon/ic_battery_alert_black_48dp.ico
+
+
