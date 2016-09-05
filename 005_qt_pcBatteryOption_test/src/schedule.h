@@ -22,7 +22,6 @@ public:
     void updateDataToDatabase();
     void readDataFromDatabase();
     bool isAllLeditCanConvertToInt();
-    bool checkRowIsFilled(int row);
 
 protected:
     void closeEvent(QCloseEvent *);

@@ -61,6 +61,7 @@ void MainWindow::loadSettingIni()
     path += "./res/ini/setting.ini";
     QSettings setting(path,QSettings::IniFormat);
     setting.beginGroup("MainWindow");
+    /*init mode from .ini*/
     minimizeMode = setting.value("languageMode", "Taskbar").toString();
     languageMode = setting.value("minimizeMode", "enUS").toString();
     setting.endGroup();
@@ -85,13 +86,8 @@ void inline MainWindow::initMenu()
     ui->action_enUS->setIcon(QIcon(":/img/flag_usa"));
     ui->action_zhTW->setCheckable(true);
     ui->action_enUS->setCheckable(true);
-//    languageMode = "enUS";
-//    ui->action_enUS->setChecked(true);
-
     ui->actionSystem_tray->setCheckable(true);
     ui->actionTaskbar->setCheckable(true);
-//    minimizeMode = "Taskbar";
-//    ui->actionTaskbar->setChecked(true);
 }
 
 void MainWindow::on_action_zhTW_triggered()
@@ -113,18 +109,18 @@ void MainWindow::on_action_enUS_triggered()
 void inline MainWindow::applyLanguage()
 {
     if(languageMode == "zhTW"){
-        qDebug() << "change to 繁體中文" << endl;
-        //        translator->load(QString("./language/zh_TW"));
+        //qDebug() << "change to 繁體中文" << endl;
+        //translator->load(QString("./language/zh_TW"));
         ui->action_zhTW->setChecked(true);
         ui->action_enUS->setChecked(false);
     }
     else if(languageMode == "enUS"){
-        qDebug() << "change to English" << endl;
-        //        translator->load(QString("./language/en_US"));
+        //qDebug() << "change to English" << endl;
+        //translator->load(QString("./language/en_US"));
         ui->action_enUS->setChecked(true);
         ui->action_zhTW->setChecked(false);
     }
-    //    qApp->installTranslator(translator);
+    //qApp->installTranslator(translator);
     //initGui
 }
 
@@ -147,12 +143,12 @@ void MainWindow::on_actionTaskbar_triggered()
 void MainWindow::applyMinimize()
 {
     if(minimizeMode == "Taskbar"){
-        qDebug() << "change to Taskbar" << endl;
+        //qDebug() << "change to Taskbar" << endl;
         ui->actionTaskbar->setChecked(true);
         ui->actionSystem_tray->setChecked(false);
     }
     else if(minimizeMode == "System_tray"){
-        qDebug() << "change to System_tray" << endl;
+        //qDebug() << "change to System_tray" << endl;
         ui->actionSystem_tray->setChecked(true);
         ui->actionTaskbar->setChecked(false);
     }
@@ -421,7 +417,7 @@ void MainWindow::on_actionMinimize_triggered()
     qApp->setQuitOnLastWindowClosed(false);
     tray->setVisible(true);
     this->hide();
-    //    tray->showMessage(tr("Info"),tr("Minimize to system tray!"),
+    //tray->showMessage(tr("Info"),tr("Minimize to system tray!"),
     //                      QSystemTrayIcon::Information, 5000);
 }
 
@@ -434,10 +430,10 @@ void MainWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
         this->show();
         tray->setVisible(false);
         break;
-        //    case (QSystemTrayIcon::Critical):
-        //        tray->showMessage(tr("Barrery"), "level : "+(QString::number(battery->getBatteryLevel()))+"%",
-        //                          QSystemTrayIcon::Information, 5000);
-        //        break;
+        //case (QSystemTrayIcon::Critical):
+        //  tray->showMessage(tr("Barrery"), "level : "+(QString::number(battery->getBatteryLevel()))+"%",
+        //      QSystemTrayIcon::Information, 5000);
+        //  break;
     default:
         break;
     }

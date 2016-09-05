@@ -28,7 +28,7 @@ void Schedule::on_buttonBox_okCancel_clicked(QAbstractButton *button)
     MainWindow conn;
     catchInformationsFromUi();
     if((QPushButton *)button == ui->buttonBox_okCancel->button(QDialogButtonBox::Ok)){
-        //        qDebug() << "OK" << endl;
+        //qDebug() << "OK" << endl;
         updateDataToDatabase();
         conn.connectClose();
         if(isAllLeditCanConvertToInt()){//Only close when can apply
@@ -36,12 +36,12 @@ void Schedule::on_buttonBox_okCancel_clicked(QAbstractButton *button)
         }
     }
     else if((QPushButton *)button == ui->buttonBox_okCancel->button(QDialogButtonBox::Cancel)){
-        //        qDebug() << "Cancel" << endl;
+        //qDebug() << "Cancel" << endl;
         conn.connectClose();
         this->close();
     }
     else if((QPushButton *)button == ui->buttonBox_okCancel->button(QDialogButtonBox::Apply)){
-        //        qDebug() << "Apply" << endl;
+        //qDebug() << "Apply" << endl;
         updateDataToDatabase();
     }
 }
@@ -76,7 +76,7 @@ bool Schedule::isAllLeditCanConvertToInt()
     if(!ui->lEdit_2->text().isEmpty())num_level2 = tmp_level2.toInt(&isLeditCanConvertToInt2);
     if(!ui->lEdit_3->text().isEmpty())num_level3 = tmp_level3.toInt(&isLeditCanConvertToInt3);
     if(!ui->lEdit_4->text().isEmpty())num_level4 = tmp_level4.toInt(&isLeditCanConvertToInt4);
-    //    qDebug() << isLeditCanConvertToInt1 << isLeditCanConvertToInt2 <<
+    //qDebug() << isLeditCanConvertToInt1 << isLeditCanConvertToInt2 <<
     //                isLeditCanConvertToInt3 << isLeditCanConvertToInt4 <<
     //                (num_level1 > 100 || num_level1 < 0) << num_level1 <<
     //                (num_level2 > 100 || num_level2 < 0) << num_level2 <<
@@ -89,43 +89,6 @@ bool Schedule::isAllLeditCanConvertToInt()
         return false;
     }
     return true;
-}
-
-bool Schedule::checkRowIsFilled(int row)
-{
-//    switch (row) {
-//    case 1:
-//        if(ui->comboBox_condition1->currentText() != "Choose one" &&
-//           !ui->lEdit_1->text().isEmpty() &&
-//           ui->comboBox_action1->currentText() != "Nothing")
-//            return true;
-//        else
-//            return false;
-//    case 2:
-//        if(ui->comboBox_condition2->currentText() != "Choose one" &&
-//           !ui->lEdit_2->text().isEmpty() &&
-//           ui->comboBox_action2->currentText() != "Nothing")
-//            return true;
-//        else
-//            return false;
-//    case 3:
-//        if(ui->comboBox_condition3->currentText() != "Choose one" &&
-//           !ui->lEdit_3->text().isEmpty() &&
-//           ui->comboBox_action3->currentText() != "Nothing")
-//            return true;
-//        else
-//            return false;
-//    case 4:
-//        if(ui->comboBox_condition4->currentText() != "Choose one" &&
-//           !ui->lEdit_4->text().isEmpty() &&
-//           ui->comboBox_action4->currentText() != "Nothing")
-//            return true;
-//        else
-//            return false;
-//    default:
-//        return false;
-//        break;
-//    }
 }
 
 void Schedule::updateDataToDatabase()
@@ -144,7 +107,7 @@ void Schedule::updateDataToDatabase()
     /*1*/
     qry.prepare("update data set Condition='"+tmp_condition1+"',level='"+tmp_level1+"',action='"+tmp_action1+"' where Number=1");
     if(qry.exec()){
-        //        qDebug() << "Succeed to update 1" << endl;
+        //qDebug() << "Succeed to update 1" << endl;
     }
     else{
         QMessageBox::critical(this, tr("Error u1::"), qry.lastError().text());
@@ -152,7 +115,7 @@ void Schedule::updateDataToDatabase()
     /*2*/
     qry.prepare("update data set Condition='"+tmp_condition2+"',level='"+tmp_level2+"',action='"+tmp_action2+"' where Number=2");
     if(qry.exec()){
-        //        qDebug() << "Succeed to update 2" << endl;
+        //qDebug() << "Succeed to update 2" << endl;
     }
     else{
         QMessageBox::critical(this, tr("Error u2::"), qry.lastError().text());
@@ -160,7 +123,7 @@ void Schedule::updateDataToDatabase()
     /*3*/
     qry.prepare("update data set Condition='"+tmp_condition3+"',level='"+tmp_level3+"',action='"+tmp_action3+"' where Number=3");
     if(qry.exec()){
-        //        qDebug() << "Succeed to update 3" << endl;
+        //qDebug() << "Succeed to update 3" << endl;
     }
     else{
         QMessageBox::critical(this, tr("Error u3::"), qry.lastError().text());
@@ -168,7 +131,7 @@ void Schedule::updateDataToDatabase()
     /*4*/
     qry.prepare("update data set Condition='"+tmp_condition4+"',level='"+tmp_level4+"',action='"+tmp_action4+"' where Number=4");
     if(qry.exec()){
-        //        qDebug() << "Succeed to update 4" << endl;
+        //qDebug() << "Succeed to update 4" << endl;
     }
     else{
         QMessageBox::critical(this, tr("Error u4::"), qry.lastError().text());
