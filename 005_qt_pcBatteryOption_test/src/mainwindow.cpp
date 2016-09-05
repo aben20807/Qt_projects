@@ -25,10 +25,12 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
     /*init*/
-    battery = new Battery;
+    battery = new Battery(this);
+    cmdprocess = new CmdProcess(this);
+    translator =  new  QTranslator(qApp);
     initMenu();
     loadSettingIni();
-    updateTime = new QTimer;//the period of update battery level and status
+    updateTime = new QTimer(this);//the period of update battery level and status
     updateTime->start(1000);
     initSystemTrayIcon();
     initBatteryDisplay();
@@ -37,6 +39,18 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 MainWindow::~MainWindow()
 {
+    delete battery;
+    delete cmdprocess;
+    delete updateTime;
+    for(int i = 0; i < 5; i++){
+        delete detectTime[i];
+    }
+    delete translator;
+    delete tray;
+    delete trayIconMenu;
+    delete restoreAction;
+    delete signalMapper;
+    delete model;
     saveSettingIni(minimizeMode, languageMode);
     delete ui;
 }
@@ -155,7 +169,6 @@ void inline MainWindow::initSystemTrayIcon()
     connect(restoreAction, SIGNAL(triggered()), this, SLOT(show()));
     connect(restoreAction, SIGNAL(triggered()), tray, SLOT(hide()));
 
-    QMenu *trayIconMenu;//the menu of QSystemTrayIcon
     trayIconMenu = new QMenu(this);
     trayIconMenu->addAction(restoreAction);
     trayIconMenu->addAction(ui->actionQuit);//quit action from ui
@@ -272,12 +285,12 @@ void inline MainWindow::initTableDisplay()
 
 void MainWindow::updateTableDisplay()
 {
-    QSqlQueryModel *model = new QSqlQueryModel();
+    model = new QSqlQueryModel();
     connectOpen();
-    QSqlQuery *qry = new QSqlQuery(actiondb);
-    qry->prepare("select Condition,level,action from data");
-    qry->exec();
-    model->setQuery(*qry);
+    QSqlQuery qry(actiondb);
+    qry.prepare("select Condition,level,action from data");
+    qry.exec();
+    model->setQuery(qry);
     ui->tableView->setModel(model);
     connectClose();
     //    qDebug() << model->rowCount();
@@ -287,16 +300,16 @@ void MainWindow::updateTableDisplay()
 void inline MainWindow::initActionToDo()
 {
     for(int i = 0; i < 5; i++){
-        detectTime[i] = new QTimer;
+        detectTime[i] = new QTimer(this);
         detectTime[i]->start(1000);
         doOnce[i] = true;
     }
+    signalMapper = new QSignalMapper(this);
     updateActionToDo();
 }
 
 void MainWindow::updateActionToDo()
 {
-    QSignalMapper *signalMapper = new QSignalMapper;
     connectOpen();
     bool ok;
     QSqlQuery qry;
@@ -439,7 +452,7 @@ void MainWindow::on_actionManage_triggered()
 {
     connectClose();
 
-    schedule = new Schedule;
+    schedule = new Schedule(this);
     this->hide();
     QObject::connect(schedule,SIGNAL(close_me()),this,SLOT(close_child()));
     m_show_child = true;
@@ -452,6 +465,7 @@ void MainWindow::on_actionManage_triggered()
     for(int i = 0; i < 5; i++){
         doOnce[i] = true;
     }
+    delete schedule;
     this->show();
 }
 

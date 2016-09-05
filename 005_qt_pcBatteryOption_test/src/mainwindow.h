@@ -106,14 +106,17 @@ private:
     QTranslator *translator;
     QString languageMode;
     QSystemTrayIcon *tray;
+    QMenu *trayIconMenu;//the menu of QSystemTrayIcon
     QString minimizeMode;
     QAction *restoreAction;
     QTimer *updateTime;
     Battery *battery;
     Schedule *schedule;
+    QSqlQueryModel *model;
     bool m_show_child;
     CmdProcess *cmdprocess;
     bool doOnce[5];
+    QSignalMapper *signalMapper;
     QString _condition[5];
     int _level[5];
     QString _action[5];

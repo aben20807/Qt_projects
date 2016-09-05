@@ -93,39 +93,39 @@ bool Schedule::isAllLeditCanConvertToInt()
 
 bool Schedule::checkRowIsFilled(int row)
 {
-    switch (row) {
-    case 1:
-        if(ui->comboBox_condition1->currentText() != "Choose one" &&
-           !ui->lEdit_1->text().isEmpty() &&
-           ui->comboBox_action1->currentText() != "Nothing")
-            return true;
-        else
-            return false;
-    case 2:
-        if(ui->comboBox_condition2->currentText() != "Choose one" &&
-           !ui->lEdit_2->text().isEmpty() &&
-           ui->comboBox_action2->currentText() != "Nothing")
-            return true;
-        else
-            return false;
-    case 3:
-        if(ui->comboBox_condition3->currentText() != "Choose one" &&
-           !ui->lEdit_3->text().isEmpty() &&
-           ui->comboBox_action3->currentText() != "Nothing")
-            return true;
-        else
-            return false;
-    case 4:
-        if(ui->comboBox_condition4->currentText() != "Choose one" &&
-           !ui->lEdit_4->text().isEmpty() &&
-           ui->comboBox_action4->currentText() != "Nothing")
-            return true;
-        else
-            return false;
-    default:
-        return false;
-        break;
-    }
+//    switch (row) {
+//    case 1:
+//        if(ui->comboBox_condition1->currentText() != "Choose one" &&
+//           !ui->lEdit_1->text().isEmpty() &&
+//           ui->comboBox_action1->currentText() != "Nothing")
+//            return true;
+//        else
+//            return false;
+//    case 2:
+//        if(ui->comboBox_condition2->currentText() != "Choose one" &&
+//           !ui->lEdit_2->text().isEmpty() &&
+//           ui->comboBox_action2->currentText() != "Nothing")
+//            return true;
+//        else
+//            return false;
+//    case 3:
+//        if(ui->comboBox_condition3->currentText() != "Choose one" &&
+//           !ui->lEdit_3->text().isEmpty() &&
+//           ui->comboBox_action3->currentText() != "Nothing")
+//            return true;
+//        else
+//            return false;
+//    case 4:
+//        if(ui->comboBox_condition4->currentText() != "Choose one" &&
+//           !ui->lEdit_4->text().isEmpty() &&
+//           ui->comboBox_action4->currentText() != "Nothing")
+//            return true;
+//        else
+//            return false;
+//    default:
+//        return false;
+//        break;
+//    }
 }
 
 void Schedule::updateDataToDatabase()

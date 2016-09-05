@@ -2,12 +2,12 @@
 
 Battery::Battery(QObject *parent) : QObject(parent)
 {
-
+    cmdprocess = new CmdProcess;
 }
 
 int Battery::getBatteryLevel()
 {
-    CmdProcess *cmdprocess = new CmdProcess;
+
     QString out = cmdprocess->getOutputOfBatteryLevel();
     int batteryLevel;
     if(out[31] == '0'){//if batteryLevel = 100
@@ -20,15 +20,15 @@ int Battery::getBatteryLevel()
         batteryLevel = (out[29].unicode()-48)*10 + (out[30].unicode()-48);
 //        qDebug() << batteryLevel << endl;
     }
-    delete cmdprocess;
+//    delete cmdprocess;
     return batteryLevel;
 }
 
 QString Battery::getBatteryStatus()
 {
-    CmdProcess *cmdprocess = new CmdProcess;
+//    CmdProcess *cmdprocess = new CmdProcess;
     QString out = cmdprocess->getOutputOfBatteryStatus();
-    delete cmdprocess;
+//    delete cmdprocess;
     switch (out[18].unicode()-48) {
     case 1:
         return "Battery using";

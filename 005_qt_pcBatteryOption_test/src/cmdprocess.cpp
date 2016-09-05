@@ -7,6 +7,7 @@ CmdProcess::CmdProcess(QObject *parent) : QObject(parent)
 
 QString CmdProcess::getOutputOfBatteryLevel()
 {
+//    QProcess *cmdProcess = new QProcess;
     cmdProcess->start("WMIC PATH Win32_Battery Get EstimatedChargeRemaining");
     cmdProcess->waitForFinished(-1); // will wait forever until finished
     QString out = cmdProcess->readAllStandardOutput();
@@ -20,11 +21,13 @@ QString CmdProcess::getOutputOfBatteryLevel()
     }
     cmdProcess->start("cls");//clean cmd
     cmdProcess->waitForFinished(-1); // will wait forever until finished
+//    delete cmdProcess;
     return out;
 }
 
 QString CmdProcess::getOutputOfBatteryStatus()
 {
+//    QProcess *cmdProcess = new QProcess;
     cmdProcess->start("WMIC Path Win32_Battery Get BatteryStatus");
     cmdProcess->waitForFinished(-1); // will wait forever until finished
     QString out = cmdProcess->readAllStandardOutput();
@@ -38,18 +41,22 @@ QString CmdProcess::getOutputOfBatteryStatus()
     }
     cmdProcess->start("cls");//clean cmd
     cmdProcess->waitForFinished(-1); // will wait forever until finished
+//    delete cmdProcess;
     return out;
 }
 
 void CmdProcess::doAction(QString action, int level, QWidget *m)
 {
+//    QProcess *cmdProcess = new QProcess;
     if(action == "RemindMorethan"){
-        QMessageBox::warning(0, tr("Remind"), (tr("Battery level is more than ")+ QString::number(level)));
-        return;
+        QMessageBox::warning(m, tr("Remind"), (tr("Battery level is more than ")+ QString::number(level)));
+//        return;
     }
     else if(action == "RemindLessthan"){
+        cmdProcess->start("cls");//clean cmd
+        cmdProcess->waitForFinished(-1); // will wait forever until finished
         QMessageBox::warning(m, tr("Remind"), tr("Battery level is less than ")+ QString::number(level));
-        return;
+//        return;
     }
     else if(action == "Shutdown"){
         cmdProcess->start("shutdown /s");
@@ -87,5 +94,6 @@ void CmdProcess::doAction(QString action, int level, QWidget *m)
     }
     cmdProcess->start("cls");//clean cmd
     cmdProcess->waitForFinished(-1); // will wait forever until finished
+//    delete cmdProcess;
     return;
 }
