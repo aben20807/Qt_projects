@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     this->setWindowIcon(QIcon(":/img/icon.ico"));
+
     /*set not to change the size of window*/
     Qt::WindowFlags flags = 0;
     flags |= Qt::WindowMinimizeButtonHint;
@@ -36,6 +37,13 @@ MainWindow::MainWindow(QWidget *parent) :
     initBatteryDisplay();
     initTableDisplay();
     initActionToDo();
+    QFile _file("./res/log/log.txt");//Create log file at first
+    if(!_file.open(QFile::Append | QFile::Text)){
+        QMessageBox::warning(this, tr("Error"), tr("Failed to create log file!"));
+        //qDebug() << "Failed to open log to write";
+    }
+    _file.flush();
+    _file.close();
 }
 MainWindow::~MainWindow()
 {
@@ -346,20 +354,20 @@ void MainWindow::detectActionAndDo(const int &_numOfAction)
         if(_nowLevel >= _level[_numOfAction] && doOnce[_numOfAction] == true){
             doOnce[_numOfAction] = false;
             if(_action[_numOfAction] == "Remind"){
-                writeLog("Remind More than " + QString::number(_level[_numOfAction]));
+                writeLog("Remind When > " + QString::number(_level[_numOfAction]) + "%");
                 cmdprocess->doAction("RemindMorethan", _level[_numOfAction], this);
                 //qDebug() << "Do Remind";
             }
             else if(_action[_numOfAction] == "Shut down"){
-                writeLog("Shutdown More than " + QString::number(_level[_numOfAction]));
+                writeLog("Shutdown When > " + QString::number(_level[_numOfAction]) + "%");
                 cmdprocess->doAction("Shutdown", _level[_numOfAction], this);
             }
             else if(_action[_numOfAction] == "Sleep"){
-                writeLog("Sleep More than " + QString::number(_level[_numOfAction]));
+                writeLog("Sleep When > " + QString::number(_level[_numOfAction]) + "%");
                 cmdprocess->doAction("Sleep", _level[_numOfAction], this);
             }
             else if(_action[_numOfAction] == "Hibernate"){
-                writeLog("Hibernate More than " + QString::number(_level[_numOfAction]));
+                writeLog("Hibernate When > " + QString::number(_level[_numOfAction]) + "%");
                 cmdprocess->doAction("Hibernate", _level[_numOfAction], this);
             }
         }
@@ -371,20 +379,20 @@ void MainWindow::detectActionAndDo(const int &_numOfAction)
         if(_nowLevel <= _level[_numOfAction] && doOnce[_numOfAction] == true){
             doOnce[_numOfAction] = false;
             if(_action[_numOfAction] == "Remind"){
-                writeLog("Remind Less than " + QString::number(_level[_numOfAction]));
+                writeLog("Remind When < " + QString::number(_level[_numOfAction]) + "%");
                 cmdprocess->doAction("RemindLessthan", _level[_numOfAction], this);
                 //qDebug() << "Do Remind";
             }
             else if(_action[_numOfAction] == "Shut down"){
-                writeLog("Shutdown Less than " + QString::number(_level[_numOfAction]));
+                writeLog("Shutdown When < " + QString::number(_level[_numOfAction]) + "%");
                 cmdprocess->doAction("Shutdown", _level[_numOfAction], this);
             }
             else if(_action[_numOfAction] == "Sleep"){
-                writeLog("Sleep Less than " + QString::number(_level[_numOfAction]));
+                writeLog("Sleep When < " + QString::number(_level[_numOfAction]) + "%");
                 cmdprocess->doAction("Sleep", _level[_numOfAction], this);
             }
             else if(_action[_numOfAction] == "Hibernate"){
-                writeLog("Hibernate Less than " + QString::number(_level[_numOfAction]));
+                writeLog("Hibernate When < " + QString::number(_level[_numOfAction]) + "%");
                 cmdprocess->doAction("Hibernate", _level[_numOfAction], this);
             }
         }
@@ -452,8 +460,8 @@ void MainWindow::writeLog(QString actionRecord, QString filename)
 {
     QFile _file(filename);
     if(!_file.open(QFile::Append | QFile::Text)){
-        QMessageBox::warning(this, tr("Error"), tr("Fail to open log to write!"));
-        qDebug() << "Fail to open log to write";
+        QMessageBox::warning(this, tr("Error"), tr("Failed to open log to write!"));
+        //qDebug() << "Failed to open log to write";
         return;
     }
     QTextStream out(&_file);
@@ -468,7 +476,8 @@ QString MainWindow::readLog(QString filename)
 {
     QFile _file(filename);
     if(!_file.open(QFile::ReadOnly | QFile::Text)){
-        qDebug() << "Fail to open log to read";
+        QMessageBox::warning(this, tr("Error"), tr("Failed to open log to read!"));
+        //qDebug() << "Failed to open log to read";
         return "";
     }
     QTextStream in(&_file);
