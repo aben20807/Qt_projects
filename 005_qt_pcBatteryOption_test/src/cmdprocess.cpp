@@ -5,7 +5,7 @@ CmdProcess::CmdProcess(QObject *parent) : QObject(parent)
     cmdProcess = new QProcess;
 }
 
-QString CmdProcess::getOutputOfBatteryLevel()
+QString CmdProcess::getOutputOfBatteryLevel() const
 {
     cmdProcess->start("WMIC PATH Win32_Battery Get EstimatedChargeRemaining");
     cmdProcess->waitForFinished(-1); // will wait forever until finished
@@ -23,7 +23,7 @@ QString CmdProcess::getOutputOfBatteryLevel()
     return out;
 }
 
-QString CmdProcess::getOutputOfBatteryStatus()
+QString CmdProcess::getOutputOfBatteryStatus() const
 {
     cmdProcess->start("WMIC Path Win32_Battery Get BatteryStatus");
     cmdProcess->waitForFinished(-1); // will wait forever until finished
@@ -41,7 +41,7 @@ QString CmdProcess::getOutputOfBatteryStatus()
     return out;
 }
 
-void CmdProcess::doAction(QString action, int level, QWidget *m)
+void CmdProcess::doAction(QString const action, int const level, QWidget *m)
 {
     if(action == "RemindMorethan"){
         QMessageBox::warning(m, tr("Remind"), (tr("Battery level is more than ")+ QString::number(level)));

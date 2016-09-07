@@ -146,7 +146,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 1: _t->on_action_enUS_triggered(); break;
         case 2: _t->on_actionQuit_triggered(); break;
         case 3: _t->on_actionMinimize_triggered(); break;
-        case 4: _t->iconActivated((*reinterpret_cast< QSystemTrayIcon::ActivationReason(*)>(_a[1]))); break;
+        case 4: _t->iconActivated((*reinterpret_cast< const QSystemTrayIcon::ActivationReason(*)>(_a[1]))); break;
         case 5: _t->updateSystemTrayIconDisplay(); break;
         case 6: _t->updateBatteryDisplay(); break;
         case 7: _t->updateTableDisplay(); break;

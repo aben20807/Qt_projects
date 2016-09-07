@@ -11,9 +11,9 @@ class CmdProcess : public QObject
     Q_OBJECT
 public:
     explicit CmdProcess(QObject *parent = 0);
-    QString getOutputOfBatteryLevel();
-    QString getOutputOfBatteryStatus();
-    void doAction(QString action, int level, QWidget *m);
+    QString getOutputOfBatteryLevel() const;
+    QString getOutputOfBatteryStatus() const;
+    void doAction(QString const action, int const level, QWidget *m);
 
 signals:
 

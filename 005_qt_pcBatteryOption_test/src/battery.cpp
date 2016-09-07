@@ -5,7 +5,7 @@ Battery::Battery(QObject *parent) : QObject(parent)
     cmdprocess = new CmdProcess;
 }
 
-int Battery::getBatteryLevel()
+int Battery::getBatteryLevel() const
 {
     QString out = cmdprocess->getOutputOfBatteryLevel();
     int batteryLevel;
@@ -22,7 +22,7 @@ int Battery::getBatteryLevel()
     return batteryLevel;
 }
 
-QString Battery::getBatteryStatus()
+QString Battery::getBatteryStatus() const
 {
     QString out = cmdprocess->getOutputOfBatteryStatus();
     switch (out[18].unicode()-48) {

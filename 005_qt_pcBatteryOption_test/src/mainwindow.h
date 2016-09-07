@@ -37,18 +37,18 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     inline void loadSettingIni();
-    inline void saveSettingIni(QString _languageMode, QString _minimizeMode);
-    inline void initMenu();
-    inline void applyLanguage();
-    inline void applyMinimize();
+    inline void saveSettingIni(QString const _languageMode, QString const _minimizeMode) const;
+    inline void initMenu() const;
+    inline void applyLanguage() const;
+    inline void applyMinimize() const;
     inline void initSystemTrayIcon();
-    inline void initBatteryDisplay();
-    inline void displayBatteryThings(int batteryLevel, QString batteryStatus);
+    inline void initBatteryDisplay() const;
+    inline void displayBatteryThings(int const batteryLevel, QString const batteryStatus) const;
     void changeEvent(QEvent *event);
     inline void initTableDisplay();
     inline void initActionToDo();
-    inline void writeLog(QString actionRecord, QString filename = "./res/log/log.txt");
-    inline QString readLog(QString filename);
+    inline void writeLog(QString const actionRecord, QString const filename = "./res/log/log.txt");
+    inline QString readLog(QString const filename);
     void show();
 
     QSqlDatabase actiondb;
@@ -78,17 +78,17 @@ private slots:
 
     void on_actionMinimize_triggered();
 
-    void iconActivated(QSystemTrayIcon::ActivationReason reason);
+    void iconActivated(QSystemTrayIcon::ActivationReason const reason);
 
     void updateSystemTrayIconDisplay();
 
-    void updateBatteryDisplay();
+    void updateBatteryDisplay() const;
 
     void updateTableDisplay();
 
     void updateActionToDo();
 
-    void detectActionAndDo(const int &_numOfAction);
+    void detectActionAndDo(int const &_numOfAction);
 
     void on_actionSystem_tray_triggered();
 

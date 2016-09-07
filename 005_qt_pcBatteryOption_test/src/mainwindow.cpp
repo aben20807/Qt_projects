@@ -78,7 +78,7 @@ void MainWindow::loadSettingIni()
     applyMinimize();
 }
 
-void MainWindow::saveSettingIni(QString _languageMode, QString _minimizeMode)
+void MainWindow::saveSettingIni(QString const _languageMode, QString const _minimizeMode) const
 {
     QString path = QApplication::applicationDirPath();
     path += "./res/ini/setting.ini";
@@ -89,7 +89,7 @@ void MainWindow::saveSettingIni(QString _languageMode, QString _minimizeMode)
     setting.endGroup();
 }
 
-void inline MainWindow::initMenu()
+void inline MainWindow::initMenu() const
 {
     ui->action_zhTW->setIcon(QIcon(":/img/flag_taiwan"));
     ui->action_enUS->setIcon(QIcon(":/img/flag_usa"));
@@ -115,7 +115,7 @@ void MainWindow::on_action_enUS_triggered()
     }
 }
 
-void inline MainWindow::applyLanguage()
+void inline MainWindow::applyLanguage() const
 {
     if(languageMode == "zhTW"){
         //qDebug() << "change to 繁體中文" << endl;
@@ -149,7 +149,7 @@ void MainWindow::on_actionTaskbar_triggered()
     }
 }
 
-void MainWindow::applyMinimize()
+void MainWindow::applyMinimize() const
 {
     if(minimizeMode == "Taskbar"){
         //qDebug() << "change to Taskbar" << endl;
@@ -215,19 +215,19 @@ void MainWindow::updateSystemTrayIconDisplay()
     /*TODO beautiful tooltip, add picture?*/
 }
 
-void inline MainWindow::initBatteryDisplay()
+void inline MainWindow::initBatteryDisplay() const
 {
     updateBatteryDisplay();//init when begin
     connect(updateTime, SIGNAL(timeout()),
             this, SLOT(updateBatteryDisplay()));
 }
 
-void MainWindow::updateBatteryDisplay()
+void MainWindow::updateBatteryDisplay() const
 {
     displayBatteryThings(battery->getBatteryLevel(),battery->getBatteryStatus());
 }
 
-void inline MainWindow::displayBatteryThings(int batteryLevel, QString batteryStatus)
+void inline MainWindow::displayBatteryThings(int const batteryLevel, QString const batteryStatus) const
 {
     ui->progressBar->setValue(batteryLevel);
     ui->label_batteryLevel->setText(QString::number(batteryLevel) + "%");
@@ -345,7 +345,7 @@ void MainWindow::updateActionToDo()
     connectClose();
 }
 
-void MainWindow::detectActionAndDo(const int &_numOfAction)
+void MainWindow::detectActionAndDo(int const &_numOfAction)
 {
     //qDebug() << _numOfAction << doOnce[_numOfAction];
     int _nowLevel = battery->getBatteryLevel();
@@ -437,7 +437,7 @@ void MainWindow::on_actionMinimize_triggered()
     //                      QSystemTrayIcon::Information, 5000);
 }
 
-void MainWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
+void MainWindow::iconActivated(QSystemTrayIcon::ActivationReason const reason)
 {
     switch (reason) {
     case (QSystemTrayIcon::DoubleClick):
@@ -455,7 +455,7 @@ void MainWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
     }
 }
 
-void MainWindow::writeLog(QString actionRecord, QString filename)
+void MainWindow::writeLog(QString const actionRecord, QString const filename)
 {
     QFile _file(filename);
     if(!_file.open(QFile::Append | QFile::Text)){
@@ -471,7 +471,7 @@ void MainWindow::writeLog(QString actionRecord, QString filename)
     _file.close();
 }
 
-QString MainWindow::readLog(QString filename)
+QString MainWindow::readLog(QString const filename)
 {
     QFile _file(filename);
     if(!_file.open(QFile::ReadOnly | QFile::Text)){

@@ -11,8 +11,8 @@ class Battery : public QObject
     Q_OBJECT
 public:
     explicit Battery(QObject *parent = 0);
-    int getBatteryLevel();
-    QString getBatteryStatus();
+    int getBatteryLevel() const;
+    QString getBatteryStatus() const;
 
 signals:
 
