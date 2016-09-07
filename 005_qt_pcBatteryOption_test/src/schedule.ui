@@ -650,9 +650,9 @@
   <widget class="QLabel" name="label_connectStatus">
    <property name="geometry">
     <rect>
-     <x>330</x>
+     <x>310</x>
      <y>10</y>
-     <width>111</width>
+     <width>131</width>
      <height>21</height>
     </rect>
    </property>

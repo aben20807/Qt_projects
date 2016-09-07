@@ -194,7 +194,7 @@ public:
         progressBar->setTextDirection(QProgressBar::TopToBottom);
         label_connectStatus = new QLabel(centralWidget);
         label_connectStatus->setObjectName(QStringLiteral("label_connectStatus"));
-        label_connectStatus->setGeometry(QRect(330, 10, 111, 21));
+        label_connectStatus->setGeometry(QRect(310, 10, 131, 21));
         label_connectStatus->setMinimumSize(QSize(51, 21));
         label_connectStatus->setFont(font);
         label_connectStatus->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
