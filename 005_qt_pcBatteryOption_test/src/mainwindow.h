@@ -28,6 +28,7 @@ class MainWindow;
 
 }
 class Schedule;
+class CustomSqlModel;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -121,7 +122,7 @@ private:
     Battery *battery;
     Schedule *schedule;
     Log *log;
-    QSqlQueryModel *model;
+    CustomSqlModel *model;
     bool m_show_child;
     CmdProcess *cmdprocess;
     bool doOnce[5];
@@ -130,6 +131,11 @@ private:
     int _level[5];
     QString _action[5];
     QTimer *detectTime[5];
+};
+
+class CustomSqlModel : public QSqlQueryModel{//In order to center text in table
+    public:
+        QVariant data(const QModelIndex &item, int role) const Q_DECL_OVERRIDE;
 };
 
 #endif // MAINWINDOW_H

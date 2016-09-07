@@ -290,7 +290,7 @@ void inline MainWindow::initTableDisplay()
 
 void MainWindow::updateTableDisplay()
 {
-    model = new QSqlQueryModel();
+    model = new CustomSqlModel();
     connectOpen();
     QSqlQuery qry(actiondb);
     qry.prepare("select Condition,level,action from data");
@@ -298,8 +298,7 @@ void MainWindow::updateTableDisplay()
     model->setQuery(qry);
     ui->tableView->setModel(model);
     connectClose();
-    //    qDebug() << model->rowCount();
-    /*TODO center the text*/
+    //qDebug() << model->rowCount();
 }
 
 void inline MainWindow::initActionToDo()
@@ -612,4 +611,15 @@ void MainWindow::on_actionManage_triggered()
     }
     delete schedule;
     this->show();
+}
+
+QVariant CustomSqlModel::data(const QModelIndex &item, int role) const
+{
+    if(!item.isValid())
+        return QVariant();
+    if (item.column() == 1) {
+        if (role == Qt::TextAlignmentRole)
+             return Qt::AlignCenter;
+    }
+    return QSqlQueryModel::data(item,role);
 }
