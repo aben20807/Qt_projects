@@ -16,15 +16,18 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     schedule.cpp \
     battery.cpp \
-    cmdprocess.cpp
+    cmdprocess.cpp \
+    log.cpp
 
 HEADERS  += mainwindow.h \
     schedule.h \
     battery.h \
-    cmdprocess.h
+    cmdprocess.h \
+    log.h
 
 FORMS    += mainwindow.ui \
-    schedule.ui
+    schedule.ui \
+    log.ui
 
 RESOURCES += \
     resources.qrc

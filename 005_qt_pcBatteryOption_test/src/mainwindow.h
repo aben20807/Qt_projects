@@ -14,10 +14,14 @@
 #include <QtSql>
 #include <QPainter>
 #include <QSignalMapper>
-#include<QSettings>
+#include <QSettings>
+#include <QFile>
+#include <QTextStream>
+
 #include "battery.h"
 #include "schedule.h"
 #include "cmdprocess.h"
+#include "log.h"
 
 namespace Ui {
 class MainWindow;
@@ -42,6 +46,8 @@ public:
     void changeEvent(QEvent *event);
     inline void initTableDisplay();
     inline void initActionToDo();
+    inline void writeLog(QString actionRecord, QString filename = "./res/log/log.txt");
+    inline QString readLog(QString filename);
     void show();
 
     QSqlDatabase actiondb;
@@ -101,6 +107,8 @@ private slots:
 
     void on_actionReference_or_Resource_triggered();
 
+    void on_actionCheck_log_triggered();
+
 private:
     Ui::MainWindow *ui;
     QTranslator *translator;
@@ -112,6 +120,7 @@ private:
     QTimer *updateTime;
     Battery *battery;
     Schedule *schedule;
+    Log *log;
     QSqlQueryModel *model;
     bool m_show_child;
     CmdProcess *cmdprocess;

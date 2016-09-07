@@ -57,10 +57,10 @@ public:
     {
         if (Schedule->objectName().isEmpty())
             Schedule->setObjectName(QStringLiteral("Schedule"));
-        Schedule->resize(459, 300);
+        Schedule->resize(460, 305);
         graphicsView = new QGraphicsView(Schedule);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
-        graphicsView->setGeometry(QRect(10, 10, 441, 281));
+        graphicsView->setGeometry(QRect(10, 8, 441, 291));
         QFont font;
         font.setFamily(QString::fromUtf8("\345\276\256\350\273\237\346\255\243\351\273\221\351\253\224"));
         graphicsView->setFont(font);

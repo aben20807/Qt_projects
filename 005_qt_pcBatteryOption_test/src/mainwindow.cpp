@@ -39,6 +39,7 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 MainWindow::~MainWindow()
 {
+    //qDebug() << "Main dtor";
     delete battery;
     delete cmdprocess;
     delete updateTime;
@@ -345,16 +346,20 @@ void MainWindow::detectActionAndDo(const int &_numOfAction)
         if(_nowLevel >= _level[_numOfAction] && doOnce[_numOfAction] == true){
             doOnce[_numOfAction] = false;
             if(_action[_numOfAction] == "Remind"){
+                writeLog("Remind More than " + QString::number(_level[_numOfAction]));
                 cmdprocess->doAction("RemindMorethan", _level[_numOfAction], this);
                 //qDebug() << "Do Remind";
             }
             else if(_action[_numOfAction] == "Shut down"){
+                writeLog("Shutdown More than " + QString::number(_level[_numOfAction]));
                 cmdprocess->doAction("Shutdown", _level[_numOfAction], this);
             }
             else if(_action[_numOfAction] == "Sleep"){
+                writeLog("Sleep More than " + QString::number(_level[_numOfAction]));
                 cmdprocess->doAction("Sleep", _level[_numOfAction], this);
             }
             else if(_action[_numOfAction] == "Hibernate"){
+                writeLog("Hibernate More than " + QString::number(_level[_numOfAction]));
                 cmdprocess->doAction("Hibernate", _level[_numOfAction], this);
             }
         }
@@ -366,16 +371,20 @@ void MainWindow::detectActionAndDo(const int &_numOfAction)
         if(_nowLevel <= _level[_numOfAction] && doOnce[_numOfAction] == true){
             doOnce[_numOfAction] = false;
             if(_action[_numOfAction] == "Remind"){
+                writeLog("Remind Less than " + QString::number(_level[_numOfAction]));
                 cmdprocess->doAction("RemindLessthan", _level[_numOfAction], this);
                 //qDebug() << "Do Remind";
             }
             else if(_action[_numOfAction] == "Shut down"){
+                writeLog("Shutdown Less than " + QString::number(_level[_numOfAction]));
                 cmdprocess->doAction("Shutdown", _level[_numOfAction], this);
             }
             else if(_action[_numOfAction] == "Sleep"){
+                writeLog("Sleep Less than " + QString::number(_level[_numOfAction]));
                 cmdprocess->doAction("Sleep", _level[_numOfAction], this);
             }
             else if(_action[_numOfAction] == "Hibernate"){
+                writeLog("Hibernate Less than " + QString::number(_level[_numOfAction]));
                 cmdprocess->doAction("Hibernate", _level[_numOfAction], this);
             }
         }
@@ -439,29 +448,57 @@ void MainWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
     }
 }
 
-void MainWindow::close_child()
+void MainWindow::writeLog(QString actionRecord, QString filename)
 {
-    m_show_child = false;
+    QFile _file(filename);
+    if(!_file.open(QFile::Append | QFile::Text)){
+        QMessageBox::warning(this, tr("Error"), tr("Fail to open log to write!"));
+        qDebug() << "Fail to open log to write";
+        return;
+    }
+    QTextStream out(&_file);
+    QDateTime time = QDateTime::currentDateTime();//get time now
+    QString str_time = time.toString("yyyy-MM-dd ddd hh:mm:ss"); //set the display format
+    out << str_time << " - " << actionRecord << endl;
+    _file.flush();
+    _file.close();
 }
 
-void MainWindow::on_actionManage_triggered()
+QString MainWindow::readLog(QString filename)
 {
+    QFile _file(filename);
+    if(!_file.open(QFile::ReadOnly | QFile::Text)){
+        qDebug() << "Fail to open log to read";
+        return "";
+    }
+    QTextStream in(&_file);
+    QString str_log = in.readAll();
+    //qDebug() << str_log;
+    //while(!in.atEnd())
+    //{
+        //QString line = in.readLine();
+        //qDebug() << line;
+    //}
+    _file.close();
+    return str_log;
+}
+
+void MainWindow::on_actionCheck_log_triggered()
+{
+    QString filename = "./res/log/log.txt";
+    QString str_log = readLog(filename);
+
     connectClose();
 
-    schedule = new Schedule(this);
+    log = new Log(this, str_log);
     this->hide();
-    QObject::connect(schedule,SIGNAL(close_me()),this,SLOT(close_child()));
+    QObject::connect(log,SIGNAL(close_me()),this,SLOT(close_child()));
     m_show_child = true;
     while (m_show_child)
     {
-        schedule->exec();
+        log->exec();
     }
-    updateTableDisplay();//update table when mainwindow reopen
-    updateActionToDo();//update action when mainwindow reopen
-    for(int i = 0; i < 5; i++){
-        doOnce[i] = true;
-    }
-    delete schedule;
+    delete log;
     this->show();
 }
 
@@ -540,4 +577,30 @@ void MainWindow::on_actionReference_or_Resource_triggered()
     referenceResource.setStandardButtons(QMessageBox::Ok);
     referenceResource.show();
     referenceResource.exec();
+}
+
+void MainWindow::close_child()
+{
+    m_show_child = false;
+}
+
+void MainWindow::on_actionManage_triggered()
+{
+    connectClose();
+
+    schedule = new Schedule(this);
+    this->hide();
+    QObject::connect(schedule,SIGNAL(close_me()),this,SLOT(close_child()));
+    m_show_child = true;
+    while (m_show_child)
+    {
+        schedule->exec();
+    }
+    updateTableDisplay();//update table when mainwindow reopen
+    updateActionToDo();//update action when mainwindow reopen
+    for(int i = 0; i < 5; i++){
+        doOnce[i] = true;
+    }
+    delete schedule;
+    this->show();
 }
