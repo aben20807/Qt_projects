@@ -251,7 +251,17 @@ void inline MainWindow::displayBatteryThings(int const batteryLevel, QString con
     else{
         ui->label_batteryLevel_2->setStyleSheet("color: rgb(0, 0, 0)");//black
     }
-    ui->label_batteryStatus->setText(batteryStatus);
+    if(languageMode == "enUS"){
+        ui->label_batteryStatus->setText(batteryStatus);
+    }
+    else if(languageMode == "zhTW"){
+        if(batteryStatus == "Battery using"){
+            ui->label_batteryStatus->setText("電池使用中");
+        }
+        else if(batteryStatus == "AC charging"){
+            ui->label_batteryStatus->setText("正在充電");
+        }
+    }
 
     if(battery->getBatteryStatus() == "AC charging"){//change color of progressBar
         ui->progressBar->setStyleSheet("QProgressBar {border: 1px solid black;text-align: top;"
