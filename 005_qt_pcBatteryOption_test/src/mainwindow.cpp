@@ -16,15 +16,6 @@ MainWindow::MainWindow(QWidget *parent) :
     setWindowFlags(flags);//Maximize ban
     setFixedSize(QWidget::geometry().width(), QWidget::geometry().height());//Prohibition on changing the window size
 
-    /*database connect*/
-    if(!connectOpen()){
-        ui->label_connectStatus->setText(tr("Failed to connect db!"));
-    }
-    else{
-        //ui->label_connectStatus->setText(tr("Connected!"));
-        ui->label_connectStatus->setText(tr(""));
-    }
-
     /*init*/
     battery = new Battery(this);
     cmdprocess = new CmdProcess(this);
@@ -44,6 +35,15 @@ MainWindow::MainWindow(QWidget *parent) :
     }
     _file.flush();
     _file.close();
+
+    /*database connect*/
+    if(!connectOpen()){
+        ui->label_connectStatus->setText(tr("Failed to connect db!"));
+    }
+    else{
+        //ui->label_connectStatus->setText(tr("Connected!"));
+        ui->label_connectStatus->setText(tr(""));
+    }
 }
 MainWindow::~MainWindow()
 {
@@ -134,6 +134,15 @@ void inline MainWindow::applyLanguage()
     }
     qApp->installTranslator(translator);
     ui->retranslateUi(this);
+
+    /*database connect*/
+    if(!connectOpen()){
+        ui->label_connectStatus->setText(tr("Failed to connect db!"));
+    }
+    else{
+        //ui->label_connectStatus->setText(tr("Connected!"));
+        ui->label_connectStatus->setText(tr(""));
+    }
 }
 
 void MainWindow::on_actionSystem_tray_triggered()
@@ -426,6 +435,11 @@ void MainWindow::show()//Overriding show()
 {
     QWidget::show();
     this->setWindowState(Qt::WindowNoState);//set the window open in the screen
+}
+
+QString MainWindow::getLanguageMode() const
+{
+    return languageMode;
 }
 
 void MainWindow::on_actionQuit_triggered()

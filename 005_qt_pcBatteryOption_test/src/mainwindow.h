@@ -50,7 +50,7 @@ public:
     inline void writeLog(QString const actionRecord, QString const filename = "./res/log/log.txt");
     inline QString readLog(QString const filename);
     void show();
-    QTranslator *translator;
+    QString getLanguageMode() const;
 
     QSqlDatabase actiondb;
     /*use for manipulare databace*/
@@ -113,7 +113,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-//    QTranslator *translator;
+    QTranslator *translator;
     QString languageMode;
     QSystemTrayIcon *tray;
     QMenu *trayIconMenu;//the menu of QSystemTrayIcon

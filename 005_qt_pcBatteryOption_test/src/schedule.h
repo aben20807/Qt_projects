@@ -22,6 +22,9 @@ public:
     void updateDataToDatabase();
     void readDataFromDatabase();
     bool isAllLeditCanConvertToInt();
+    QString translateCondition(QString condition) const;
+    QString translateAction(QString action) const;
+
 
 protected:
     void closeEvent(QCloseEvent *);
