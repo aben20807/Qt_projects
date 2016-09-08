@@ -115,22 +115,25 @@ void MainWindow::on_action_enUS_triggered()
     }
 }
 
-void inline MainWindow::applyLanguage() const
+void inline MainWindow::applyLanguage()
 {
     if(languageMode == "zhTW"){
         //qDebug() << "change to 繁體中文" << endl;
-        //translator->load(QString("./language/zh_TW"));
+        translator->load(QString("./res/language/zh_TW"));
+
+//        ui->retranslateUi(this);
         ui->action_zhTW->setChecked(true);
         ui->action_enUS->setChecked(false);
     }
     else if(languageMode == "enUS"){
         //qDebug() << "change to English" << endl;
-        //translator->load(QString("./language/en_US"));
+        translator->load(QString("./res/language/en_US"));
+//        ui->retranslateUi(this);
         ui->action_enUS->setChecked(true);
         ui->action_zhTW->setChecked(false);
     }
-    //qApp->installTranslator(translator);
-    //initGui
+    qApp->installTranslator(translator);
+    ui->retranslateUi(this);
 }
 
 void MainWindow::on_actionSystem_tray_triggered()
@@ -410,6 +413,11 @@ void MainWindow::changeEvent(QEvent *event)
         }
         else if( windowState() == Qt::WindowNoState ){
         }
+//        if (event->type() == QEvent::LanguageChange)
+//        {
+//            // retranslate designer form (single inheritance approach)
+//            ui->retranslateUi(this);
+//        }
         QMainWindow::changeEvent(event);
     }
 }

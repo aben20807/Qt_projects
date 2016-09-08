@@ -39,7 +39,7 @@ public:
     inline void loadSettingIni();
     inline void saveSettingIni(QString const _languageMode, QString const _minimizeMode) const;
     inline void initMenu() const;
-    inline void applyLanguage() const;
+    inline void applyLanguage();
     inline void applyMinimize() const;
     inline void initSystemTrayIcon();
     inline void initBatteryDisplay() const;
@@ -50,6 +50,7 @@ public:
     inline void writeLog(QString const actionRecord, QString const filename = "./res/log/log.txt");
     inline QString readLog(QString const filename);
     void show();
+    QTranslator *translator;
 
     QSqlDatabase actiondb;
     /*use for manipulare databace*/
@@ -112,7 +113,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QTranslator *translator;
+//    QTranslator *translator;
     QString languageMode;
     QSystemTrayIcon *tray;
     QMenu *trayIconMenu;//the menu of QSystemTrayIcon

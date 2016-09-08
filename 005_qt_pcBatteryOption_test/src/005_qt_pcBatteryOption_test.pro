@@ -32,6 +32,9 @@ FORMS    += mainwindow.ui \
 RESOURCES += \
     resources.qrc
 
+TRANSLATIONS = ./res/language/zh_TW.ts\
+               ./res/language/en_US.ts
+
 win32:RC_ICONS += ./res/icon/ic_battery_alert_black_48dp.ico
 
 

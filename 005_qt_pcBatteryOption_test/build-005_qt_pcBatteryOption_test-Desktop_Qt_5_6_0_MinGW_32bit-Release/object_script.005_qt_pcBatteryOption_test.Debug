@@ -1,0 +1,14 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\schedule.o
+./debug\battery.o
+./debug\cmdprocess.o
+./debug\log.o
+./debug\qrc_resources.o
+./debug\moc_mainwindow.o
+./debug\moc_schedule.o
+./debug\moc_battery.o
+./debug\moc_cmdprocess.o
+./debug\moc_log.o
+);

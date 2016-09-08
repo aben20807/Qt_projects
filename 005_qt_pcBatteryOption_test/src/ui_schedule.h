@@ -111,6 +111,7 @@ public:
         buttonBox_okCancel = new QDialogButtonBox(Schedule);
         buttonBox_okCancel->setObjectName(QStringLiteral("buttonBox_okCancel"));
         buttonBox_okCancel->setGeometry(QRect(200, 260, 241, 23));
+        buttonBox_okCancel->setFont(font1);
         buttonBox_okCancel->setStandardButtons(QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         lEdit_2 = new QLineEdit(Schedule);
         lEdit_2->setObjectName(QStringLiteral("lEdit_2"));

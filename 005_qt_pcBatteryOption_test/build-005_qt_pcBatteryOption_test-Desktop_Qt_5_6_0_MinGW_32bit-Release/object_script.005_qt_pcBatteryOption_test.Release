@@ -1,0 +1,14 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\schedule.o
+./release\battery.o
+./release\cmdprocess.o
+./release\log.o
+./release\qrc_resources.o
+./release\moc_mainwindow.o
+./release\moc_schedule.o
+./release\moc_battery.o
+./release\moc_cmdprocess.o
+./release\moc_log.o
+);
