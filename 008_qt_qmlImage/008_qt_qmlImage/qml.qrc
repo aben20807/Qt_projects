@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Btn.qml</file>
+    </qresource>
+    <qresource prefix="/gif">
+        <file>pigeon.gif</file>
+    </qresource>
+</RCC>
