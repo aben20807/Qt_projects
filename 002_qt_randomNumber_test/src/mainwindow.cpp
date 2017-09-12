@@ -49,11 +49,12 @@ void MainWindow::on_btn_create_clicked()
 
             }
             for(int i = 0; i < i_num; i++){
-                s_result += (QString::number(result[i])+((i == i_num - 1)?"":",  "));
+                s_result += (QString::number(result[i])+((i == i_num - 1)?"":","));
             }
 //            qDebug() << s_result << endl;
-            ui->result_print->setWordWrap(true);//can wrap a new line
-            ui->result_print->setText(s_result);
+//            ui->result_print->setWordWrap(true);//can wrap a new line
+//            ui->result_print->setText(s_result);
+            ui->textEdit->setText(s_result);
         }
     }
     else{
@@ -67,5 +68,6 @@ void MainWindow::on_btn_reset_clicked()
     ui->lEdit_to->clear();
     ui->lEdit_num->setText("1");
     ui->result_print->clear();
+    ui->textEdit->clear();
     ui->radioBtn_repeat->setChecked(true);
 }

@@ -10,8 +10,14 @@
     <height>381</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>Noto Sans T Chinese Medium</family>
+    <pointsize>12</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Create Random Numbers</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="btn_create">
@@ -59,8 +65,8 @@
    <widget class="QLabel" name="l_result">
     <property name="geometry">
      <rect>
-      <x>18</x>
-      <y>88</y>
+      <x>20</x>
+      <y>80</y>
       <width>61</width>
       <height>23</height>
      </rect>
@@ -80,9 +86,9 @@
    <widget class="QLineEdit" name="lEdit_num">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>120</x>
       <y>50</y>
-      <width>71</width>
+      <width>91</width>
       <height>28</height>
      </rect>
     </property>
@@ -127,7 +133,7 @@
    <widget class="QRadioButton" name="radioBtn_repeat">
     <property name="geometry">
      <rect>
-      <x>217</x>
+      <x>230</x>
       <y>50</y>
       <width>120</width>
       <height>27</height>
@@ -152,7 +158,7 @@
     <property name="geometry">
      <rect>
       <x>360</x>
-      <y>290</y>
+      <y>320</y>
       <width>75</width>
       <height>31</height>
      </rect>
@@ -249,30 +255,22 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>455</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuCreate">
-    <property name="title">
-     <string>Create random numbers</string>
+   <widget class="QTextEdit" name="textEdit">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>110</y>
+      <width>411</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Noto Sans T Chinese Medium</family>
+      <pointsize>12</pointsize>
+     </font>
     </property>
    </widget>
-   <addaction name="menuCreate"/>
-  </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
